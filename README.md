@@ -4,4 +4,4 @@ This repository contains all the code I produced and will produce during my '100
 
 As one of my new habits I chose: "Code for 15 minutes every day". And since I have always wanted to participate in the [100 days of code challenge](https://pybit.es/special-100days.html) I will combine the new habit with the challenge.
 
-A logbook of what I worked on each day can be found on my [website](alpopkes.com/posts/).
+A logbook of what I worked on each day can be found on my [website](https://www.alpopkes.com/posts/).

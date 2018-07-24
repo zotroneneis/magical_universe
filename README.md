@@ -5,3 +5,12 @@ This repository contains all the code I produced and will produce during my '100
 As one of my new habits I chose: "Code for 15 minutes every day". And since I have always wanted to participate in the [100 days of code challenge](https://pybit.es/special-100days.html) I will combine the new habit with the challenge.
 
 A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/posts/2018/07/blog-post-1).
+
+Important Python concepts used in the code:
+- Object oriented programming
+- Inheritance
+- The proper usage of instance methods, class methods and static methods
+- Decorators
+- The @property decorator and property() function
+- Function annotations
+- etc.

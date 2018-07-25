@@ -2,6 +2,9 @@ import datetime
 import ipdb
 
 class HogwartsMember:
+    """
+    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    """
 
     def __init__(self, name:str, birthyear:int):
         self._name = name
@@ -20,19 +23,46 @@ class HogwartsMember:
     def school_headmaster():
         return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
+    
+    
 class Pupil(HogwartsMember):
+    """
+    Create a Hogwarts Pupil
+    """
 
-    def __init__(self, name:str, birthyear:int, house:str, start_year:int):
+    def __init__(self, name:str, birthyear:int, house:str, start_year:int, pet: tuple = None):
         super(Pupil, self).__init__(name, birthyear)
         self.house = house
         self.start_year = start_year
-        self._owls = {'Study of Ancient Runes': False, 'Arithmancy': False, 'Astronomy': False, 'Care of Magical Creatures': False, 'Charms': False, 'Defence Against the Dark Arts': False, 'Divination': False, 'Herbology': False, 'History of Magic': False, 'Muggle Studies': False, 'Potions': False, 'Transfiguration': False}
 
+        if pet is not None:
+            self.pet_name, self.pet_type = pet
+
+        self._owls = {
+                'Study of Ancient Runes': False,
+                'Arithmancy': False,
+                'Astronomy': False,
+                'Care of Magical Creatures': False,
+                'Charms': False,
+                'Defence Against the Dark Arts': False,
+                'Divination': False,
+                'Herbology': False,
+                'History of Magic': False,
+                'Muggle Studies': False,
+                'Potions': False,
+                'Transfiguration': False}
+        
     @property
     def current_year(self):
         now = datetime.datetime.now().year
         return (now - self.start_year) + 1
-   
+ 
+    def __repr__(self):
+        return (f"{self.__class__.__name__}"
+                f"({self._name}, birthyear: {self.birthyear}, house: {self.house})")
+
     @property
     def owls(self):
         return self._owls
@@ -52,6 +82,14 @@ class Pupil(HogwartsMember):
 
         self._owls[subject] = True
 
+        
+    @owls.deleter
+    def owls(self):
+        print("Caution, you are deleting this students' OWL's! "
+              "You should only do that if she/he dropped out of school without passing any exam!")
+        del self._owls
+        
+        
     @staticmethod
     def passed(grade):
         """
@@ -79,13 +117,13 @@ if __name__ == "__main__":
     now = 1995
 
     hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928)
-    print(hagrid.age)
-    print(hagrid.name)
+    print(hagrid)
 
     harry = Pupil(name='Harry James Potter', birthyear=1980, house='Griffindor', start_year=1991)
-    print(harry.owls)
+    print(harry)
     harry.owls = ('Defence Against the Dark Arts', 'O')
+    del harry.owls
 
     headmaster = harry.school_headmaster()
-    print(headmaster.name)
+    print("headmaster: ", headmaster)
 

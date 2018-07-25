@@ -11,6 +11,7 @@ Important Python concepts used in the code:
 - Inheritance
 - The proper usage of instance methods, class methods and static methods
 - Decorators
-- The @property decorator and property() function (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) for more information on this topic!)
-- Function annotations
+- The @property decorator and property() function (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) of day 2 for details on this topic)
+- Function annotations and their proper syntax when used with default values (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) of day 3 for details on this topic)
+- To-string conversion (```__repr__``` and ```__str__``` usage)
 - etc.

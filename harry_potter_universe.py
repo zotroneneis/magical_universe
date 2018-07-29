@@ -1,5 +1,4 @@
 import datetime
-import ipdb
 
 class HogwartsMember:
     """
@@ -10,6 +9,9 @@ class HogwartsMember:
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
+
+    def says(self, words):
+        return f"{self._name} says {words}"
 
     @property
     def name(self):
@@ -22,15 +24,14 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881)
+        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
-    
-    
-    
- class Professor(HogwartsMember):
+
+
+class Professor(HogwartsMember):
     """
     Creates a Hogwarts professor
     """
@@ -54,8 +55,8 @@ class HogwartsMember:
         return (f"{self.__class__.__name__}({self._name}, "
                 f"birthyear: {self.birthyear}, subject: {self.subject})")
 
-    
-    
+
+
 class Ghost(HogwartsMember):
     """
     Creates a Hogwarts ghost
@@ -77,10 +78,9 @@ class Ghost(HogwartsMember):
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
                 f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
-    
-    
-    
-    
+
+
+
 class Pupil(HogwartsMember):
     """
     Create a Hogwarts Pupil
@@ -119,13 +119,12 @@ class Pupil(HogwartsMember):
     @classmethod
     def hermione(cls):
         return cls('Hermione', 1979, 'female', 'Griffindor', 1991, pet=('Crookshanks', 'cat'))
-llk        
-        
+
     @property
     def current_year(self):
         now = datetime.datetime.now().year
         return (now - self.start_year) + 1
- 
+
     def __repr__(self):
         return (f"{self.__class__.__name__}"
                 f"({self._name}, birthyear: {self.birthyear}, house: {self.house})")
@@ -149,14 +148,14 @@ llk
 
         self._owls[subject] = True
 
-        
+
     @owls.deleter
     def owls(self):
         print("Caution, you are deleting this students' OWL's! "
               "You should only do that if she/he dropped out of school without passing any exam!")
         del self._owls
-        
-        
+
+
     @staticmethod
     def passed(grade):
         """
@@ -178,23 +177,23 @@ llk
                 }
 
         return grades.get(grade, False)
-    
+
 
 if __name__ == "__main__":
     now = 1995
 
-    hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928)
+    hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
     print(hagrid)
 
-    harry = Pupil(name='Harry James Potter', birthyear=1980, house='Griffindor', start_year=1991)
+    harry = Pupil(name='Harry James Potter', birthyear=1980, sex='male', house='Griffindor', start_year=1991)
     print(harry)
     harry.owls = ('Defence Against the Dark Arts', 'O')
     del harry.owls
 
     headmaster = harry.school_headmaster()
     print("headmaster: ", headmaster)
-    
-       mcgonagall = Professor.mcgonagall()
+
+    mcgonagall = Professor.mcgonagall()
     print('mcgonagall: ', mcgonagall)
 
     snape = Professor.snape()

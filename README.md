@@ -17,4 +17,4 @@ Start date: 07/23/2018
 | 5 |Decorators|[Day 5](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-5/)    |
 | 6 |Properties, ```@property``` and ```property()```, setters, getters|[Day 6](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-6/)    |
 | 7 |Underscore patterns for variable naming, ```_variable, __variable, __variable__, etc.```|[Day 7](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-7/)    |
-| 8 |                         |[Day 8](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-8/)    |
+| 8 | New methods and classes added to the HP universe |[Day 8](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-8/)    |

@@ -30,7 +30,6 @@ class HogwartsMember:
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 
-
 class Professor(HogwartsMember):
     """
     Creates a Hogwarts professor
@@ -152,11 +151,10 @@ class Pupil(HogwartsMember):
 
         passed = self.passed(grade)
 
-        if not passed:
-            raise ValueError('The exam was not passed so no OWL was awarded!')
-
-        self._owls[subject] = True
-
+        if passed:
+            self._owls[subject] = True
+        else:
+            print('The exam was not passed so no OWL was awarded!')
 
     @owls.deleter
     def owls(self):

@@ -203,7 +203,7 @@ class Pupil(HogwartsMember):
 
 class Charm:
     """ Creates a charm """
-    def __init__(self, incantation, difficulty=None, effect=None):
+    def __init__(self, incantation:str, difficulty: str = None, effect: str = None):
         self.incantation = incantation
         self.difficulty = difficulty
         self.effect = effect

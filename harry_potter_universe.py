@@ -79,6 +79,9 @@ class Ghost(HogwartsMember):
         return (f"{self.__class__.__name__}({self._name}, "
                 f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
 
+    @classmethod
+    def nearly_headless_nick(cls):
+        return cls('Sir Nicholas de Mimsy-Porpington', 1401, 'male', '1492', 'Gryffindor')
 
 
 class Pupil(HogwartsMember):
@@ -108,6 +111,8 @@ class Pupil(HogwartsMember):
                 'Potions': False,
                 'Transfiguration': False}
 
+        self._friends = []
+
     @classmethod
     def harry(cls):
         return cls('Harry James Potter', 1980, 'male', 'Griffindor', start_year=1991, pet=('Hedwig', 'owl'))
@@ -118,20 +123,24 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def hermione(cls):
-        return cls('Hermione', 1979, 'female', 'Griffindor', 1991, pet=('Crookshanks', 'cat'))
+        return cls('Hermione Jean Granger', 1979, 'female', 'Griffindor', 1991, pet=('Crookshanks', 'cat'))
+
+    @classmethod
+    def malfoy(cls):
+        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, pet=('Unnamed', 'owl') )
 
     @property
     def current_year(self):
         now = datetime.datetime.now().year
         return (now - self.start_year) + 1
 
-    def __repr__(self):
-        return (f"{self.__class__.__name__}"
-                f"({self._name}, birthyear: {self.birthyear}, house: {self.house})")
-
     @property
     def owls(self):
         return self._owls
+
+    @property
+    def friends(self):
+        return f"{self._name}'s current friends are: {[person.name for person in self._friends]}"
 
     @owls.setter
     def owls(self, subject_and_grade):
@@ -178,34 +187,60 @@ class Pupil(HogwartsMember):
 
         return grades.get(grade, False)
 
+    def befriend(self, person):
+        """Adds another person to your list of friends"""
+        if (person.__class__.__name__ != 'HogwartsMember'
+            and self.house != 'Slyterhin'
+            and person.house == 'Slytherin'):
+            print("Are you sure you want to be friends with someone from Slytherin?")
+
+        self._friends.append(person)
+        print(f"{person.name} is now your friend!")
+
+    def __repr__(self):
+        return (f"{self.__class__.__name__}"
+                f"({self._name}, birthyear: {self.birthyear}, house: {self.house})")
+
+class Charm:
+    """ Creates a charm """
+    def __init__(self, incantation, difficulty=None, effect=None):
+        self.incantation = incantation
+        self.difficulty = difficulty
+        self.effect = effect
+
+    def cast(self):
+        print(f"{self.incantation}!")
+
+    @classmethod
+    def lumos(cls):
+        return cls('Lumos', 'simple', 'Illuminates the wand tip')
+
+    @classmethod
+    def wingardium_leviosa(cls):
+        return cls('Wingardium Leviosa', 'simple', 'Makes objects fly')
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.incantation}, {self.difficulty}, {self.effect})"
 
 if __name__ == "__main__":
     now = 1995
 
     hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
-    print(hagrid)
-
     harry = Pupil(name='Harry James Potter', birthyear=1980, sex='male', house='Griffindor', start_year=1991)
-    print(harry)
-    harry.owls = ('Defence Against the Dark Arts', 'O')
-    del harry.owls
-
-    headmaster = harry.school_headmaster()
-    print("headmaster: ", headmaster)
-
-    mcgonagall = Professor.mcgonagall()
-    print('mcgonagall: ', mcgonagall)
-
-    snape = Professor.snape()
-    print('snape: ', snape)
-
-    harry = Pupil.harry()
-    print('harry: ', harry)
-
     ron = Pupil.ron()
-    print('ron: ', ron)
+    malfoy = Pupil.malfoy()
 
-    hermione = Pupil.hermione()
-    print('hermione: ', hermione)
+    harry.befriend(hagrid)
+    harry.befriend(ron)
+    harry.befriend(malfoy)
+    print(harry.friends)
+    print()
+
+    lumos = Charm.lumos()
+    lumos.cast()
+
+
+
+
 
 

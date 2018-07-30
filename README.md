@@ -29,7 +29,8 @@ Important Python concepts used in the code:
 | 1 (07/23/2018)| Intro to object oriented programming, classes, inheritance   | [Day 1](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-1/)   |
 | 2             | Class methods, instance methods, static methods, using class methods as alternative constructors | [Day 2](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-2/)    |
 | 3             |Function annotations|[Day 3](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-3/)    |
-
-
-
-
+| 4             |to-string conversion, ```__repr__, __str__ ```|[Day 4](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-4/)    |
+| 5             |decorators|[Day 5](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-5/)    |
+| 6             |properties, ```@property``` and ```property()```, setters, getters|[Day 6](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-6/)    |
+| 7             |underscore patterns for variable naming, ```_variable, __variable, __variable__, etc.```|[Day 7](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-7/)    |
+| 8             ||[Day 8](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-8/)    |

@@ -4,15 +4,23 @@ This repository contains all the code I produced and will produce during my '100
 
 As one of my new habits I chose: "Code for 15 minutes every day". And since I have always wanted to participate in the [100 days of code challenge](https://pybit.es/special-100days.html) I will combine the new habit with the challenge.
 
-A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/posts/2018/07/blog-post-1).
+A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/posts/2018/07/).
+   
+Important Python concepts used in the code:   
+   
+**Day 1 (07/23/2018):** Intro to object oriented programming, classes, inheritance, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-1/)   
 
-Important Python concepts used in the code:
-- Object oriented programming
-- Inheritance
-- The proper usage of instance methods, class methods and static methods
-- Decorators
-- The @property decorator and property() function (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) of day 2 for details on this topic)
-- Function annotations and their proper syntax when used with default values (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) of day 3 for details on this topic)
-- To-string conversion (```__repr__``` and ```__str__``` usage)
-- Types of class methods (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) of day 4 for details on this topic)
-- Using class methods as additional constructors (look at the [blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1) of day 34 for details on this topic)
+**Day 2:** Class methods, instance methods, static methods, using class methods as alternative constructors, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-2/)   
+
+**Day 3:** Function annotations, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-3/)    
+
+**Day 4:** to-string conversion, ```__repr__, __str__ ```, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-4/)   
+
+**Day 5:** decorators, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-5/)       
+
+**Day 6:** properties, ```@property``` and ```property()```, setters, getters, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-6/)   
+
+**Day 7:** underscore patterns for variable naming, ```_variable, __variable, __variable__, etc.```, [corresponding blog post with code](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-7/)   
+
+**Day 8:**
+

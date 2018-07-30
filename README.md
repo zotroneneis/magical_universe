@@ -24,3 +24,12 @@ Important Python concepts used in the code:
 
 **Day 8:**
 
+
+| Tables        | Are           | 
+| ------------- |:-------------:| 
+| col 3 is      | right-aligned | 
+| col 2 is      | centered      |
+| zebra stripes | are neat      |
+
+
+

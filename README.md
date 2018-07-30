@@ -25,7 +25,7 @@ Important Python concepts used in the code:
 **Day 8:**
 
 | Day           | Topics          | Blog post with code  |
-| ------------- |:-------------:  | -----:|
+| :-------------: |:-------------:  | :-----:|
 | 1 (07/23/2018)| Intro to object oriented programming, classes, inheritance   | [Day 1](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-1/)   |
 | 2             | Class methods, instance methods, static methods, using class methods as alternative constructors | [Day 2](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-2/)    |
 | 3             |Function annotations|[Day 3](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-3/)    |

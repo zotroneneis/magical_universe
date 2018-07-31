@@ -18,3 +18,4 @@ Start date: 07/23/2018
 | 6 |Properties, ```@property``` and ```property()```, setters, getters|[Day 6](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-6/)    | [Code day 6](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_6.py) |
 | 7 |Underscore patterns for variable naming, ```_variable, __variable, __variable__, etc.```|[Day 7](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-7/)    | No new code added |
 | 8 | New methods and classes added to the HP universe |[Day 8](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-8/) |  [Code day 8](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_8.py) |
+| 9 | Duck typing, EAFP principle |[Day 9](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-9/) |  [Code day 9](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_9.py) |

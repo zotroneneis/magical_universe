@@ -9,9 +9,32 @@ class HogwartsMember:
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
+        self._traits = {}
 
     def says(self, words):
         return f"{self._name} says {words}"
+
+    def add_trait(self, trait, value=True):
+        self._traits[trait] = value
+
+    def print_traits(self):
+        true_traits = [trait for trait, value in self._traits.items() if value]
+        false_traits = [trait for trait, value in self._traits.items() if not value]
+
+        print(f"{self._name} is {', '.join(true_traits)} "
+              f"but not {', '.join(false_traits)}")
+
+    def exhibits_trait(self, trait):
+        try:
+            value = self._traits[trait]
+        except KeyError:
+            print(f"{self._name} does not have a character trait with the name '{trait}'")
+            return
+
+        if value:
+            print(f"Yes, {self._name} is {trait}!")
+        else:
+            print(f"No, {self._name} is not {trait}!")
 
     @property
     def name(self):
@@ -224,18 +247,15 @@ if __name__ == "__main__":
     now = 1995
 
     hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
-    harry = Pupil(name='Harry James Potter', birthyear=1980, sex='male', house='Griffindor', start_year=1991)
-    ron = Pupil.ron()
-    malfoy = Pupil.malfoy()
+    hagrid.add_trait("kind")
+    hagrid.add_trait("monster-loving")
+    hagrid.add_trait("impatient", value=False)
 
-    harry.befriend(hagrid)
-    harry.befriend(ron)
-    harry.befriend(malfoy)
-    print(harry.friends)
+    hagrid.print_traits()
     print()
 
-    lumos = Charm.lumos()
-    lumos.cast()
+    hagrid.exhibits_trait("kind")
+    hagrid.exhibits_trait("funny")
 
 
 

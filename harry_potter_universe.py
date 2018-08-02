@@ -1,4 +1,5 @@
 import datetime
+from typing import NamedTuple
 
 class HogwartsMember:
     """
@@ -243,22 +244,27 @@ class Charm:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.incantation}, {self.difficulty}, {self.effect})"
 
+
+class DeathEater(NamedTuple):
+    """ Creates a death eater """
+    name: str
+    birthyear: str
+
+    @property
+    def leader(self):
+        voldemort = DeathEater('Voldemort', 1926)
+        return voldemort
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, birthyear: {self.birthyear})"
+
 if __name__ == "__main__":
     now = 1995
 
-    hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
-    hagrid.add_trait("kind")
-    hagrid.add_trait("monster-loving")
-    hagrid.add_trait("impatient", value=False)
+    lucius = DeathEater('Lucius Malfoy', 1953)
+    print('Lucius: ', lucius)
+    print('Leader: ', lucius.leader)
 
-    hagrid.print_traits()
-    print()
-
-    hagrid.exhibits_trait("kind")
-    hagrid.exhibits_trait("funny")
-
-
-
-
-
+    bellatrix = DeathEater('Bellatrix Lestrange', 1951)
+    print('Bellatrix: ', bellatrix)
 

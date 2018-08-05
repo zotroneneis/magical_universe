@@ -63,7 +63,7 @@ class Professor(HogwartsMember):
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
-        super(Professor, self).__init__(name, birthyear, sex)
+        super().__init__(name, birthyear, sex)
         self.subject = subject
         self.house = house
 
@@ -88,7 +88,7 @@ class Ghost(HogwartsMember):
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, year_of_death:int, house: str = None):
-        super(Ghost, self).__init__(name, birthyear, sex)
+        super().__init__(name, birthyear, sex)
 
         self.year_of_death = year_of_death
         self.house = house
@@ -113,7 +113,7 @@ class Pupil(HogwartsMember):
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, house:str, start_year:int, pet: tuple = None):
-        super(Pupil, self).__init__(name, birthyear, sex)
+        super().__init__(name, birthyear, sex)
         self.house = house
         self.start_year = start_year
         self.known_spells = set()
@@ -296,7 +296,7 @@ class Charm(Spell):
     a spell that alters the inherent qualities of an object
     """
     def __init__(self, name:str, incantation:str, effect:str, difficulty: str = None, min_year: int = None):
-        super(Charm, self).__init__(name, incantation, effect, min_year)
+        super().__init__(name, incantation, effect, min_year)
         self.difficulty = difficulty
 
     @property
@@ -321,7 +321,7 @@ class Transfiguration(Spell):
     a spell that alters the form or appearance of an object
     """
     def __init__(self, name: str, incantation:str, effect:str):
-        super(Transfiguration, self).__init__(name, incantation, effect)
+        super().__init__(name, incantation, effect)
 
     @property
     def defining_feature(self):
@@ -336,7 +336,7 @@ class Jinx(Spell):
     a spell whose effects are irritating but amusing
     """
     def __init__(self, name: str, incantation:str, effect:str):
-        super(Jinx, self).__init__(name, incantation, effect)
+        super().__init__(name, incantation, effect)
 
     @property
     def defining_feature(self):
@@ -353,7 +353,7 @@ class Hex(Spell):
     a spell that affects an object in a negative manner
     """
     def __init__(self, name: str, incantation:str, effect:str, min_year: int = None):
-        super(Hex, self).__init__(name, incantation, effect, min_year)
+        super().__init__(name, incantation, effect, min_year)
 
     @property
     def defining_feature(self):
@@ -370,7 +370,7 @@ class Curse(Spell):
     a spell that affects an object in a strongly negative manner
     """
     def __init__(self, name: str, incantation:str, effect:str, difficulty: str = None):
-        super(Curse, self).__init__(name, incantation, effect)
+        super().__init__(name, incantation, effect)
 
     @property
     def defining_feature(self):
@@ -386,7 +386,7 @@ class CounterSpell(Spell):
     a spell that inhibits the effect of another spell
     """
     def __init__(self, name: str, incantation:str, effect:str):
-        super(CounterSpell, self).__init__(name, incantation, effect)
+        super().__init__(name, incantation, effect)
 
     @property
     def defining_feature(self):
@@ -401,7 +401,7 @@ class HealingSpell(Spell):
     a spell that improves the condition of a living object
     """
     def __init__(self, name: str, incantation:str, effect:str):
-        super(HealingSpell, self).__init__(name, incantation, effect)
+        super().__init__(name, incantation, effect)
 
     @property
     def defining_feature(self):

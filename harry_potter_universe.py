@@ -65,8 +65,7 @@ class Professor(HogwartsMember):
     def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
         super(Professor, self).__init__(name, birthyear, sex)
         self.subject = subject
-        if house is not None:
-            self.house = house
+        self.house = house
 
     @classmethod
     def mcgonagall(cls):
@@ -92,9 +91,7 @@ class Ghost(HogwartsMember):
         super(Ghost, self).__init__(name, birthyear, sex)
 
         self.year_of_death = year_of_death
-
-        if house is not None:
-            self.house = house
+        self.house = house
 
     @property
     def age(self):

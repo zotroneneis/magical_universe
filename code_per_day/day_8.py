@@ -45,7 +45,7 @@ class Professor(HogwartsMember):
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
-        super(Professor, self).__init__(name, birthyear, sex)
+        super().__init__(name, birthyear, sex)
         self.subject = subject
         if house is not None:
             self.house = house
@@ -71,7 +71,7 @@ class Ghost(HogwartsMember):
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, year_of_death:int, house: str = None):
-        super(Ghost, self).__init__(name, birthyear, sex)
+        super().__init__(name, birthyear, sex)
 
         self.year_of_death = year_of_death
 
@@ -98,7 +98,7 @@ class Pupil(HogwartsMember):
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, house:str, start_year:int, pet: tuple = None):
-        super(Pupil, self).__init__(name, birthyear, sex)
+        super().__init__(name, birthyear, sex)
         self.house = house
         self.start_year = start_year
 

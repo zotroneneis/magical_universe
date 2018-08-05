@@ -4,6 +4,10 @@ This repository contains all the code I produced and will produce during my '100
 
 As one of my new habits I chose: "Code for 15 minutes every day". And since I have always wanted to participate in the [100 days of code challenge](https://pybit.es/special-100days.html) I will combine the new habit with the challenge.
 
+As part of the habit I've started creating a series of blog posts on important and awesome Python features, including object oriented programming, properties, function annotations, duck typing, etc.
+
+Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating a whole Harry Potter universe around the topics. So if you like Harry Potter and want to improve your Python knowledge and skills (and maybe also your Harry Potter knowledge), get right into it!
+
 A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/year-archive/).
 
 Start date: 07/23/2018   
@@ -20,3 +24,4 @@ Start date: 07/23/2018
 | 8 | New methods and classes added to the HP universe |[Day 8](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-8/) |  [Code day 8](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_8.py) |
 | 9 | Duck typing, EAFP principle |[Day 9](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-9/) |  [Code day 9](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_9.py) |
 | 10 & 11| Namedtuples | [Day 10 & 11](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-10-and-11/) | [Code day 10 & 11](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_10_and_11.py)|
+| 12 - 15  | Abstract Base Classes | [Day 12 to 15](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-12-and-15/) | [Code day 12 to 15](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_12_to_15.py)|

@@ -1,10 +1,8 @@
-# 100 days of code - Creating my personal Harry Potter universe
+# Awesome Python Features Explained Using Harry Potter
 
-This repository contains all the code I produced and will produce during my '100 days of code challenge'. As outlined in [my blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1), I decided to take on a new habit using a technique I found on the ['get discplined' subreddit](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/).
+As outlined in [my blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1), I decided to take on a new habit using a technique I found on the ['get discplined' subreddit](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/).
 
-As one of my new habits I chose: "Code for 15 minutes every day". And since I have always wanted to participate in the [100 days of code challenge](https://pybit.es/special-100days.html) I will combine the new habit with the challenge.
-
-As part of the habit I've started creating a series of **blog posts** on important and awesome **Python features**, including object oriented programming, properties, function annotations, duck typing, etc.
+As one of my new habits I chose: "Code for 15 minutes every day". As part of the habit I've started creating a series of **blog posts** on important and awesome **Python features**, including object oriented programming, properties, function annotations, duck typing, etc.
 
 Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating a whole Harry Potter universe around the topics. So if you like Harry Potter and want to improve your Python knowledge and skills (and maybe also your Harry Potter knowledge), get right into it!
 

@@ -4,7 +4,7 @@ This repository contains all the code I produced and will produce during my '100
 
 As one of my new habits I chose: "Code for 15 minutes every day". And since I have always wanted to participate in the [100 days of code challenge](https://pybit.es/special-100days.html) I will combine the new habit with the challenge.
 
-As part of the habit I've started creating a series of blog posts on important and awesome Python features, including object oriented programming, properties, function annotations, duck typing, etc.
+As part of the habit I've started creating a series of **blog posts** on important and awesome **Python features**, including object oriented programming, properties, function annotations, duck typing, etc.
 
 Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating a whole Harry Potter universe around the topics. So if you like Harry Potter and want to improve your Python knowledge and skills (and maybe also your Harry Potter knowledge), get right into it!
 

@@ -13,7 +13,7 @@ class HogwartsMember:
     Creates a member of the Hogwarts School of Witchcraft and Wizardry
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str):
+    def __init__(self, name: str, birthyear: int, sex: str):
         self._name = name
         self.birthyear = birthyear
         self.sex = sex

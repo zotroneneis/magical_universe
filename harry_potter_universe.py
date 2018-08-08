@@ -1,6 +1,7 @@
 import datetime
 from typing import NamedTuple
 from abc import ABCMeta, abstractmethod
+from dataclasses import dataclass
 
 class HogwartsMember:
     """
@@ -75,6 +76,13 @@ class Professor(HogwartsMember):
     def snape(cls):
         return cls('Severus Snape', 1960, 'male', 'Potions', house='Slytherin')
 
+    @classmethod
+    def sprout(cls):
+        return cls('Pomona Sprout', 1931, 'female', 'Herbology', house='Hufflepuff')
+
+    @classmethod
+    def flitwick(cls):
+        return cls('Filius Flitwick', 1958, 'male', 'Charms', house='Ravenclaw')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -105,6 +113,18 @@ class Ghost(HogwartsMember):
     @classmethod
     def nearly_headless_nick(cls):
         return cls('Sir Nicholas de Mimsy-Porpington', 1401, 'male', '1492', 'Gryffindor')
+
+    @classmethod
+    def fat_friar(cls):
+        return cls('Fat Friar', 1000, 'male', 1050, 'Hufflepuff')
+
+    @classmethod
+    def bloody_baron(cls):
+        return cls('Bloody Baron', 983, 'male', 1010, 'Slytherin')
+
+    @classmethod
+    def grey_lady(cls):
+        return cls('Helena Ravenclaw', 983, 'male', 996, 'Ravenclaw')
 
 
 class Pupil(HogwartsMember):
@@ -427,56 +447,81 @@ class DeathEater(NamedTuple):
     def cast(self, spell):
         print(f"{self.name}: {spell.incantation}!")
 
+@dataclass
+class House:
+    """ Creates a Hogwarts House """
+    name: str
+    founder: str
+    traits: list
+    common_room: str
+    head: Professor
+    ghost: Ghost
+    founded_in: int = 991
+
+    def current_age(self):
+        now = datetime.datetime.now().year
+        return (now - self.founded_in) + 1
+
 if __name__ == "__main__":
     now = 1993
 
-    wing_lev = Charm.wingardium_leviosa()
-    rictum = Charm('tickling_charm', 'Rictumsempra', 'Causes victim to buckle with laughter', min_year=5)
-    stickfast = Hex('stickfast_hex', 'Colloshoo', "Makes target's shoes stick to ground")
-    crutio = Curse('Cruciatus Curse', 'Crucio', 'Causes intense, excruciating pain on the victim', 'difficult')
+    headless_nick = Ghost.nearly_headless_nick()
+    fat_friar = Ghost.fat_friar()
+    bloody_baron = Ghost.bloody_baron()
+    grey_lady = Ghost.grey_lady()
 
-    harry = Pupil.harry()
-    malfoy = Pupil.malfoy()
-    hermione = Pupil.hermione()
-    hermione.add_trait('highly intelligent')
-
-    print("Harry knows the following spells: ", harry.known_spells)
-    print("Harry is currently in year: ", harry.current_year)
-    harry.learn_spell(wing_lev)
-    print('=======================================')
-
-    # Test whether Harry can learn a spell he is too young for
-    harry.learn_spell(rictum)
-    # Can hermione study the spell?
-    hermione.learn_spell(rictum)
-    print('=======================================')
-
-    # Test whether Harry can study a hex
-    harry.learn_spell(stickfast)
-    print('=======================================')
-    # Can Malfoy perform a hex?
-    malfoy.learn_spell(stickfast)
-    print('=======================================')
+    mcgonagall = Professor.mcgonagall()
+    sprout = Professor.sprout()
+    snape = Professor.snape()
+    flitwick = Professor.flitwick()
 
 
-    # Test whether Harry can study a curse
-    harry.learn_spell(crutio)
+    gryffindor = House('Gryffindor',
+                       'Godric Gryffindor',
+                       ['bravery', 'nerve', 'courage', 'chivalry', 'daring'],
+                       'Gryffindor Tower',
+                       mcgonagall,
+                       headless_nick)
+
+    hufflepuff = House('Hufflepuff',
+                       'Helga Hufflepuff',
+                       ['dedication', 'hardworking', 'fairness',
+                           'patience', 'kindness', 'tolerance', 'loyalty'],
+                       'Hufflepuff basement',
+                       sprout,
+                       fat_friar)
+
+    slytherin = House('Slytherin',
+                      'Salazar Slytherin',
+                      ['cunning', 'ambition', 'determination', 'cleverness',
+                          'resourcefulness', 'fraternity'],
+                      'Slytherin dungeon',
+                      snape,
+                      bloody_baron)
+
+    ravenclaw = House('Ravenclaw',
+                      'Rowena Ravenclaw',
+                      ['intelligence', 'wit', 'wisdom', 'creativity', 'acceptance', 'indiviuality'],
+                      'Ravenclaw Tower',
+                      flitwick,
+                      grey_lady)
+
+    print(gryffindor)
+    print()
+    print("Head of Gryffindor: ")
+    print(gryffindor.head)
+    print()
+    print("Ghost of Gryffindor: ")
+    print(gryffindor.ghost)
     print('=======================================')
-    # Can Malfoy study a curse?
-    malfoy.learn_spell(crutio)
+    print(hufflepuff)
+    print('=======================================')
+    print(slytherin)
+    print('=======================================')
+    print(ravenclaw)
     print('=======================================')
 
-    # Test whether Harry can cast a Charm
-    harry.cast_spell(wing_lev)
-    print('=======================================')
 
-    # What about a hex?
-    harry.cast_spell(stickfast)
-    print('=======================================')
-
-    # What about Malfoy?
-    malfoy.cast_spell(stickfast)
-    print('=======================================')
 
 
 

@@ -81,6 +81,6 @@ if __name__ == "__main__":
   harry = Pupil(name='Harry James Potter',
                 birthyear=1980,
                 sex='male',
-                house='Griffindor',
+                house='Gryffindor',
                 start_year=1991,
                 pet=('Hedwig', 'owl'))

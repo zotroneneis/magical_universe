@@ -23,3 +23,4 @@ Start date: 07/23/2018
 | 9 | Duck typing, EAFP principle |[Day 9](http://www.alpopkes.com/posts/2018/07/coding-challenge-day-9/) |  [Code day 9](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_9.py) |
 | 10 & 11| Namedtuples | [Day 10 & 11](http://www.alpopkes.com/posts/2018/08/coding-challenge-day-10-and-11/) | [Code day 10 & 11](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_10_and_11.py)|
 | 12 - 15  | Abstract Base Classes | [Day 12 to 15](http://alpopkes.com/posts/2018/08/coding-challenge-day-12-to-15/) | [Code day 12 to 15](https://github.com/zotroneneis/100_days_of_code/blob/master/code_per_day/day_12_to_15.py)|
+| 16 - 18  | Data Classes | [Day 16 to 18](http://alpopkes.com/posts/2018/08/coding-challenge-day-16-to-18/) | [Code day 16 to 18](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_16_to_18.py)|

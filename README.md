@@ -8,7 +8,7 @@ Since I was bored by the usual tutorial examples, I looked for a topic that woul
 
 A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/year-archive/).
 
-The code runs in **Python 3.6**, the [code on data classes](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_16_to_18.py) requires Python 3.7 (or ypu pip install data classes for Python 3.6).
+The code runs in **Python 3.6**, the [code on data classes](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_16_to_18.py) requires Python 3.7 (or you pip install data classes for Python 3.6).
 
 Start date: 07/23/2018   
 

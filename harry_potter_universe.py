@@ -308,7 +308,8 @@ class Spell(metaclass=ABCMeta):
         pass
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, incantation: '{self.incantation}', effect: {self.effect})"
+        return (f"{self.__class__.__name__}({self.name}, "
+               f"incantation: '{self.incantation}', effect: {self.effect})")
 
 class Charm(Spell):
     """

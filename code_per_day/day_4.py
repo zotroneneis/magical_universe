@@ -11,7 +11,7 @@ class HogwartsMember:
     """
     Creates a member of the Hogwarts School of Witchcraft and Wizardry
     """
-    def __init__(self, name:str, birthyear:int, sex:str):
+    def __init__(self, name: str, birthyear: int, sex: str):
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
@@ -31,7 +31,7 @@ class Pupil(HogwartsMember):
     Create a Hogwarts Pupil
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str, house:str, start_year:int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
         self.house = house
         self.start_year = start_year
@@ -73,7 +73,7 @@ class Professor(HogwartsMember):
     """
     Creates a Hogwarts professor
     """
-    def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
         if house is not None:

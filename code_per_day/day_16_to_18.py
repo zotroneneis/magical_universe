@@ -69,19 +69,19 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', house='Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
 
     @classmethod
     def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', house='Slytherin')
+        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
 
     @classmethod
     def sprout(cls):
-        return cls('Pomona Sprout', 1931, 'female', 'Herbology', house='Hufflepuff')
+        return cls('Pomona Sprout', 1931, 'female', 'Herbology', 'Hufflepuff')
 
     @classmethod
     def flitwick(cls):
-        return cls('Filius Flitwick', 1958, 'male', 'Charms', house='Ravenclaw')
+        return cls('Filius Flitwick', 1958, 'male', 'Charms', 'Ravenclaw')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "

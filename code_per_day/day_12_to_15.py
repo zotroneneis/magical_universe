@@ -70,11 +70,11 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', house='Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
 
     @classmethod
     def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', house='Slytherin')
+        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
 
 
     def __repr__(self):
@@ -142,19 +142,19 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Griffindor', start_year=1991, pet=('Hedwig', 'owl'))
+        return cls('Harry James Potter', 1980, 'male', 'Griffindor', 1991, ('Hedwig', 'owl'))
 
     @classmethod
     def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, pet=('Pigwidgeon', 'owl'))
+        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, ('Pigwidgeon', 'owl'))
 
     @classmethod
     def hermione(cls):
-        return cls('Hermione Jean Granger', 1979, 'female', 'Griffindor', 1991, pet=('Crookshanks', 'cat'))
+        return cls('Hermione Jean Granger', 1979, 'female', 'Griffindor', 1991, ('Crookshanks', 'cat'))
 
     @classmethod
     def malfoy(cls):
-        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, pet=('Unnamed', 'owl') )
+        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, ('Unnamed', 'owl') )
 
     @property
     def current_year(self):
@@ -311,11 +311,11 @@ class Charm(Spell):
 
     @classmethod
     def lumos(cls):
-        return cls('Lumos', 'Lumos', 'Illuminates the wand tip', 'simple', min_year=5)
+        return cls('Lumos', 'Lumos', 'Illuminates the wand tip', 'simple', 5)
 
     @classmethod
     def wingardium_leviosa(cls):
-        return cls('Wingardium Leviosa', 'Wingardium Leviosa', 'Makes objects fly', 'simple', min_year=1)
+        return cls('Wingardium Leviosa', 'Wingardium Leviosa', 'Makes objects fly', 'simple', 1)
 
 
 class Transfiguration(Spell):

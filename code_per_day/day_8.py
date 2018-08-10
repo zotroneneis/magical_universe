@@ -44,7 +44,7 @@ class Professor(HogwartsMember):
     Creates a Hogwarts professor
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, subject: tr, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
         if house is not None:

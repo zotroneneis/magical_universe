@@ -46,7 +46,7 @@ class HogwartsMember:
 
     @property
     def age(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return now - self.birthyear
 
     @staticmethod
@@ -81,7 +81,7 @@ class Professor(HogwartsMember):
 
     @classmethod
     def flitwick(cls):
-        return cls('Filius Flitwick', 1958, 'male', 'Charms', 'Ravenclaw')
+        return cls('Filius Flitwick', 1900, 'male', 'Charms', 'Ravenclaw')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -102,7 +102,7 @@ class Ghost(HogwartsMember):
 
     @property
     def age(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return now - self.birthyear
 
     def __repr__(self):
@@ -152,6 +152,7 @@ if __name__ == "__main__":
     sprout = Professor.sprout()
     snape = Professor.snape()
     flitwick = Professor.flitwick()
+    print('Age of professor Flitwick: ', flitwick.age)
 
 
     gryffindor = House('Gryffindor',

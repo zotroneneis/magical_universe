@@ -14,8 +14,18 @@ class HogwartsMember:
         self.sex = sex
         self._traits = {}
 
+    def whisper(function):
+        def wrapper(self, *args):
+            original_output = function(self, *args)
+            first_part, words = original_output.split(' says: ')
+            words = words.replace('!', '.')
+            new_output = f"{first_part} whispers: {words}.."
+            return new_output
+        return wrapper
+
+    @whisper
     def says(self, words):
-        return f"{self._name} says {words}"
+        return f"{self._name} says: {words}"
 
     def add_trait(self, trait, value=True):
         self._traits[trait] = value
@@ -172,6 +182,10 @@ class Pupil(HogwartsMember):
     @classmethod
     def malfoy(cls):
         return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, ('Unnamed', 'owl') )
+
+    @classmethod
+    def ginny(cls):
+        return cls('Ginevra Weasley', 1981, 'female', 'Gryffindor', 1992)
 
     @property
     def current_year(self):
@@ -465,65 +479,8 @@ class House:
 if __name__ == "__main__":
     now = 1993
 
-    lucius = DeathEater('Lucius Malfoy', 1953)
-    print('lucius: ', lucius)
-    lucius.name = 'Draco' # This should raise an error!
-
-    headless_nick = Ghost.nearly_headless_nick()
-    fat_friar = Ghost.fat_friar()
-    bloody_baron = Ghost.bloody_baron()
-    grey_lady = Ghost.grey_lady()
-
-    mcgonagall = Professor.mcgonagall()
-    sprout = Professor.sprout()
-    snape = Professor.snape()
-    flitwick = Professor.flitwick()
-
-
-    gryffindor = House('Gryffindor',
-                       'Godric Gryffindor',
-                       ['bravery', 'nerve', 'courage', 'chivalry', 'daring'],
-                       'Gryffindor Tower',
-                       mcgonagall,
-                       headless_nick)
-
-    hufflepuff = House('Hufflepuff',
-                       'Helga Hufflepuff',
-                       ['dedication', 'hardworking', 'fairness',
-                           'patience', 'kindness', 'tolerance', 'loyalty'],
-                       'Hufflepuff basement',
-                       sprout,
-                       fat_friar)
-
-    slytherin = House('Slytherin',
-                      'Salazar Slytherin',
-                      ['cunning', 'ambition', 'determination', 'cleverness',
-                          'resourcefulness', 'fraternity'],
-                      'Slytherin dungeon',
-                      snape,
-                      bloody_baron)
-
-    ravenclaw = House('Ravenclaw',
-                      'Rowena Ravenclaw',
-                      ['intelligence', 'wit', 'wisdom', 'creativity', 'acceptance', 'indiviuality'],
-                      'Ravenclaw Tower',
-                      flitwick,
-                      grey_lady)
-
-    print(gryffindor)
-    print()
-    print("Head of Gryffindor: ")
-    print(gryffindor.head)
-    print()
-    print("Ghost of Gryffindor: ")
-    print(gryffindor.ghost)
-    print('=======================================')
-    print(hufflepuff)
-    print('=======================================')
-    print(slytherin)
-    print('=======================================')
-    print(ravenclaw)
-    print('=======================================')
+    ginny = Pupil.ginny()
+    print(ginny.says("Be careful Neville!"))
 
 
 

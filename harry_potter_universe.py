@@ -432,7 +432,8 @@ class HealingSpell(Spell):
         pass
 
 
-class DeathEater(NamedTuple):
+@dataclass(frozen=True)
+class DeathEater():
     """ Creates a death eater """
     name: str
     birthyear: str
@@ -442,11 +443,9 @@ class DeathEater(NamedTuple):
         voldemort = DeathEater('Voldemort', 1926)
         return voldemort
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, birthyear: {self.birthyear})"
-
     def cast(self, spell):
         print(f"{self.name}: {spell.incantation}!")
+
 
 @dataclass
 class House:
@@ -465,6 +464,10 @@ class House:
 
 if __name__ == "__main__":
     now = 1993
+
+    lucius = DeathEater('Lucius Malfoy', 1953)
+    print('lucius: ', lucius)
+    lucius.name = 'Draco' # This should raise an error!
 
     headless_nick = Ghost.nearly_headless_nick()
     fat_friar = Ghost.fat_friar()

@@ -11,7 +11,7 @@ class HogwartsMember:
     """
     Creates a member of the Hogwarts School of Witchcraft and Wizardry
     """
-    def __init__(self, name:str, birthyear:int, sex:str):
+    def __init__(self, name: str, birthyear: int, sex: str):
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
@@ -21,7 +21,7 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, sex='male')
+        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
@@ -31,7 +31,7 @@ class Pupil(HogwartsMember):
     Create a Hogwarts Pupil
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str, house:str, start_year:int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
         self.house = house
         self.start_year = start_year
@@ -55,15 +55,15 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Griffindor', start_year=1991, pet=('Hedwig', 'owl'))
+        return cls('Harry James Potter', 1980, 'male', 'Griffindor', 1991, ('Hedwig', 'owl'))
 
     @classmethod
     def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, pet=('Pigwidgeon', 'owl'))
+        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, ('Pigwidgeon', 'owl'))
 
     @classmethod
     def hermione(cls):
-        return cls('Hermione', 1979, 'female', 'Griffindor', 1991, pet=('Crookshanks', 'cat'))
+        return cls('Hermione', 1979, 'female', 'Griffindor', 1991, ('Crookshanks', 'cat'))
 
     def __repr__(self):
         return (f"{self.__class__.__name__}"
@@ -73,7 +73,7 @@ class Professor(HogwartsMember):
     """
     Creates a Hogwarts professor
     """
-    def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
         if house is not None:
@@ -81,11 +81,11 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', house='Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
 
     @classmethod
     def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', house='Slytherin')
+        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "

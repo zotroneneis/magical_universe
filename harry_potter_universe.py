@@ -1,13 +1,14 @@
 import datetime
 from typing import NamedTuple
 from abc import ABCMeta, abstractmethod
+from dataclasses import dataclass
 
 class HogwartsMember:
     """
     Creates a member of the Hogwarts School of Witchcraft and Wizardry
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str):
+    def __init__(self, name: str, birthyear: int, sex: str):
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
@@ -62,19 +63,26 @@ class Professor(HogwartsMember):
     Creates a Hogwarts professor
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
         self.house = house
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', house='Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
 
     @classmethod
     def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', house='Slytherin')
+        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
 
+    @classmethod
+    def sprout(cls):
+        return cls('Pomona Sprout', 1931, 'female', 'Herbology', 'Hufflepuff')
+
+    @classmethod
+    def flitwick(cls):
+        return cls('Filius Flitwick', 1958, 'male', 'Charms', 'Ravenclaw')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -87,7 +95,7 @@ class Ghost(HogwartsMember):
     Creates a Hogwarts ghost
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str, year_of_death:int, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int, house: str = None):
         super().__init__(name, birthyear, sex)
 
         self.year_of_death = year_of_death
@@ -106,13 +114,25 @@ class Ghost(HogwartsMember):
     def nearly_headless_nick(cls):
         return cls('Sir Nicholas de Mimsy-Porpington', 1401, 'male', '1492', 'Gryffindor')
 
+    @classmethod
+    def fat_friar(cls):
+        return cls('Fat Friar', 1000, 'male', 1050, 'Hufflepuff')
+
+    @classmethod
+    def bloody_baron(cls):
+        return cls('Bloody Baron', 983, 'male', 1010, 'Slytherin')
+
+    @classmethod
+    def grey_lady(cls):
+        return cls('Helena Ravenclaw', 983, 'male', 996, 'Ravenclaw')
+
 
 class Pupil(HogwartsMember):
     """
     Create a Hogwarts Pupil
     """
 
-    def __init__(self, name:str, birthyear:int, sex:str, house:str, start_year:int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
         self.house = house
         self.start_year = start_year
@@ -139,19 +159,19 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Griffindor', start_year=1991, pet=('Hedwig', 'owl'))
+        return cls('Harry James Potter', 1980, 'male', 'Griffindor', 1991, ('Hedwig', 'owl'))
 
     @classmethod
     def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, pet=('Pigwidgeon', 'owl'))
+        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, ('Pigwidgeon', 'owl'))
 
     @classmethod
     def hermione(cls):
-        return cls('Hermione Jean Granger', 1979, 'female', 'Griffindor', 1991, pet=('Crookshanks', 'cat'))
+        return cls('Hermione Jean Granger', 1979, 'female', 'Griffindor', 1991, ('Crookshanks', 'cat'))
 
     @classmethod
     def malfoy(cls):
-        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, pet=('Unnamed', 'owl') )
+        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, ('Unnamed', 'owl') )
 
     @property
     def current_year(self):
@@ -272,7 +292,7 @@ class Pupil(HogwartsMember):
 
 class Spell(metaclass=ABCMeta):
     """Creates a spell"""
-    def __init__(self, name:str, incantation:str, effect:str, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, min_year: int = None):
         self.name = name
         self.incantation = incantation
         self.effect = effect
@@ -288,14 +308,15 @@ class Spell(metaclass=ABCMeta):
         pass
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, incantation: '{self.incantation}', effect: {self.effect})"
+        return (f"{self.__class__.__name__}({self.name}, "
+               f"incantation: '{self.incantation}', effect: {self.effect})")
 
 class Charm(Spell):
     """
     Creates a charm  -
     a spell that alters the inherent qualities of an object
     """
-    def __init__(self, name:str, incantation:str, effect:str, difficulty: str = None, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = None, min_year: int = None):
         super().__init__(name, incantation, effect, min_year)
         self.difficulty = difficulty
 
@@ -308,11 +329,11 @@ class Charm(Spell):
 
     @classmethod
     def lumos(cls):
-        return cls('Lumos', 'Lumos', 'Illuminates the wand tip', 'simple', min_year=5)
+        return cls('Lumos', 'Lumos', 'Illuminates the wand tip', 'simple', 5)
 
     @classmethod
     def wingardium_leviosa(cls):
-        return cls('Wingardium Leviosa', 'Wingardium Leviosa', 'Makes objects fly', 'simple', min_year=1)
+        return cls('Wingardium Leviosa', 'Wingardium Leviosa', 'Makes objects fly', 'simple', 1)
 
 
 class Transfiguration(Spell):
@@ -320,7 +341,7 @@ class Transfiguration(Spell):
     Creates a transfiguration -
     a spell that alters the form or appearance of an object
     """
-    def __init__(self, name: str, incantation:str, effect:str):
+    def __init__(self, name: str, incantation: str, effect: str):
         super().__init__(name, incantation, effect)
 
     @property
@@ -335,7 +356,7 @@ class Jinx(Spell):
     Creates a jinx -
     a spell whose effects are irritating but amusing
     """
-    def __init__(self, name: str, incantation:str, effect:str):
+    def __init__(self, name: str, incantation: str, effect: str):
         super().__init__(name, incantation, effect)
 
     @property
@@ -352,7 +373,7 @@ class Hex(Spell):
     Creates a hex -
     a spell that affects an object in a negative manner
     """
-    def __init__(self, name: str, incantation:str, effect:str, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, min_year: int = None):
         super().__init__(name, incantation, effect, min_year)
 
     @property
@@ -369,7 +390,7 @@ class Curse(Spell):
     Creates a curse -
     a spell that affects an object in a strongly negative manner
     """
-    def __init__(self, name: str, incantation:str, effect:str, difficulty: str = None):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = None):
         super().__init__(name, incantation, effect)
 
     @property
@@ -385,7 +406,7 @@ class CounterSpell(Spell):
     Creates a counter-spell -
     a spell that inhibits the effect of another spell
     """
-    def __init__(self, name: str, incantation:str, effect:str):
+    def __init__(self, name: str, incantation: str, effect: str):
         super().__init__(name, incantation, effect)
 
     @property
@@ -400,7 +421,7 @@ class HealingSpell(Spell):
     Creates a healing-spell -
     a spell that improves the condition of a living object
     """
-    def __init__(self, name: str, incantation:str, effect:str):
+    def __init__(self, name: str, incantation: str, effect: str):
         super().__init__(name, incantation, effect)
 
     @property
@@ -427,56 +448,81 @@ class DeathEater(NamedTuple):
     def cast(self, spell):
         print(f"{self.name}: {spell.incantation}!")
 
+@dataclass
+class House:
+    """ Creates a Hogwarts House """
+    name: str
+    founder: str
+    traits: list
+    common_room: str
+    head: Professor
+    ghost: Ghost
+    founded_in: int = 991
+
+    def current_age(self):
+        now = datetime.datetime.now().year
+        return (now - self.founded_in) + 1
+
 if __name__ == "__main__":
     now = 1993
 
-    wing_lev = Charm.wingardium_leviosa()
-    rictum = Charm('tickling_charm', 'Rictumsempra', 'Causes victim to buckle with laughter', min_year=5)
-    stickfast = Hex('stickfast_hex', 'Colloshoo', "Makes target's shoes stick to ground")
-    crutio = Curse('Cruciatus Curse', 'Crucio', 'Causes intense, excruciating pain on the victim', 'difficult')
+    headless_nick = Ghost.nearly_headless_nick()
+    fat_friar = Ghost.fat_friar()
+    bloody_baron = Ghost.bloody_baron()
+    grey_lady = Ghost.grey_lady()
 
-    harry = Pupil.harry()
-    malfoy = Pupil.malfoy()
-    hermione = Pupil.hermione()
-    hermione.add_trait('highly intelligent')
-
-    print("Harry knows the following spells: ", harry.known_spells)
-    print("Harry is currently in year: ", harry.current_year)
-    harry.learn_spell(wing_lev)
-    print('=======================================')
-
-    # Test whether Harry can learn a spell he is too young for
-    harry.learn_spell(rictum)
-    # Can hermione study the spell?
-    hermione.learn_spell(rictum)
-    print('=======================================')
-
-    # Test whether Harry can study a hex
-    harry.learn_spell(stickfast)
-    print('=======================================')
-    # Can Malfoy perform a hex?
-    malfoy.learn_spell(stickfast)
-    print('=======================================')
+    mcgonagall = Professor.mcgonagall()
+    sprout = Professor.sprout()
+    snape = Professor.snape()
+    flitwick = Professor.flitwick()
 
 
-    # Test whether Harry can study a curse
-    harry.learn_spell(crutio)
+    gryffindor = House('Gryffindor',
+                       'Godric Gryffindor',
+                       ['bravery', 'nerve', 'courage', 'chivalry', 'daring'],
+                       'Gryffindor Tower',
+                       mcgonagall,
+                       headless_nick)
+
+    hufflepuff = House('Hufflepuff',
+                       'Helga Hufflepuff',
+                       ['dedication', 'hardworking', 'fairness',
+                           'patience', 'kindness', 'tolerance', 'loyalty'],
+                       'Hufflepuff basement',
+                       sprout,
+                       fat_friar)
+
+    slytherin = House('Slytherin',
+                      'Salazar Slytherin',
+                      ['cunning', 'ambition', 'determination', 'cleverness',
+                          'resourcefulness', 'fraternity'],
+                      'Slytherin dungeon',
+                      snape,
+                      bloody_baron)
+
+    ravenclaw = House('Ravenclaw',
+                      'Rowena Ravenclaw',
+                      ['intelligence', 'wit', 'wisdom', 'creativity', 'acceptance', 'indiviuality'],
+                      'Ravenclaw Tower',
+                      flitwick,
+                      grey_lady)
+
+    print(gryffindor)
+    print()
+    print("Head of Gryffindor: ")
+    print(gryffindor.head)
+    print()
+    print("Ghost of Gryffindor: ")
+    print(gryffindor.ghost)
     print('=======================================')
-    # Can Malfoy study a curse?
-    malfoy.learn_spell(crutio)
+    print(hufflepuff)
+    print('=======================================')
+    print(slytherin)
+    print('=======================================')
+    print(ravenclaw)
     print('=======================================')
 
-    # Test whether Harry can cast a Charm
-    harry.cast_spell(wing_lev)
-    print('=======================================')
 
-    # What about a hex?
-    harry.cast_spell(stickfast)
-    print('=======================================')
-
-    # What about Malfoy?
-    malfoy.cast_spell(stickfast)
-    print('=======================================')
 
 
 

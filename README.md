@@ -30,6 +30,7 @@ Start date: 07/23/2018
 | 16 - 18  | Data Classes | [Day 16 to 18](http://alpopkes.com/posts/2018/08/coding-challenge-day-16-to-18/) | [Code day 16 to 18](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_16_to_18.py)|
 | 19  | Immutable Data Classes | [Day 19](http://alpopkes.com/posts/2018/08/coding-challenge-day-19/) | [Code day 19](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_19.py)|
 | 20  | Decorators within a class | [Day 20](http://alpopkes.com/posts/2018/08/coding-challenge-day-20/) | [Code day 20](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_20.py)|
+| 21  | The mysterious ```if __name__ == "__main__"``` | [Day 21](http://alpopkes.com/posts/2018/08/coding-challenge-day-21/) | No new code added |
 
 ## Feedback
 

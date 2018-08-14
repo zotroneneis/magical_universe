@@ -14,6 +14,11 @@ class HogwartsMember:
         self.sex = sex
         self._traits = {}
 
+    def write_letter(self, recipient, content):
+        letter_name = f"dear_{recipient}.txt"
+        with Letter(letter_name) as l:
+            l.write(content)
+
     def whisper(function):
         def wrapper(self, *args):
             original_output = function(self, *args)
@@ -476,11 +481,32 @@ class House:
         now = datetime.datetime.now().year
         return (now - self.founded_in) + 1
 
+
+class Letter:
+    total_number_of_letters = 0
+
+    def __init__(self, letter_name):
+        self.letter_name = letter_name
+        self.__class__.total_number_of_letters += 1
+
+    def __enter__(self):
+        self.letter = open(self.letter_name, 'w')
+        return self.letter
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if self.letter:
+            self.letter.close()
+
+
 if __name__ == "__main__":
     now = 1993
 
-    ginny = Pupil.ginny()
-    print(ginny.says("Be careful Neville!"))
+    harry = Pupil.harry()
+
+    letter_content = "Hi Hagrid! \nCan Ron, Hermione and I stop by for a tea this afternoon? \nHarry"
+    harry.write_letter('Hagrid', letter_content)
+
+    print(f"Total number of letter creates so far: {Letter.total_number_of_letters}")
 
 
 

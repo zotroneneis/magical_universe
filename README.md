@@ -31,6 +31,9 @@ Start date: 07/23/2018
 | 19  | Immutable Data Classes | [Day 19](http://alpopkes.com/posts/2018/08/coding-challenge-day-19/) | [Code day 19](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_19.py)|
 | 20  | Decorators within a class | [Day 20](http://alpopkes.com/posts/2018/08/coding-challenge-day-20/) | [Code day 20](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_20.py)|
 | 21  | The mysterious ```if __name__ == "__main__"``` | [Day 21](http://alpopkes.com/posts/2018/08/coding-challenge-day-21/) | No new code added |
+| 22 - 24  | Context managers and the ```with``` statement| [Day 22 to 24](http://alpopkes.com/posts/2018/08/coding-challenge-day-22-to-24/) | [Code day 22 to 24](https://github.com/zotroneneis/harry_potter_universe/blob/master/code_per_day/day_22_to_24.py) |
+
+
 
 ## Feedback
 

@@ -14,18 +14,8 @@ class HogwartsMember:
         self.sex = sex
         self._traits = {}
 
-    def whisper(function):
-        def wrapper(self, *args):
-            original_output = function(self, *args)
-            first_part, words = original_output.split(' says: ')
-            words = words.replace('!', '.')
-            new_output = f"{first_part} whispers: {words}.."
-            return new_output
-        return wrapper
-
-    @whisper
     def says(self, words):
-        return f"{self._name} says: {words}"
+        return f"{self._name} says {words}"
 
     def add_trait(self, trait, value=True):
         self._traits[trait] = value
@@ -182,10 +172,6 @@ class Pupil(HogwartsMember):
     @classmethod
     def malfoy(cls):
         return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, ('Unnamed', 'owl') )
-
-    @classmethod
-    def ginny(cls):
-        return cls('Ginevra Weasley', 1981, 'female', 'Gryffindor', 1992)
 
     @property
     def current_year(self):
@@ -476,11 +462,13 @@ class House:
         now = datetime.datetime.now().year
         return (now - self.founded_in) + 1
 
+
 if __name__ == "__main__":
     now = 1993
 
-    ginny = Pupil.ginny()
-    print(ginny.says("Be careful Neville!"))
+    lucius = DeathEater('Lucius Malfoy', 1953)
+    print('lucius: ', lucius)
+    lucius.name = 'Draco' # This should raise an error!
 
 
 

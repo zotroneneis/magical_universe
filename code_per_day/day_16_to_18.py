@@ -69,7 +69,7 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'gryffindor')
 
     @classmethod
     def snape(cls):

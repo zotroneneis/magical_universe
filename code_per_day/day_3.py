@@ -53,15 +53,15 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Griffindor', 1991, ('Hedwig', 'owl'))
+        return cls('Harry James Potter', 1980, 'male', 'gryffindor', 1991, ('Hedwig', 'owl'))
 
     @classmethod
     def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, ('Pigwidgeon', 'owl'))
+        return cls('Ronald Bilius Weasley', 1980, 'male', 'gryffindor', 1991, ('Pigwidgeon', 'owl'))
 
     @classmethod
     def hermione(cls):
-        return cls('Hermione', 1979, 'female', 'Griffindor', 1991, ('Crookshanks', 'cat'))
+        return cls('Hermione', 1979, 'female', 'gryffindor', 1991, ('Crookshanks', 'cat'))
 
 
 class Professor(HogwartsMember):
@@ -76,7 +76,7 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'gryffindor')
 
     @classmethod
     def snape(cls):
@@ -97,7 +97,7 @@ class Ghost(HogwartsMember):
 
 if __name__ == "__main__":
     hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
-    harry = Pupil(name='Harry James Potter', birthyear=1980, sex='male', house='Griffindor', start_year=1991)
+    harry = Pupil(name='Harry James Potter', birthyear=1980, sex='male', house='gryffindor', start_year=1991)
     headmaster = harry.school_headmaster()
 
     mcgonagall = Professor.mcgonagall()

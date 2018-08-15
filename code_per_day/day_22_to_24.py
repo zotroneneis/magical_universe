@@ -50,7 +50,7 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Griffindor', 1991, ('Hedwig', 'owl'))
+        return cls('Harry James Potter', 1980, 'male', 'gryffindor', 1991, ('Hedwig', 'owl'))
 
 
 

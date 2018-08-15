@@ -85,7 +85,7 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Gryffindor')
 
     @classmethod
     def snape(cls):
@@ -174,15 +174,15 @@ class Pupil(HogwartsMember):
 
     @classmethod
     def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Griffindor', 1991, ('Hedwig', 'owl'))
+        return cls('Harry James Potter', 1980, 'male', 'Gryffindor', 1991, ('Hedwig', 'owl'))
 
     @classmethod
     def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Griffindor', 1991, ('Pigwidgeon', 'owl'))
+        return cls('Ronald Bilius Weasley', 1980, 'male', 'Gryffindor', 1991, ('Pigwidgeon', 'owl'))
 
     @classmethod
     def hermione(cls):
-        return cls('Hermione Jean Granger', 1979, 'female', 'Griffindor', 1991, ('Crookshanks', 'cat'))
+        return cls('Hermione Jean Granger', 1979, 'female', 'Gryffindor', 1991, ('Crookshanks', 'cat'))
 
     @classmethod
     def malfoy(cls):

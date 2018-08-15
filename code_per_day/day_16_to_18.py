@@ -69,7 +69,7 @@ class Professor(HogwartsMember):
 
     @classmethod
     def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Griffindor')
+        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Gryffindor')
 
     @classmethod
     def snape(cls):
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     print('Age of professor Flitwick: ', flitwick.age)
 
 
-    gryffindor = House('Gryffindor',
+    Gryffindor = House('Gryffindor',
                        'Godric Gryffindor',
                        ['bravery', 'nerve', 'courage', 'chivalry', 'daring'],
                        'Gryffindor Tower',

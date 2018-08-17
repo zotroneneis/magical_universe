@@ -28,7 +28,6 @@ class HogwartsMember:
             return new_output
         return wrapper
 
-    @whisper
     def says(self, words):
         return f"{self._name} says: {words}"
 
@@ -62,7 +61,7 @@ class HogwartsMember:
 
     @property
     def age(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return now - self.birthyear
 
     @staticmethod

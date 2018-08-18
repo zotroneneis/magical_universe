@@ -4,7 +4,7 @@ As outlined in [my blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1)
 
 As one of my new habits I chose: "Code for 15 minutes every day". As part of the habit I've started creating a series of **blog posts** on important and awesome **Python features**, including object oriented programming, properties, function annotations, duck typing, etc.
 
-Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating a whole Harry Potter universe around the topics. So if you like Harry Potter and want to improve your Python knowledge and skills (and maybe also your Harry Potter knowledge), get right into it!
+Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating my own magical universe around the topics. So if you like magic and want to improve your Python knowledge and skills, get right into it!
 
 A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/year-archive/).
 

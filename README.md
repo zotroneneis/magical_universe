@@ -1,4 +1,4 @@
-# Awesome Python Features Explained Using Harry Potter
+# Awesome Python Features Explained Using the World of Magic
 
 As outlined in [my blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1), I decided to take on a new habit using a technique I found on the ['get disciplined' subreddit](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/).
 

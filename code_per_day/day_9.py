@@ -2,15 +2,15 @@
 File: day_1.py
 Author: Anna-Lena Popkes
 Email: popkes@gmx.net
-Github: https://github.com/zotroneneis
+Github: https://github.com/zotflynneneis
 Description: all code for day 1 of my new coding habit
 Link to blog post with explanations: http://www.alpopkes.com/posts/2018/07/coding-challenge-day-9/
 """
 import datetime
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name: str, birthyear: int, sex: str):
@@ -55,7 +55,7 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
+        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
@@ -64,16 +64,16 @@ class HogwartsMember:
 if __name__ == "__main__":
     now = 1995
 
-    hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
-    hagrid.add_trait("kind")
-    hagrid.add_trait("monster-loving")
-    hagrid.add_trait("impatient", value=False)
+    bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
+    bromley.add_trait("kind")
+    bromley.add_trait("tidy-minded")
+    bromley.add_trait("impatient", value=False)
 
-    hagrid.print_traits()
+    bromley.print_traits()
     print()
 
-    hagrid.exhibits_trait("kind")
-    hagrid.exhibits_trait("funny")
+    bromley.exhibits_trait("kind")
+    bromley.exhibits_trait("funny")
 
 
 

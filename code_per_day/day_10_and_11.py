@@ -1,9 +1,9 @@
 import datetime
 from typing import NamedTuple
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name: str, birthyear: int, sex: str):
@@ -48,15 +48,15 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
+        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 
-class Professor(HogwartsMember):
+class Professor(CastleKilmereMember):
     """
-    Creates a Hogwarts professor
+    Creates a Castle Kilmere professor
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
@@ -66,12 +66,12 @@ class Professor(HogwartsMember):
             self.house = house
 
     @classmethod
-    def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Gryffindor')
+    def mirren(cls):
+        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
 
     @classmethod
-    def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
+    def blade(cls):
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
 
 
     def __repr__(self):
@@ -80,9 +80,9 @@ class Professor(HogwartsMember):
 
 
 
-class Ghost(HogwartsMember):
+class Ghost(CastleKilmereMember):
     """
-    Creates a Hogwarts ghost
+    Creates a Castle Kilmere ghost
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int, house: str = None):
@@ -103,13 +103,13 @@ class Ghost(HogwartsMember):
                 f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
 
     @classmethod
-    def nearly_headless_nick(cls):
-        return cls('Sir Nicholas de Mimsy-Porpington', 1401, 'male', '1492', 'Gryffindor')
+    def mocking_knight(cls):
+        return cls('The Mocking Knight', 1401, 'male', '1492', 'House of Courage')
 
 
-class Pupil(HogwartsMember):
+class Pupil(CastleKilmereMember):
     """
-    Create a Hogwarts Pupil
+    Create a Castle Kilmere Pupil
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
@@ -120,37 +120,36 @@ class Pupil(HogwartsMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-        self._owls = {
-                'Study of Ancient Runes': False,
-                'Arithmancy': False,
-                'Astronomy': False,
-                'Care of Magical Creatures': False,
-                'Charms': False,
-                'Defence Against the Dark Arts': False,
-                'Divination': False,
-                'Herbology': False,
-                'History of Magic': False,
-                'Muggle Studies': False,
-                'Potions': False,
-                'Transfiguration': False}
+        self._elms = {
+                  'Broomstick Flying': False,
+                  'Art': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'Divination': False,
+                  'Herbology': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
         self._friends = []
 
     @classmethod
-    def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Gryffindor', 1991, ('Hedwig', 'owl'))
+    def cleon(cls):
+        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
 
     @classmethod
-    def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Gryffindor', 1991, ('Pigwidgeon', 'owl'))
+    def flynn(cls):
+        return cls('Flynn Gibbs', 2008, 'male', 'House of Courage', 2018, ('Twiggles', 'owl'))
 
     @classmethod
-    def hermione(cls):
-        return cls('Hermione Jean Granger', 1979, 'female', 'Gryffindor', 1991, ('Crookshanks', 'cat'))
+    def cassidy(cls):
+        return cls('Cassidy Ambergem', 2007, 'female', 'House of Courage', 2018, ('Ramses', 'cat'))
 
     @classmethod
-    def malfoy(cls):
-        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, ('Unnamed', 'owl') )
+    def adrien(cls):
+        return cls('Adrien Fulford', 2008, 'male', 'House of Ambition', 2018, ('Unnamed', 'owl') )
 
     @property
     def current_year(self):
@@ -158,15 +157,15 @@ class Pupil(HogwartsMember):
         return (now - self.start_year) + 1
 
     @property
-    def owls(self):
-        return self._owls
+    def elms(self):
+        return self._elms
 
     @property
     def friends(self):
         return f"{self._name}'s current friends are: {[person.name for person in self._friends]}"
 
-    @owls.setter
-    def owls(self, subject_and_grade):
+    @elms.setter
+    def elms(self, subject_and_grade):
 
         try:
             subject, grade = subject_and_grade
@@ -176,15 +175,15 @@ class Pupil(HogwartsMember):
         passed = self.passed(grade)
 
         if passed:
-            self._owls[subject] = True
+            self._elms[subject] = True
         else:
-            print('The exam was not passed so no OWL was awarded!')
+            print('The exam was not passed so no ELM was awarded!')
 
-    @owls.deleter
-    def owls(self):
-        print("Caution, you are deleting this students' OWL's! "
+    @elms.deleter
+    def elms(self):
+        print("Caution, you are deleting this students' ELM's! "
               "You should only do that if she/he dropped out of school without passing any exam!")
-        del self._owls
+        del self._elms
 
 
     @staticmethod
@@ -202,7 +201,7 @@ class Pupil(HogwartsMember):
                 'P': False,
                 'Poor': False,
                 'D': False,
-                'Dreadful': False,
+                'Horrible': False,
                 'T': False,
                 'Troll': False,
                 }
@@ -211,10 +210,10 @@ class Pupil(HogwartsMember):
 
     def befriend(self, person):
         """Adds another person to your list of friends"""
-        if (person.__class__.__name__ != 'HogwartsMember'
+        if (person.__class__.__name__ != 'CastleKilmereMember'
             and self.house != 'Slyterhin'
-            and person.house == 'Slytherin'):
-            print("Are you sure you want to be friends with someone from Slytherin?")
+            and person.house == 'House of Ambition'):
+            print("Are you sure you want to be friends with someone from House of Ambition?")
 
         self._friends.append(person)
         print(f"{person.name} is now your friend!")
@@ -234,26 +233,22 @@ class Charm:
         print(f"{self.incantation}!")
 
     @classmethod
-    def lumos(cls):
-        return cls('Lumos', 'simple', 'Illuminates the wand tip')
-
-    @classmethod
-    def wingardium_leviosa(cls):
-        return cls('Wingardium Leviosa', 'simple', 'Makes objects fly')
+    def stuporus_ratiato(cls):
+        return cls('Stuporus Ratiato', 'simple', 'Makes objects fly')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.incantation}, {self.difficulty}, {self.effect})"
 
 
-class DeathEater(NamedTuple):
+class DarkArmyMember(NamedTuple):
     """ Creates a death eater """
     name: str
     birthyear: str
 
     @property
     def leader(self):
-        voldemort = DeathEater('Voldemort', 1926)
-        return voldemort
+        lord_odon = DarkArmyMember('Lord Odon', 1971)
+        return lord_odon
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, birthyear: {self.birthyear})"
@@ -261,12 +256,9 @@ class DeathEater(NamedTuple):
 if __name__ == "__main__":
     now = 1995
 
-    lucius = DeathEater('Lucius Malfoy', 1953)
-    print('Lucius: ', lucius)
-    print('Leader: ', lucius.leader)
-
-    bellatrix = DeathEater('Bellatrix Lestrange', 1951)
-    print('Bellatrix: ', bellatrix)
+    keres = DarkArmyMember('Keres Fulford', 1953)
+    print('Lucius: ', keres)
+    print('Leader: ', keres.leader)
 
 
 

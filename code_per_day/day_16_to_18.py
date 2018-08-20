@@ -2,9 +2,9 @@ import datetime
 from typing import NamedTuple
 from dataclasses import dataclass
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name:str, birthyear:int, sex:str):
@@ -51,15 +51,15 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
+        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 
-class Professor(HogwartsMember):
+class Professor(CastleKilmereMember):
     """
-    Creates a Hogwarts professor
+    Creates a Castle Kilmere professor
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, subject:str, house: str = None):
@@ -68,20 +68,20 @@ class Professor(HogwartsMember):
         self.house = house
 
     @classmethod
-    def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Gryffindor')
+    def mirren(cls):
+        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
 
     @classmethod
-    def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
+    def blade(cls):
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
 
     @classmethod
-    def sprout(cls):
-        return cls('Pomona Sprout', 1931, 'female', 'Herbology', 'Hufflepuff')
+    def briddle(cls):
+        return cls('Birdie Briddle', 1931, 'female', 'Herbology', 'House of Loyalty')
 
     @classmethod
-    def flitwick(cls):
-        return cls('Filius Flitwick', 1900, 'male', 'Charms', 'Ravenclaw')
+    def radford(cls):
+        return cls('Rupert Radford', 1900, 'male', 'Charms', 'House of Wisdom')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -89,9 +89,9 @@ class Professor(HogwartsMember):
 
 
 
-class Ghost(HogwartsMember):
+class Ghost(CastleKilmereMember):
     """
-    Creates a Hogwarts ghost
+    Creates a Castle Kilmere ghost
     """
 
     def __init__(self, name:str, birthyear:int, sex:str, year_of_death:int, house: str = None):
@@ -110,29 +110,27 @@ class Ghost(HogwartsMember):
                 f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
 
     @classmethod
-    def nearly_headless_nick(cls):
-        return cls('Sir Nicholas de Mimsy-Porpington', 1401, 'male', 1492, 'Gryffindor')
+    def mocking_knight(cls):
+        return cls('The Mocking Knight', 1401, 'male', 1492, 'House of Courage')
 
     @classmethod
-    def fat_friar(cls):
-        return cls('Fat Friar', 1000, 'male', 1050, 'Hufflepuff')
+    def gray_groom(cls):
+        return cls('The Gray Groom', 1000, 'male', 1050, 'House of Loyalty')
 
     @classmethod
-    def bloody_baron(cls):
-        return cls('Bloody Baron', 983, 'male', 1010, 'Slytherin')
+    def scary_scoundrel(cls):
+        return cls('Scary Scoundrel', 983, 'male', 1010, 'House of Ambition')
 
     @classmethod
-    def grey_lady(cls):
-        return cls('Helena Ravenclaw', 983, 'male', 996, 'Ravenclaw')
+    def old_lady(cls):
+        return cls('The Old Lady', 983, 'male', 996, 'House of Wisdom')
 
 
 @dataclass
 class House:
-    """ Creates a Hogwarts House """
+    """ Creates a Castle Kilmere House """
     name: str
-    founder: str
     traits: list
-    common_room: str
     head: Professor
     ghost: Ghost
     founded_in: int = 991
@@ -143,46 +141,40 @@ class House:
 
 
 if __name__ == "__main__":
-    headless_nick = Ghost.nearly_headless_nick()
-    fat_friar = Ghost.fat_friar()
-    bloody_baron = Ghost.bloody_baron()
-    grey_lady = Ghost.grey_lady()
+    mocking_knight = Ghost.mocking_knight()
+    gray_groom = Ghost.gray_groom()
+    scary_scoundrel = Ghost.scary_scoundrel()
+    old_lady = Ghost.old_lady()
 
-    mcgonagall = Professor.mcgonagall()
-    sprout = Professor.sprout()
-    snape = Professor.snape()
-    flitwick = Professor.flitwick()
-    print('Age of professor Flitwick: ', flitwick.age)
+    mirren = Professor.mirren()
+    briddle = Professor.briddle()
+    blade = Professor.blade()
+    radford = Professor.radford()
+    print('Age of Professor Radford: ', radford.age)
 
 
-    gryffindor = House('Gryffindor',
-                       'Godric Gryffindor',
-                       ['bravery', 'nerve', 'courage', 'chivalry', 'daring'],
-                       'Gryffindor Tower',
-                       mcgonagall,
-                       headless_nick)
+    house_of_courage = House('House of Courage',
+                       ['bravery', 'nerve', 'courage'],
+                       mirren,
+                       mocking_knight)
+    print('house_of_courage: ', house_of_courage)
 
-    hufflepuff = House('Hufflepuff',
-                       'Helga Hufflepuff',
-                       ['dedication', 'hardworking', 'fairness',
-                           'patience', 'kindness', 'tolerance', 'loyalty'],
-                       'Hufflepuff basement',
-                       sprout,
-                       fat_friar)
+    house_of_loyalty = House('House of Loyalty',
+                       ['loyalty', 'fairness', 'patience', 'kindness'],
+                       briddle,
+                       gray_groom)
+    print('house_of_loyalty: ', house_of_loyalty)
 
-    slytherin = House('Slytherin',
-                      'Salazar Slytherin',
-                      ['cunning', 'ambition', 'determination', 'cleverness',
-                          'resourcefulness', 'fraternity'],
-                      'Slytherin dungeon',
-                      snape,
-                      bloody_baron)
+    house_of_ambition = House('House of Ambition',
+                      ['cunning', 'ambition', 'determination'],
+                      blade,
+                      scary_scoundrel)
+    print('house_of_ambition: ', house_of_ambition)
 
-    ravenclaw = House('Ravenclaw',
-                      'Rowena Ravenclaw',
-                      ['intelligence', 'wit', 'wisdom', 'creativity', 'acceptance', 'indiviuality'],
-                      'Ravenclaw Tower',
-                      flitwick,
-                      grey_lady)
+    house_of_wisdom = House('House of Wisdom',
+                      ['intelligence', 'wit', 'wisdom'],
+                      radford,
+                      old_lady)
+    print('house_of_wisdom: ', house_of_wisdom)
 
 

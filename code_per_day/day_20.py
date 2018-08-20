@@ -2,9 +2,9 @@ import datetime
 from typing import NamedTuple
 from abc import ABCMeta, abstractmethod
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name: str, birthyear: int, sex: str):
@@ -30,9 +30,9 @@ class HogwartsMember:
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 
-class Pupil(HogwartsMember):
+class Pupil(CastleKilmereMember):
     """
-    Create a Hogwarts Pupil
+    Create a Castle Kilmere Pupil
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
@@ -45,13 +45,13 @@ class Pupil(HogwartsMember):
             self.pet_name, self.pet_type = pet
 
     @classmethod
-    def ginny(cls):
-        return cls('Ginevra Weasley', 1981, 'female', 'Gryffindor', 1992)
+    def aurora(cls):
+        return cls('Aurora Gibbs', 1981, 'female', 'House of Courage', 1992)
 
 
 if __name__ == "__main__":
     now = 1993
 
-    ginny = Pupil.ginny()
-    print(ginny.says("Be careful Neville!"))
+    aurora = Pupil.aurora()
+    print(aurora.says("Be careful Quintus!"))
 

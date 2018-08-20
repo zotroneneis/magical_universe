@@ -2,14 +2,14 @@
 File: day_1.py
 Author: Anna-Lena Popkes
 Email: popkes@gmx.net
-Github: https://github.com/zotroneneis
+Github: https://github.com/zotflynneneis
 Description: all code for day 1 of my new coding habit
 Link to blog post with explanations: http://www.alpopkes.com/posts/2018/07/coding-challenge-day-1/
 """
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name, birthyear, sex):
@@ -21,9 +21,9 @@ class HogwartsMember:
         return f"{self._name} says {words}"
 
 
-class Pupil(HogwartsMember):
+class Pupil(CastleKilmereMember):
     """
-    Create a Hogwarts Pupil
+    Create a Castle Kilmere Pupil
     """
 
     def __init__(self, name, birthyear, sex, house, start_year, pet=None):
@@ -34,23 +34,22 @@ class Pupil(HogwartsMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-        self._owls = {
-                'Study of Ancient Runes': False,
-                'Arithmancy': False,
-                'Astronomy': False,
-                'Care of Magical Creatures': False,
-                'Charms': False,
-                'Defence Against the Dark Arts': False,
-                'Divination': False,
-                'Herbology': False,
-                'History of Magic': False,
-                'Muggle Studies': False,
-                'Potions': False,
-                'Transfiguration': False}
+        self._elms = {
+                  'Broomstick Flying': False,
+                  'Art': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'Divination': False,
+                  'Herbology': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
-class Professor(HogwartsMember):
+class Professor(CastleKilmereMember):
   """
-  Creates a Hogwarts professor
+  Creates a Castle Kilmere professor
   """
 
   def __init__(self, name, birthyear, sex, subject, house=None):
@@ -60,9 +59,9 @@ class Professor(HogwartsMember):
           self.house = house
 
 
-class Ghost(HogwartsMember):
+class Ghost(CastleKilmereMember):
     """
-    Creates a Hogwarts ghost
+    Creates a Castle Kilmere ghost
     """
 
     def __init__(self, name, birthyear, sex, year_of_death, house=None):
@@ -75,12 +74,12 @@ class Ghost(HogwartsMember):
 
 
 if __name__ == "__main__":
-  hagrid = HogwartsMember('Rubeus Hagrid', '1928', 'male')
-  print(hagrid.says("Hello!"))
+  bromley = CastleKilmereMember('Bromley Huckabee', '1959', 'male')
+  print(bromley.says("Hello!"))
 
-  harry = Pupil(name='Harry James Potter',
-                birthyear=1980,
+  cleon = Pupil(name='Cleon Bery',
+                birthyear=2008,
                 sex='male',
-                house='Gryffindor',
-                start_year=1991,
-                pet=('Hedwig', 'owl'))
+                house='House of Courage',
+                start_year=2018,
+                pet=('Cotton', 'owl'))

@@ -2,16 +2,16 @@
 File: day_6.py
 Author: Anna-Lena Popkes
 Email: popkes@gmx.net
-Github: https://github.com/zotroneneis
+Github: https://github.com/zotflynneneis
 Description: all code for day 6 of my new coding habit
 Link to blog post with explanations: http://www.alpopkes.com/posts/2018/07/coding-challenge-day-6/
 """
 
 import datetime
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name: str, birthyear: int, sex: str):
@@ -29,15 +29,15 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
+        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 
-class Professor(HogwartsMember):
+class Professor(CastleKilmereMember):
     """
-    Creates a Hogwarts professor
+    Creates a Castle Kilmere professor
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
@@ -47,12 +47,12 @@ class Professor(HogwartsMember):
             self.house = house
 
     @classmethod
-    def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Gryffindor')
+    def mirren(cls):
+        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
 
     @classmethod
-    def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
+    def blade(cls):
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
 
 
     def __repr__(self):
@@ -61,9 +61,9 @@ class Professor(HogwartsMember):
 
 
 
-class Ghost(HogwartsMember):
+class Ghost(CastleKilmereMember):
     """
-    Creates a Hogwarts ghost
+    Creates a Castle Kilmere ghost
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int, house: str = None):
@@ -84,9 +84,9 @@ class Ghost(HogwartsMember):
                 f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
 
 
-class Pupil(HogwartsMember):
+class Pupil(CastleKilmereMember):
     """
-    Create a Hogwarts Pupil
+    Create a Castle Kilmere Pupil
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
@@ -97,31 +97,30 @@ class Pupil(HogwartsMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-        self._owls = {
-                'Study of Ancient Runes': False,
-                'Arithmancy': False,
-                'Astronomy': False,
-                'Care of Magical Creatures': False,
-                'Charms': False,
-                'Defence Against the Dark Arts': False,
-                'Divination': False,
-                'Herbology': False,
-                'History of Magic': False,
-                'Muggle Studies': False,
-                'Potions': False,
-                'Transfiguration': False}
+        self._elms = {
+                  'Broomstick Flying': False,
+                  'Art': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'Divination': False,
+                  'Herbology': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
     @classmethod
-    def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Gryffindor', 1991, ('Hedwig', 'owl'))
+    def cleon(cls):
+        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
 
     @classmethod
-    def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Gryffindor', 1991, ('Pigwidgeon', 'owl'))
+    def flynn(cls):
+        return cls('Flynn Gibbs', 2008, 'male', 'House of Courage', 2018, ('Twiggles', 'owl'))
 
     @classmethod
-    def hermione(cls):
-        return cls('Hermione Jean Granger', 1979, 'female', 'Gryffindor', 1991, ('Crookshanks', 'cat'))
+    def cassidy(cls):
+        return cls('Cassidy Ambergem', 2007, 'female', 'House of Courage', 2018, ('Ramses', 'cat'))
 
     @property
     def current_year(self):
@@ -129,11 +128,11 @@ class Pupil(HogwartsMember):
         return (now - self.start_year) + 1
 
     @property
-    def owls(self):
-        return self._owls
+    def elms(self):
+        return self._elms
 
-    @owls.setter
-    def owls(self, subject_and_grade):
+    @elms.setter
+    def elms(self, subject_and_grade):
 
         try:
             subject, grade = subject_and_grade
@@ -143,15 +142,15 @@ class Pupil(HogwartsMember):
         passed = self.passed(grade)
 
         if passed:
-            self._owls[subject] = True
+            self._elms[subject] = True
         else:
-            print('The exam was not passed so no OWL was awarded!')
+            print('The exam was not passed so no ELM was awarded!')
 
-    @owls.deleter
-    def owls(self):
-        print("Caution, you are deleting this students' OWL's! "
+    @elms.deleter
+    def elms(self):
+        print("Caution, you are deleting this students' ELM's! "
               "You should only do that if she/he dropped out of school without passing any exam!")
-        del self._owls
+        del self._elms
 
 
     @staticmethod
@@ -168,10 +167,8 @@ class Pupil(HogwartsMember):
                 'Acceptable': True,
                 'P': False,
                 'Poor': False,
-                'D': False,
-                'Dreadful': False,
-                'T': False,
-                'Troll': False,
+                'H': False,
+                'Horrible': False,
                 }
 
         return grades.get(grade, False)
@@ -183,14 +180,14 @@ class Pupil(HogwartsMember):
 
 if __name__ == "__main__":
     now = 1993
-    hagrid = HogwartsMember(name='Rubeus Hagrid', birthyear=1928, sex='male')
+    bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
 
-    harry = Pupil(name='Harry James Potter', birthyear=1980, sex='male', house='Gryffindor', start_year=1991)
-    print('Harry: ', harry)
-    print('Current age of harry: ', harry.age)
-    print("Harry's owls: ", harry.owls)
+    cleon = Pupil(name='Cleon Bery', birthyear=2008, sex='male', house='House of Courage', start_year=2018)
+    print('Cleon: ', cleon)
+    print('Current age of cleon: ', cleon.age)
+    print("Cleon's elms: ", cleon.elms)
 
-    harry.owls = ('Potions', 'P')
+    cleon.elms = ('Potions', 'P')
 
 
 

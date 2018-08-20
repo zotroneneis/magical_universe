@@ -1,6 +1,6 @@
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name: str, birthyear: int, sex: str):
@@ -18,9 +18,9 @@ class HogwartsMember:
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
-class Pupil(HogwartsMember):
+class Pupil(CastleKilmereMember):
     """
-    Create a Hogwarts Pupil
+    Create a Castle Kilmere Pupil
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
@@ -32,25 +32,24 @@ class Pupil(HogwartsMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-        self._owls = {
-                'Study of Ancient Runes': False,
-                'Arithmancy': False,
-                'Astronomy': False,
-                'Care of Magical Creatures': False,
-                'Charms': False,
-                'Defence Against the Dark Arts': False,
-                'Divination': False,
-                'Herbology': False,
-                'History of Magic': False,
-                'Muggle Studies': False,
-                'Potions': False,
-                'Transfiguration': False}
+        self._elms = {
+                  'Broomstick Flying': False,
+                  'Art': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'Divination': False,
+                  'Herbology': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
         self._friends = []
 
     @classmethod
-    def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Gryffindor', 1991, ('Hedwig', 'owl'))
+    def cleon(cls):
+        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
 
 
 
@@ -71,10 +70,10 @@ class Letter:
 
 
 if __name__ == "__main__":
-    harry = Pupil.harry()
+    cleon = Pupil.cleon()
 
-    letter_content = "Hi Hagrid! \nCan Ron, Hermione and I stop by for a tea this afternoon? \nHarry"
-    harry.write_letter('Hagrid', letter_content)
+    letter_content = "Hi Hagrid! \nCan Ron, Cassidy and I stop by for a tea this afternoon? \nCleon"
+    cleon.write_letter('Hagrid', letter_content)
 
     print(f"Total number of letter creates so far: {Letter.total_number_of_letters}")
 

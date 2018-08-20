@@ -3,9 +3,9 @@ from typing import NamedTuple
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
 
-class HogwartsMember:
+class CastleKilmereMember:
     """
-    Creates a member of the Hogwarts School of Witchcraft and Wizardry
+    Creates a member of the Castle Kilmere School of Magic
     """
 
     def __init__(self, name: str, birthyear: int, sex: str):
@@ -66,15 +66,15 @@ class HogwartsMember:
 
     @staticmethod
     def school_headmaster():
-        return HogwartsMember('Albus Percival Wulfric Brian Dumbledore', 1881, 'male')
+        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 
-class Professor(HogwartsMember):
+class Professor(CastleKilmereMember):
     """
-    Creates a Hogwarts professor
+    Creates a Castle Kilmere professor
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
@@ -83,20 +83,20 @@ class Professor(HogwartsMember):
         self.house = house
 
     @classmethod
-    def mcgonagall(cls):
-        return cls('Minerva McGonagall', 1935, 'female', 'Transfiguration', 'Gryffindor')
+    def mirren(cls):
+        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
 
     @classmethod
-    def snape(cls):
-        return cls('Severus Snape', 1960, 'male', 'Potions', 'Slytherin')
+    def blade(cls):
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
 
     @classmethod
-    def sprout(cls):
-        return cls('Pomona Sprout', 1931, 'female', 'Herbology', 'Hufflepuff')
+    def briddle(cls):
+        return cls('Birdie Briddle', 1931, 'female', 'Herbology', 'House of Loyalty')
 
     @classmethod
-    def flitwick(cls):
-        return cls('Filius Flitwick', 1958, 'male', 'Charms', 'Ravenclaw')
+    def radford(cls):
+        return cls('Rupert Radford', 1958, 'male', 'Charms', 'House of Wisdom')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -104,9 +104,9 @@ class Professor(HogwartsMember):
 
 
 
-class Ghost(HogwartsMember):
+class Ghost(CastleKilmereMember):
     """
-    Creates a Hogwarts ghost
+    Creates a Castle Kilmere ghost
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int, house: str = None):
@@ -125,25 +125,25 @@ class Ghost(HogwartsMember):
                 f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
 
     @classmethod
-    def nearly_headless_nick(cls):
-        return cls('Sir Nicholas de Mimsy-Porpington', 1401, 'male', '1492', 'Gryffindor')
+    def mocking_knight(cls):
+        return cls('The Mocking Knight', 1401, 'male', '1492', 'House of Courage')
 
     @classmethod
-    def fat_friar(cls):
-        return cls('Fat Friar', 1000, 'male', 1050, 'Hufflepuff')
+    def gray_groom(cls):
+        return cls('The Gray Groom', 1000, 'male', 1050, 'House of Loyalty')
 
     @classmethod
-    def bloody_baron(cls):
-        return cls('Bloody Baron', 983, 'male', 1010, 'Slytherin')
+    def scary_scoundrel(cls):
+        return cls('Scary Scoundrel', 983, 'male', 1010, 'House of Ambition')
 
     @classmethod
-    def grey_lady(cls):
-        return cls('Helena Ravenclaw', 983, 'male', 996, 'Ravenclaw')
+    def old_lady(cls):
+        return cls('The Old Lady', 983, 'male', 996, 'House of Wisdom')
 
 
-class Pupil(HogwartsMember):
+class Pupil(CastleKilmereMember):
     """
-    Create a Hogwarts Pupil
+    Create a Castle Kilmere Pupil
     """
 
     def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
@@ -155,41 +155,40 @@ class Pupil(HogwartsMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-        self._owls = {
-                'Study of Ancient Runes': False,
-                'Arithmancy': False,
-                'Astronomy': False,
-                'Care of Magical Creatures': False,
-                'Charms': False,
-                'Defence Against the Dark Arts': False,
-                'Divination': False,
-                'Herbology': False,
-                'History of Magic': False,
-                'Muggle Studies': False,
-                'Potions': False,
-                'Transfiguration': False}
+        self._elms = {
+                  'Broomstick Flying': False,
+                  'Art': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'Divination': False,
+                  'Herbology': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
         self._friends = []
 
     @classmethod
-    def harry(cls):
-        return cls('Harry James Potter', 1980, 'male', 'Gryffindor', 1991, ('Hedwig', 'owl'))
+    def cleon(cls):
+        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
 
     @classmethod
-    def ron(cls):
-        return cls('Ronald Bilius Weasley', 1980, 'male', 'Gryffindor', 1991, ('Pigwidgeon', 'owl'))
+    def flynn(cls):
+        return cls('Flynn Gibbs', 2008, 'male', 'House of Courage', 2018, ('Twiggles', 'owl'))
 
     @classmethod
-    def hermione(cls):
-        return cls('Hermione Jean Granger', 1979, 'female', 'Gryffindor', 1991, ('Crookshanks', 'cat'))
+    def cassidy(cls):
+        return cls('Cassidy Ambergem', 2007, 'female', 'House of Courage', 2018, ('Ramses', 'cat'))
 
     @classmethod
-    def malfoy(cls):
-        return cls('Draco Lucius Malfoy', 1980, 'male', 'Slytherin', 1991, ('Unnamed', 'owl') )
+    def adrien(cls):
+        return cls('Adrien Fulford', 2008, 'male', 'House of Ambition', 2018, ('Unnamed', 'owl') )
 
     @classmethod
-    def ginny(cls):
-        return cls('Ginevra Weasley', 1981, 'female', 'Gryffindor', 1992)
+    def aurora(cls):
+        return cls('Aurora Gibbs', 1981, 'female', 'House of Courage', 1992)
 
     @property
     def current_year(self):
@@ -197,15 +196,15 @@ class Pupil(HogwartsMember):
         return (now - self.start_year) + 1
 
     @property
-    def owls(self):
-        return self._owls
+    def elms(self):
+        return self._elms
 
     @property
     def friends(self):
         return f"{self._name}'s current friends are: {[person.name for person in self._friends]}"
 
-    @owls.setter
-    def owls(self, subject_and_grade):
+    @elms.setter
+    def elms(self, subject_and_grade):
 
         try:
             subject, grade = subject_and_grade
@@ -215,15 +214,15 @@ class Pupil(HogwartsMember):
         passed = self.passed(grade)
 
         if passed:
-            self._owls[subject] = True
+            self._elms[subject] = True
         else:
-            print('The exam was not passed so no OWL was awarded!')
+            print('The exam was not passed so no ELM was awarded!')
 
-    @owls.deleter
-    def owls(self):
-        print("Caution, you are deleting this students' OWL's! "
+    @elms.deleter
+    def elms(self):
+        print("Caution, you are deleting this students' ELM's! "
               "You should only do that if she/he dropped out of school without passing any exam!")
-        del self._owls
+        del self._elms
 
 
     @staticmethod
@@ -241,7 +240,7 @@ class Pupil(HogwartsMember):
                 'P': False,
                 'Poor': False,
                 'D': False,
-                'Dreadful': False,
+                'Horrible': False,
                 'T': False,
                 'Troll': False,
                 }
@@ -250,10 +249,10 @@ class Pupil(HogwartsMember):
 
     def befriend(self, person):
         """Adds another person to your list of friends"""
-        if (person.__class__.__name__ != 'HogwartsMember'
+        if (person.__class__.__name__ != 'CastleKilmereMember'
             and self.house != 'Slyterhin'
-            and person.house == 'Slytherin'):
-            print("Are you sure you want to be friends with someone from Slytherin?")
+            and person.house == 'House of Ambition'):
+            print("Are you sure you want to be friends with someone from House of Ambition?")
 
         self._friends.append(person)
         print(f"{person.name} is now your friend!")
@@ -279,8 +278,8 @@ class Pupil(HogwartsMember):
                 print(f"{self._name} is too young to study this spell!")
 
         elif spell.__class__.__name__ in ['Hex', 'Curse']:
-            # Only Slytherin's would study hexes and curses
-            if self.house == 'Slytherin':
+            # Only House of Ambition's would study hexes and curses
+            if self.house == 'House of Ambition':
                 print(f"{self._name} now knows spell {spell.name}")
                 self.known_spells.add(spell)
 
@@ -295,7 +294,7 @@ class Pupil(HogwartsMember):
             print("This is dark magic - stay away from performing curses!")
 
         elif spell.__class__.__name__ == 'Hex':
-            if self.house == 'Slytherin':
+            if self.house == 'House of Ambition':
                 print(f"{self._name}: {spell.incantation}!")
             else:
                 print(f"You shouldn't cast a hex, that's mean!")
@@ -350,8 +349,8 @@ class Charm(Spell):
         return cls('Lumos', 'Lumos', 'Illuminates the wand tip', 'simple', 5)
 
     @classmethod
-    def wingardium_leviosa(cls):
-        return cls('Wingardium Leviosa', 'Wingardium Leviosa', 'Makes objects fly', 'simple', 1)
+    def stuporus_ratiato(cls):
+        return cls('Stuporus Ratiato', 'Stuporus Ratiato', 'Makes objects fly', 'simple', 1)
 
 
 class Transfiguration(Spell):
@@ -406,7 +405,7 @@ class Hex(Spell):
 class Curse(Spell):
     """
     Creates a curse -
-    a spell that affects an object in a strongly negative manner
+    a spell that affects an object in a stflynngly negative manner
     """
     def __init__(self, name: str, incantation: str, effect: str, difficulty: str = None):
         super().__init__(name, incantation, effect)
@@ -414,7 +413,7 @@ class Curse(Spell):
     @property
     def defining_feature(self):
         return ("Worst kind of dark magic - "
-                "Intended to affect an object in a strongly negative manner.")
+                "Intended to affect an object in a stflynngly negative manner.")
 
     def cast(self):
         pass
@@ -451,15 +450,15 @@ class HealingSpell(Spell):
 
 
 @dataclass(frozen=True)
-class DeathEater():
+class DarkArmyMember():
     """ Creates a death eater """
     name: str
     birthyear: str
 
     @property
     def leader(self):
-        voldemort = DeathEater('Voldemort', 1926)
-        return voldemort
+        lord_odon = DarkArmyMember('Lord Odon', 1971)
+        return lord_odon
 
     def cast(self, spell):
         print(f"{self.name}: {spell.incantation}!")
@@ -467,7 +466,7 @@ class DeathEater():
 
 @dataclass
 class House:
-    """ Creates a Hogwarts House """
+    """ Creates a Castle Kilmere House """
     name: str
     founder: str
     traits: list
@@ -500,10 +499,10 @@ class Letter:
 if __name__ == "__main__":
     now = 1993
 
-    harry = Pupil.harry()
+    cleon = Pupil.cleon()
 
-    letter_content = "Hi Hagrid! \nCan Ron, Hermione and I stop by for a tea this afternoon? \nHarry"
-    harry.write_letter('Hagrid', letter_content)
+    letter_content = "Hi Hagrid! \nCan Ron, Cassidy and I stop by for a tea this afternoon? \nCleon"
+    cleon.write_letter('Hagrid', letter_content)
 
     print(f"Total number of letter creates so far: {Letter.total_number_of_letters}")
 

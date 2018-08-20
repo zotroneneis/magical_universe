@@ -117,7 +117,7 @@ class Ghost(CastleKilmereMember):
 
     @property
     def age(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return now - self.birthyear
 
     def __repr__(self):
@@ -192,7 +192,7 @@ class Pupil(CastleKilmereMember):
 
     @property
     def current_year(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return (now - self.start_year) + 1
 
     @property
@@ -495,18 +495,33 @@ class Letter:
         if self.letter:
             self.letter.close()
 
+class Potion:
+    """ Creates a potion """
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+        self.counter = -1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.counter += 1
+
+        if self.counter == len(self.ingredients):
+            raise StopIteration
+
+        return self.ingredients[self.counter]
+
 
 if __name__ == "__main__":
-    now = 1993
 
-    cleon = Pupil.cleon()
+    flask_of_remembrance = Potion(['raven eggshells', 'tincture of thyme', 'unicorn tears',
+                                    'dried onions', 'powdered ginger root'])
 
-    letter_content = "Hi Hagrid! \nCan Ron, Cassidy and I stop by for a tea this afternoon? \nCleon"
-    cleon.write_letter('Hagrid', letter_content)
+    vial_of_anger = Potion(['dried dragon skin', 'leeches', 'shredded elephant tusk',
+                            'horned flies', 'earthworm juice'])
 
-    print(f"Total number of letter creates so far: {Letter.total_number_of_letters}")
-
-
-
+    for ingredient in flask_of_remembrance:
+        print(ingredient)
 
 

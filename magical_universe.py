@@ -96,12 +96,15 @@ class Professor(CastleKilmereMember):
 
     @classmethod
     def radford(cls):
-        return cls('Rupert Radford', 1958, 'male', 'Charms', 'House of Wisdom')
+        return cls('Rupert Radford', 1958, 'male', 'Charms', 'House of Creativity')
+
+    @classmethod
+    def giddings(cls):
+        return cls('Gabriel Giddings', 1974, 'male', 'Broomstick Flying', 'House of Wisdom')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
                 f"birthyear: {self.birthyear}, subject: {self.subject})")
-
 
 
 class Ghost(CastleKilmereMember):
@@ -126,7 +129,7 @@ class Ghost(CastleKilmereMember):
 
     @classmethod
     def mocking_knight(cls):
-        return cls('The Mocking Knight', 1401, 'male', '1492', 'House of Courage')
+        return cls('The Mocking Knight', 1401, 'male', 1492, 'House of Courage')
 
     @classmethod
     def gray_groom(cls):
@@ -139,6 +142,10 @@ class Ghost(CastleKilmereMember):
     @classmethod
     def old_lady(cls):
         return cls('The Old Lady', 983, 'male', 996, 'House of Wisdom')
+
+    @classmethod
+    def boneless_barde(cls):
+        return cls("The Boneless Bard", 1211, 'male', 1288, 'House of Creativity')
 
 
 class Pupil(CastleKilmereMember):
@@ -250,7 +257,7 @@ class Pupil(CastleKilmereMember):
     def befriend(self, person):
         """Adds another person to your list of friends"""
         if (person.__class__.__name__ != 'CastleKilmereMember'
-            and self.house != 'Slyterhin'
+            and self.house != 'House of Ambition'
             and person.house == 'House of Ambition'):
             print("Are you sure you want to be friends with someone from House of Ambition?")
 
@@ -343,10 +350,6 @@ class Charm(Spell):
                 "that is, its behaviour and capabilities")
     def cast(self):
         print(f"{self.incantation}!")
-
-    @classmethod
-    def lumos(cls):
-        return cls('Lumos', 'Lumos', 'Illuminates the wand tip', 'simple', 5)
 
     @classmethod
     def stuporus_ratiato(cls):
@@ -453,7 +456,7 @@ class HealingSpell(Spell):
 class DarkArmyMember():
     """ Creates a death eater """
     name: str
-    birthyear: str
+    birthyear: int
 
     @property
     def leader(self):
@@ -468,7 +471,6 @@ class DarkArmyMember():
 class House:
     """ Creates a Castle Kilmere House """
     name: str
-    founder: str
     traits: list
     common_room: str
     head: Professor
@@ -523,5 +525,3 @@ if __name__ == "__main__":
 
     for ingredient in flask_of_remembrance:
         print(ingredient)
-
-

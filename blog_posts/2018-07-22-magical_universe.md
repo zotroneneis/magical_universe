@@ -1,6 +1,6 @@
 # My magical universe: "The Tales of Castle Kilmere"
 
-![](the_tales.jpg)
+![](../the_tales.jpg)
 
 The main character of our magical universe is named Cleon Bery. Cleon's parents died shortly after his birth, while fighting Lord Odon (a dark wizard with the ambition to control the magical world) and his Dark Army. Being an orphan, Cleon is raised by the Spinsters - a foster family living in Littleport, a village located in Cambridgeshire, UK. Although the Spinsters have a son in Cleon's age (Gary) the two don't get along very well. Gary always considered Cleon a threat to his status as an only child. As a consequence, Gary never misses an opportunity to bully Cleon and make him feel unwelcome.
 

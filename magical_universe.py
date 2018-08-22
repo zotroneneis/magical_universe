@@ -216,7 +216,7 @@ class Pupil(CastleKilmereMember):
         try:
             subject, grade = subject_and_grade
         except ValueError:
-            raise ValueError("Pass and iterable with two items: subject and grade")
+            print("Pass and iterable with two items: subject and grade")
 
         passed = self.passed(grade)
 
@@ -246,10 +246,8 @@ class Pupil(CastleKilmereMember):
                 'Acceptable': True,
                 'P': False,
                 'Poor': False,
-                'D': False,
+                'H': False,
                 'Horrible': False,
-                'T': False,
-                'Troll': False,
                 }
 
         return grades.get(grade, False)

@@ -14,6 +14,10 @@ The code runs in **Python 3.6**, the [code on data classes](https://github.com/z
 
 Start date: 07/23/2018   
 
+## Blog Posts
+
+In case you can't access my website, the blog posts can also be found in this repository (see folder 'blog_posts').
+
 ## Overview
 
 | Day   | Topics          | Blog post with explanations | Code for the day  |

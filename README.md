@@ -40,6 +40,7 @@ In case you can't access my website, the blog posts can also be found in this re
 | 22 - 24  | Context managers and the ```with``` statement| [Day 22 to 24](http://alpopkes.com/posts/2018/08/coding-challenge-day-22-to-24/) | [Code day 22 to 24](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_22_to_24.py) |
 | 25 - 28  | Testing code with pytest| [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) | [Code day 25 to 28](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_hogwarts_member_class.py) |
 | 29 - 31  | Iterators, iterables, iteration| [Day 29 to 31](http://alpopkes.com/posts/2018/08/coding-challenge-day-29-to-31/) | [Code day 29 to 31](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_29_to_31.py) |
+| 32  | Test code for ```Professor``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 32](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_professor_class.py) |
 
 
 ## Feedback

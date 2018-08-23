@@ -216,7 +216,7 @@ class Pupil(CastleKilmereMember):
         try:
             subject, grade = subject_and_grade
         except ValueError:
-            print("Pass and iterable with two items: subject and grade")
+            raise ValueError("Pass and iterable with two items: subject and grade")
 
         passed = self.passed(grade)
 
@@ -238,10 +238,10 @@ class Pupil(CastleKilmereMember):
         Given a grade, determine if an exam was passed.
         """
         grades = {
-                'O': True,
-                'Ordinary': True,
-                'P': True,
-                'Passed': True,
+                'E': True,
+                'Exceptional': True,
+                'G': True,
+                'Good': True,
                 'A': True,
                 'Acceptable': True,
                 'P': False,
@@ -346,6 +346,7 @@ class Charm(Spell):
     def defining_feature(self):
         return ("Alteration of the object's inherent qualities, "
                 "that is, its behaviour and capabilities")
+
     def cast(self):
         print(f"{self.incantation}!")
 
@@ -461,7 +462,7 @@ class DarkArmyMember():
         lord_odon = DarkArmyMember('Lord Odon', 1971)
         return lord_odon
 
-    def cast(self, spell):
+    def cast_spell(self, spell):
         print(f"{self.name}: {spell.incantation}!")
 
 

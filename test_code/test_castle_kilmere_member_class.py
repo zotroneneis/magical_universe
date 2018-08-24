@@ -1,5 +1,8 @@
 import pytest
-from cleon_potter_universe.cleon_potter_universe import CastleKilmereMember
+from magical_universe.magical_universe import CastleKilmereMember
+import datetime
+
+now = datetime.datetime.now().year
 
 @pytest.fixture
 def bromley():
@@ -50,7 +53,7 @@ def test_name_property(bromley):
     assert bromley.name == 'Bromley Huckabee'
 
 def test_age_property(bromley):
-    assert bromley.age == 90 # this holds only if the current year is 2018!
+    assert bromley.age == (now - bromley.birthyear) # this holds only if the current year is 2018!
 
 def test_repr_output(capfd, bromley):
     print(bromley)

@@ -300,12 +300,12 @@ class Pupil(CastleKilmereMember):
 
         elif spell.__class__.__name__ == 'Hex':
             if self.house == 'House of Ambition':
-                print(f"{self._name}: {spell.incantation}!")
+                return f"{self._name}: {spell.incantation}!"
             else:
                 print(f"You shouldn't cast a hex, that's mean!")
 
         elif spell in self.known_spells:
-            print(f"{self._name}: {spell.incantation}!")
+            return f"{self._name}: {spell.incantation}!"
 
         elif spell.name not in self.known_spells:
             print(f"You can't cast the {spell.name} spell correctly "

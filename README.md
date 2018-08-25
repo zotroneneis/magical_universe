@@ -42,7 +42,7 @@ In case you can't access my website, the blog posts can also be found in this re
 | 29 - 31  | Iterators, iterables, iteration| [Day 29 to 31](http://alpopkes.com/posts/2018/08/coding-challenge-day-29-to-31/) | [Code day 29 to 31](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_29_to_31.py) |
 | 32  | Test code for ```Professor``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 32](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_professor_class.py) |
 | 33  | Test code for ```Ghost``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 33](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_ghost_class.py) |
-| 34  | ```Collections.counter``` | [Day 34](http://alpopkes.com/posts/2018/08/coding-challenge-day-34/) | [Day 34]((https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_34.py)) |
+| 34  | Counting objects with ```Collections.counter``` | [Day 34](http://alpopkes.com/posts/2018/08/coding-challenge-day-34/) | [Day 34]((https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_34.py) |
 
 
 ## Feedback

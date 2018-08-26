@@ -158,11 +158,12 @@ class Pupil(CastleKilmereMember):
         """
         Given a grade, determine if an exam was passed.
         """
+
         grades = {
-                'O': True,
-                'Ordinary': True,
-                'P': True,
-                'Passed': True,
+                'E': True,
+                'Exceptional': True,
+                'G': True,
+                'Good': True,
                 'A': True,
                 'Acceptable': True,
                 'P': False,

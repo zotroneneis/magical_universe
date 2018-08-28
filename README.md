@@ -44,7 +44,7 @@ In case you can't access my website, the blog posts can also be found in this re
 | 33  | Test code for ```Ghost``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 33](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_ghost_class.py) |
 | 34  | Counting objects with ```Collections.counter``` | [Day 34](http://alpopkes.com/posts/2018/08/coding-challenge-day-34/) | [Day 34](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_34.py) |
 | 35  | Test code for ```DarkArmyMember``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 35](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_dark_army_member_class.py) |
-
+| 36  | Test code for ```Potion``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 36](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_potion_class.py) |
 
 ## Feedback
 

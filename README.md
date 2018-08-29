@@ -18,6 +18,10 @@ Start date: 07/23/2018
 
 In case you can't access my website, the blog posts can also be found in this repository (see folder 'blog_posts').
 
+## Running pytest
+
+In case you get ```ImportError: no module named magical_universe``` when running pytest from within the test_code directory, take a look at [this post](https://stackoverflow.com/questions/10253826/path-issue-with-pytest-importerror-no-module-named-yadayadayada) and try running pytest from the root directory (which is the home directory in my case) using ```python -m pytest magical_universe/test_code/```.
+
 ## Overview
 
 | Day   | Topics          | Blog post with explanations | Code for the day  |
@@ -44,7 +48,7 @@ In case you can't access my website, the blog posts can also be found in this re
 | 33  | Test code for ```Ghost``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 33](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_ghost_class.py) |
 | 34  | Counting objects with ```Collections.counter``` | [Day 34](http://alpopkes.com/posts/2018/08/coding-challenge-day-34/) | [Day 34](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_34.py) |
 | 35  | Test code for ```DarkArmyMember``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 35](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_dark_army_member_class.py) |
-
+| 36  | Test code for ```Potion``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 36](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_potion_class.py) |
 
 ## Feedback
 

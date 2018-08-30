@@ -74,7 +74,7 @@ class Ghost(CastleKilmereMember):
 
 
 if __name__ == "__main__":
-  bromley = CastleKilmereMember('Bromley Huckabee', '1959', 'male')
+  bromley = CastleKilmereMember('Bromley Huckabee', 1959, 'male')
   print(bromley.says("Hello!"))
 
   cleon = Pupil(name='Cleon Bery',

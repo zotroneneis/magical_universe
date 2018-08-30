@@ -28,8 +28,5 @@ def test_repr_output(capfd, keres_fulford):
     stdout = stdout.strip()
     assert stdout == "DarkArmyMember(name='Keres Fulford', birthyear=1953)"
 
-def test_cast_spell(keres_fulford, stuporus_ratiato, capfd):
-    keres_fulford.cast_spell(stuporus_ratiato)
-    stdout, err = capfd.readouterr()
-    stdout = stdout.strip()
-    assert stdout == "Keres Fulford: Stuporus Ratiato!"
+def test_cast_spell(keres_fulford, stuporus_ratiato):
+    assert keres_fulford.cast_spell(stuporus_ratiato) == "Keres Fulford: Stuporus Ratiato!"

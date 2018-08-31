@@ -1,5 +1,5 @@
 import pytest
-from magical_universe.magical_universe import DarkArmyMember, Charm
+from magical_universe import DarkArmyMember, Charm
 
 @pytest.fixture
 def keres_fulford():

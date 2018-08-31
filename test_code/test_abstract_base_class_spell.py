@@ -1,5 +1,5 @@
 import pytest
-from magical_universe.magical_universe import Spell, Charm, Transfiguration, Hex, Curse, Jinx, HealingSpell, CounterSpell
+from magical_universe import Spell, Charm, Transfiguration, Hex, Curse, Jinx, HealingSpell, CounterSpell
 
 @pytest.fixture
 def stuporus_ratiato():

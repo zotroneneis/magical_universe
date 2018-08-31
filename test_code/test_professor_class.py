@@ -1,6 +1,6 @@
 import pytest
 import datetime
-from magical_universe.magical_universe import Professor
+from magical_universe import Professor
 
 now = datetime.datetime.now().year
 

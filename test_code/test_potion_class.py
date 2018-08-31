@@ -1,5 +1,5 @@
 import pytest
-from magical_universe.magical_universe import Potion
+from magical_universe import Potion
 
 
 @pytest.fixture

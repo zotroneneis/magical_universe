@@ -52,6 +52,7 @@ In case you get ```ImportError: no module named magical_universe``` when running
 | 37  | Extension of Magical Universe with classmethods for ```Charm, Hex, Curse```, etc. | [Day 37](http://alpopkes.com/posts/2018/08/coding-challenge-day-37/) | [Code day 37](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_37.py) |
 | 38 - 39  | Test code for ```Spell``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 38 to 39](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_abstract_base_class_spell.py) |
 | 40 - 42 | Test code for ```Pupil``` class | No blog post, see [Day 25 to 28](http://alpopkes.com/posts/2018/08/coding-challenge-day-25-to-28/) for an introduction to testing| [Code day 40 to 42](https://github.com/zotroneneis/magical_universe/blob/master/test_code/test_pupil_class.py) |
+| 43 - 45  | Custom exception classes| [Day 43 to 45](http://alpopkes.com/posts/2018/08/coding-challenge-day-43-to-45/) | [Code day 43 to 45](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_43_to_45.py) |
 
 ## Feedback
 

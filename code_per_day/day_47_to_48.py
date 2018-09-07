@@ -15,7 +15,6 @@ class CastleKilmereMember:
         self._traits[trait] = value
 
     def exhibits_trait(self, trait):
-
         value = self._traits[trait]
 
         if value:

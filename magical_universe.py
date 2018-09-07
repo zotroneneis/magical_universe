@@ -1,7 +1,10 @@
 import datetime
+import functools
+
 from typing import NamedTuple
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
+from collections import defaultdict
 
 class CastleKilmereMember:
     """
@@ -12,7 +15,7 @@ class CastleKilmereMember:
         self._name = name
         self.birthyear = birthyear
         self.sex = sex
-        self._traits = {}
+        self._traits = defaultdict(lambda: False)
 
     def write_letter(self, recipient, content):
         letter_name = f"dear_{recipient}.txt"
@@ -20,7 +23,9 @@ class CastleKilmereMember:
             l.write(content)
 
     def whisper(function):
+        @functools.wraps(function)
         def wrapper(self, *args):
+            ''' Whispering decorator '''
             original_output = function(self, *args)
             first_part, words = original_output.split(' says: ')
             words = words.replace('!', '.')
@@ -29,6 +34,7 @@ class CastleKilmereMember:
         return wrapper
 
     def says(self, words):
+        '''Allows a Castle Kilmere Member to talk'''
         return f"{self._name} says: {words}"
 
     def add_trait(self, trait, value=True):
@@ -42,11 +48,7 @@ class CastleKilmereMember:
               f"but not {', '.join(false_traits)}")
 
     def exhibits_trait(self, trait):
-        try:
-            value = self._traits[trait]
-        except KeyError:
-            print(f"{self._name} does not have a character trait with the name '{trait}'")
-            return
+        value = self._traits[trait]
 
         if value:
             print(f"Yes, {self._name} is {trait}!")
@@ -559,24 +561,14 @@ class Potion:
 
 
 if __name__ == "__main__":
+    bromley = CastleKilmereMember('Bromley Huckabee', 1959, 'male')
 
-    charm = Charm.liberula()
-    print('charm: ', charm)
+    print(bromley.says.__name__)
+    print(bromley.says.__doc__)
 
-    transfiguration = Transfiguration.alteraror_canieo()
-    print(transfiguration.cast())
+    bromley.add_trait('tidy-minded')
+    bromley.add_trait('kind')
 
-    jinx = Jinx.inceptotis()
-    print('jinx: ', jinx)
+    bromley.exhibits_trait('kind')
+    bromley.exhibits_trait('mean')
 
-    hex_ = Hex.rectaro()
-    print(hex_.cast())
-
-    curse = Curse.fiera_satanotis()
-    print('curse: ', curse)
-
-    healing_spell = HealingSpell.porim_perfite()
-    print(healing_spell.cast())
-
-    counter_spell = CounterSpell.mufindo_immolim()
-    print(counter_spell.cast())

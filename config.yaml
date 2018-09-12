@@ -1,0 +1,21 @@
+bromley:
+    name: 'Bromley Huckabee'
+    birthyear: 1959
+    sex: male
+
+cleon:
+    name: 'Cleon Bery'
+    birthyear: 2008
+    sex: 'male'
+    house: 'House of Courage'
+    start_year: 2018
+    pet: [Cotton, owl]
+
+flynn:
+    name: 'Flynn Gibbs'
+    birthyear: 2008
+    sex: 'male'
+    house: 'House of Courage'
+    start_year: 2018
+    pet: ['Twiggles', 'owl']
+

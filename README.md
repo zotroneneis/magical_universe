@@ -56,6 +56,7 @@ In case you get ```ImportError: no module named magical_universe``` when running
 | 46  | ```functools.wraps``` - Avoiding losing metdata when applying decorators| [Day 46](http://alpopkes.com/posts/2018/08/coding-challenge-day-46/) | [Code day 46](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_46.py) |
 | 47 - 48  | ```collections.defaultdict```| [Day 47 to 48](http://alpopkes.com/posts/2018/08/coding-challenge-day-47-to-48/) | [Code day 47 to 48](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_47_to_48.py) |
 | 49 - 50  | Working with config files| [Day 49 to 50](http://alpopkes.com/posts/2018/08/coding-challenge-day-49-to-50/) | [Code day 49 to 50](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_49_to_50.py) |
+| 51  | Wrap up| [Day 51](http://alpopkes.com/posts/2018/08/coding-challenge-day-51/) | No new code added |
 
 
 ## Feedback

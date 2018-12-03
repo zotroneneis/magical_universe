@@ -89,7 +89,7 @@ class Ghost(CastleKilmereMember):
 
     @classmethod
     def mocking_knight(cls):
-        return cls('The Mocking Knight', 1401, 'male', '1492', 'House of Courage')
+        return cls('The Mocking Knight', 1401, 'male', 1492, 'House of Courage')
 
 
 class Pupil(CastleKilmereMember):

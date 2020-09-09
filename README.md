@@ -14,10 +14,6 @@ The code runs in **Python 3.6**, the [code on data classes](https://github.com/z
 
 Start date: 07/23/2018   
 
-## Blog Posts
-
-In case you can't access my website, the blog posts can also be found in this repository (see folder 'blog_posts').
-
 ## Running pytest
 
 In case you get ```ImportError: no module named magical_universe``` when running pytest from within the test_code directory, take a look at [this post](https://stackoverflow.com/questions/10253826/path-issue-with-pytest-importerror-no-module-named-yadayadayada) and try running pytest from the root directory (which is the home directory in my case) using ```python -m pytest magical_universe/test_code/```.

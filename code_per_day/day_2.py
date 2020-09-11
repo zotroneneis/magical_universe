@@ -2,7 +2,7 @@
 File: day_2.py
 Author: Anna-Lena Popkes
 Email: popkes@gmx.net
-Github: https://github.com/zotflynneneis
+Github: https://github.com/zotroneneis
 Description: all code for day 2 of my new coding habit
 Link to blog post with explanations: http://www.alpopkes.com/posts/2018/07/coding-challenge-day-2/
 """
@@ -22,7 +22,7 @@ class CastleKilmereMember:
 
     @staticmethod
     def school_headmaster():
-        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
+        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
 
 
 class Pupil(CastleKilmereMember):
@@ -30,9 +30,8 @@ class Pupil(CastleKilmereMember):
     Create a Castle Kilmere Pupil
     """
 
-    def __init__(self, name, birthyear, sex, house, start_year, pet=None):
+    def __init__(self, name, birthyear, sex, start_year, pet=None):
         super().__init__(name, birthyear, sex)
-        self.house = house
         self.start_year = start_year
 
         if pet is not None:
@@ -45,64 +44,60 @@ class Pupil(CastleKilmereMember):
                   'Foreign Magical Systems': False,
                   'Charms': False,
                   'Defence Against Dark Magic': False,
-                  'Divination': False,
-                  'Herbology': False,
                   'History of Magic': False,
                   'Potions': False,
                   'Transfiguration': False}
 
     @classmethod
-    def cleon(cls):
-        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
+    def luke(cls):
+        return cls('Luke Bery', 2008, 'male', 2018, ('Cotton', 'owl'))
 
     @classmethod
-    def flynn(cls):
-        return cls('Flynn Gibbs', 2008, 'male', 'House of Courage', 2018, ('Twiggles', 'owl'))
+    def lissy(cls):
+        return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
 
     @classmethod
-    def cassidy(cls):
-        return cls('Cassidy', 2007, 'female', 'House of Courage', 2018, ('Ramses', 'cat'))
+    def adrien(cls):
+        return cls('Adrien Fulford', 2008, 'male', 2018, ('Unnamed', 'owl') )
 
 
 class Professor(CastleKilmereMember):
     """
     Creates a Castle Kilmere professor
     """
-    def __init__(self, name, birthyear, sex, subject, house=None):
+
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
-        if house is not None:
-            self.house = house
-
-    @classmethod
-    def mirren(cls):
-        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
+        self.department = department
 
     @classmethod
     def blade(cls):
-        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'Science')
 
+    @classmethod
+    def briddle(cls):
+        return cls('Birdie Briddle', 1931, 'female', 'Foreign Magical Systems', 'Law')
 
 class Ghost(CastleKilmereMember):
     """
     Creates a Castle Kilmere ghost
     """
 
-    def __init__(self, name, birthyear, sex, year_of_death, house=None):
+    def __init__(self, name, birthyear, sex, year_of_death):
         super().__init__(name, birthyear, sex)
         self.year_of_death = year_of_death
-
-        if house is not None:
-            self.house = house
 
 
 if __name__ == "__main__":
     bromley = CastleKilmereMember(name='Bromley Huckabee', birthyear=1959, sex='male')
-    cleon = Pupil(name='Cleon Bery', birthyear=2008, sex='male', house='House of Courage', start_year=2018)
-    headmaster = cleon.school_headmaster()
+    lissy = Pupil(name='Lissy Spinster', birthyear=2008, sex='female', start_year=2018)
+    headmaster = lissy.school_headmaster()
+    print('headmaster: ', headmaster)
 
-    mirren = Professor.mirren()
     blade = Professor.blade()
-    cleon = Pupil.cleon()
-    flynn = Pupil.flynn()
-    cassidy = Pupil.cassidy()
+    print('blade: ', blade)
+    lissy = Pupil.lissy()
+    print('lissy: ', lissy)
+    luke = Pupil.luke()
+    print('luke: ', luke)

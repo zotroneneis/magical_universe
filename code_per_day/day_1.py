@@ -26,9 +26,8 @@ class Pupil(CastleKilmereMember):
     Create a Castle Kilmere Pupil
     """
 
-    def __init__(self, name, birthyear, sex, house, start_year, pet=None):
+    def __init__(self, name, birthyear, sex, start_year, pet=None):
         super().__init__(name, birthyear, sex)
-        self.house = house
         self.start_year = start_year
 
         if pet is not None:
@@ -52,11 +51,11 @@ class Professor(CastleKilmereMember):
   Creates a Castle Kilmere professor
   """
 
-  def __init__(self, name, birthyear, sex, subject, house=None):
+  def __init__(self, name, birthyear, sex, subject, department=None):
       super().__init__(name, birthyear, sex)
       self.subject = subject
-      if house is not None:
-          self.house = house
+      if department is not None:
+          self.department = department
 
 
 class Ghost(CastleKilmereMember):
@@ -64,22 +63,16 @@ class Ghost(CastleKilmereMember):
     Creates a Castle Kilmere ghost
     """
 
-    def __init__(self, name, birthyear, sex, year_of_death, house=None):
+    def __init__(self, name, birthyear, sex, year_of_death):
         super().__init__(name, birthyear, sex)
         self.year_of_death = year_of_death
-
-        if house is not None:
-            self.house = house
-
-
 
 if __name__ == "__main__":
   bromley = CastleKilmereMember('Bromley Huckabee', 1959, 'male')
   print(bromley.says("Hello!"))
 
-  cleon = Pupil(name='Cleon Bery',
+  lissy = Pupil(name='Lissy Spinster',
                 birthyear=2008,
-                sex='male',
-                house='House of Courage',
-                start_year=2018,
+                sex='female',
+                start_year=2020,
                 pet=('Cotton', 'owl'))

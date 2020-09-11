@@ -68,7 +68,7 @@ class CastleKilmereMember:
 
     @staticmethod
     def school_headmaster():
-        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
+        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
@@ -79,30 +79,26 @@ class Professor(CastleKilmereMember):
     Creates a Castle Kilmere professor
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
-        self.house = house
-
-    @classmethod
-    def mirren(cls):
-        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
+        self.department = department
 
     @classmethod
     def blade(cls):
-        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'Science')
 
     @classmethod
     def briddle(cls):
-        return cls('Birdie Briddle', 1931, 'female', 'Herbology', 'House of Loyalty')
+        return cls('Birdie Briddle', 1931, 'female', 'Foreign Magical Systems', 'Law')
 
     @classmethod
     def radford(cls):
-        return cls('Rupert Radford', 1958, 'male', 'Charms', 'House of Creativity')
+        return cls('Rupert Radford', 1958, 'male', 'Illusions 101', 'Creativity and Arts')
 
     @classmethod
     def giddings(cls):
-        return cls('Gabriel Giddings', 1974, 'male', 'Broomstick Flying', 'House of Wisdom')
+        return cls('Gabriel Giddings', 1974, 'male', 'Broomstick Making', 'Engineering')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -114,11 +110,10 @@ class Ghost(CastleKilmereMember):
     Creates a Castle Kilmere ghost
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int):
         super().__init__(name, birthyear, sex)
 
         self.year_of_death = year_of_death
-        self.house = house
 
     @property
     def age(self):
@@ -131,23 +126,23 @@ class Ghost(CastleKilmereMember):
 
     @classmethod
     def mocking_knight(cls):
-        return cls('The Mocking Knight', 1401, 'male', 1492, 'House of Courage')
+        return cls('The Mocking Knight', 1401, 'male', 1492)
 
     @classmethod
     def gray_groom(cls):
-        return cls('The Gray Groom', 1000, 'male', 1050, 'House of Loyalty')
+        return cls('The Gray Groom', 1000, 'male', 1050)
 
     @classmethod
     def scary_scoundrel(cls):
-        return cls('Scary Scoundrel', 983, 'male', 1010, 'House of Ambition')
+        return cls('Scary Scoundrel', 983, 'male', 1010)
 
     @classmethod
     def old_lady(cls):
-        return cls('The Old Lady', 983, 'male', 996, 'House of Wisdom')
+        return cls('The Old Lady', 983, 'male', 996)
 
     @classmethod
     def boneless_barde(cls):
-        return cls("The Boneless Bard", 1211, 'male', 1288, 'House of Creativity')
+        return cls("The Boneless Bard", 1211, 'male', 1288)
 
 
 class Pupil(CastleKilmereMember):
@@ -155,9 +150,8 @@ class Pupil(CastleKilmereMember):
     Create a Castle Kilmere Pupil
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
-        self.house = house
         self.start_year = start_year
         self.known_spells = set()
 
@@ -171,8 +165,6 @@ class Pupil(CastleKilmereMember):
                   'Foreign Magical Systems': False,
                   'Charms': False,
                   'Defence Against Dark Magic': False,
-                  'Divination': False,
-                  'Herbology': False,
                   'History of Magic': False,
                   'Potions': False,
                   'Transfiguration': False}
@@ -180,24 +172,16 @@ class Pupil(CastleKilmereMember):
         self._friends = []
 
     @classmethod
-    def cleon(cls):
-        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
+    def luke(cls):
+        return cls('Luke Bery', 2008, 'male', 2018, ('Cotton', 'owl'))
 
     @classmethod
-    def flynn(cls):
-        return cls('Flynn Gibbs', 2008, 'male', 'House of Courage', 2018, ('Twiggles', 'owl'))
-
-    @classmethod
-    def cassidy(cls):
-        return cls('Cassidy Ambergem', 2007, 'female', 'House of Courage', 2018, ('Ramses', 'cat'))
+    def lissy(cls):
+        return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
 
     @classmethod
     def adrien(cls):
-        return cls('Adrien Fulford', 2008, 'male', 'House of Ambition', 2018, ('Unnamed', 'owl') )
-
-    @classmethod
-    def aurora(cls):
-        return cls('Aurora Gibbs', 1981, 'female', 'House of Courage', 1992)
+        return cls('Adrien Fulford', 2008, 'male', 2018, ('Unnamed', 'owl') )
 
     @property
     def current_year(self):
@@ -256,17 +240,12 @@ class Pupil(CastleKilmereMember):
 
     def befriend(self, person):
         """Adds another person to your list of friends"""
-        if (person.__class__.__name__ != 'CastleKilmereMember'
-            and self.house != 'House of Ambition'
-            and person.house == 'House of Ambition'):
-            print("Are you sure you want to be friends with someone from House of Ambition?")
-
         self._friends.append(person)
         print(f"{person.name} is now your friend!")
 
     def __repr__(self):
         return (f"{self.__class__.__name__}"
-                f"({self._name}, birthyear: {self.birthyear}, house: {self.house})")
+                f"({self._name}, birthyear: {self.birthyear})")
 
     def learn_spell(self, spell):
         """
@@ -285,8 +264,8 @@ class Pupil(CastleKilmereMember):
                 print(f"{self._name} is too young to study this spell!")
 
         elif spell.__class__.__name__ in ['Hex', 'Curse']:
-            # Only House of Ambition's would study hexes and curses
-            if self.house == 'House of Ambition':
+            # Only evil pupils would study hexes and curses
+            if self.exhibits_trait('evil'):
                 print(f"{self._name} now knows spell {spell.name}")
                 self.known_spells.add(spell)
 
@@ -301,9 +280,7 @@ class Pupil(CastleKilmereMember):
             print("This is dark magic - stay away from performing curses!")
 
         elif spell.__class__.__name__ == 'Hex':
-            if self.house == 'House of Ambition':
-                return f"{self._name}: {spell.incantation}!"
-            else:
+            if not self.exhibits_trait('evil'):
                 print(f"You shouldn't cast a hex, that's mean!")
 
         elif spell in self.known_spells:
@@ -347,19 +324,19 @@ class Charm(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return ("Alteration of the object's inherent qualities, "
                 "that is, its behaviour and capabilities")
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
     @classmethod
-    def stuporus_ratiato(cls):
+    def stuporus_ratiato(cls) -> 'Charm':
         return cls('Stuporus Ratiato', 'Stuporus Ratiato', 'Makes objects fly', 'simple', 1)
 
     @classmethod
-    def liberula(cls):
+    def liberula(cls) -> 'Charm':
         return cls('Liberula', 'Liberula', 'Allows a person to breath under water', 'difficult', 5)
 
 class Transfiguration(Spell):
@@ -373,14 +350,14 @@ class Transfiguration(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return "Alteration of the object's form or appearance"
 
     @classmethod
-    def alteraror_canieo(cls):
+    def alteraror_canieo(cls) -> 'Transfiguration':
         return cls('Alteraro Canieo', 'Alteraro Canieo', 'Turns an object into a can', 'simple', 2)
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class Jinx(Spell):
@@ -394,16 +371,16 @@ class Jinx(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return ("Minor darf magic - "
                 "a spell whose effects are irritating but amusing, "
                 "almost playful and of minor inconvenience to the target")
 
     @classmethod
-    def inceptotis(cls):
+    def inceptotis(cls) -> 'Jinx':
         return cls('Inceptotis', 'Inceptotis', 'Makes a person talk baby talk', 'simple')
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class Hex(Spell):
@@ -417,16 +394,16 @@ class Hex(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return ("Medium dark magic - "
                 "Affects an object in a negative manner. "
                 "Major inconvenience to the target.")
 
     @classmethod
-    def rectaro(cls):
+    def rectaro(cls) -> 'Hex':
         return cls('Rectaro', 'Rectaro', 'Exchanges a persons arms and legs', 'difficult')
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class Curse(Spell):
@@ -440,16 +417,16 @@ class Curse(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return ("Worst kind of dark magic - "
                 "Intended to affect an object in a strongly negative manner.")
 
     @classmethod
-    def fiera_satanotis(cls):
+    def fiera_satanotis(cls) -> 'Curse':
         return cls('Torture spell', 'Fiera Satanotis',
                    'Tortures a person, makes person suffer deeply', 'difficult')
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class CounterSpell(Spell):
@@ -463,15 +440,15 @@ class CounterSpell(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return ("Inhibites the effects of another spell")
 
     @classmethod
-    def mufindo_immolim(cls):
+    def mufindo_immolim(cls) -> 'CounterSpell':
         return cls('Mufindo Immolim', 'Mufindo Immolim',
                    'Counteracts the immobilisation spell that prevents a person from moving', 'simple')
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class HealingSpell(Spell):
@@ -485,15 +462,15 @@ class HealingSpell(Spell):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
-    def defining_feature(self):
+    def defining_feature(self) -> str:
         return "Improves the condition of a living object"
 
     @classmethod
-    def porim_perfite(cls):
+    def porim_perfite(cls) -> 'HealingSpell':
         return cls('Wound healing spell', 'Porim Perfite',
                    'Heals all kinds of wounds, even bad ones', 'difficult')
 
-    def cast(self):
+    def cast(self) -> str:
         return(f"{self.incantation}!")
 
 
@@ -504,22 +481,20 @@ class DarkArmyMember():
     birthyear: int
 
     @property
-    def leader(self):
+    def leader(self) -> 'DarkArmyMember':
         lord_odon = DarkArmyMember('Lord Odon', 1971)
         return lord_odon
 
-    def cast_spell(self, spell):
+    def cast_spell(self, spell) -> str:
         return(f"{self.name}: {spell.incantation}!")
 
 
 @dataclass
-class House:
-    """ Creates a Castle Kilmere House """
+class Department:
+    """ Creates a Castle Kilmere Department """
     name: str
     traits: list
-    common_room: str
     head: Professor
-    ghost: Ghost
     founded_in: int = 991
 
     def current_age(self):

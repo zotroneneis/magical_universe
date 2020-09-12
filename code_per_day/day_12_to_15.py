@@ -23,21 +23,18 @@ class CastleKilmereMember:
         true_traits = [trait for trait, value in self._traits.items() if value]
         false_traits = [trait for trait, value in self._traits.items() if not value]
 
-        print(f"{self._name} is {', '.join(true_traits)} "
-              f"but not {', '.join(false_traits)}")
+        if true_traits:
+            print(f"{self._name} is {', '.join(true_traits)}")
+        if false_traits:
+            print(f"{self._name} is not {', '.join(false_traits)}")
+        if (not true_traits and not false_traits):
+            print(f"{self._name} does not have traits yet")
 
     def exhibits_trait(self, trait):
         try:
             value = self._traits[trait]
         except KeyError:
-            print(f"{self._name} does not have a character trait with the name '{trait}'")
-            return
-
-        if value:
-            print(f"Yes, {self._name} is {trait}!")
-        else:
-            print(f"No, {self._name} is not {trait}!")
-
+            return False
         return value
 
     @property
@@ -51,7 +48,7 @@ class CastleKilmereMember:
 
     @staticmethod
     def school_headmaster():
-        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
+        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
@@ -61,21 +58,18 @@ class Professor(CastleKilmereMember):
     """
     Creates a Castle Kilmere professor
     """
-
-    def __init__(self, name: str, birthyear: int, sex: str, subject: str, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
-        if house is not None:
-            self.house = house
-
-    @classmethod
-    def mirren(cls):
-        return cls('Miranda Mirren', 1963, 'female', 'Transfiguration', 'House of Courage')
+        self.department = department
 
     @classmethod
     def blade(cls):
-        return cls('Blade Bardock', 1988, 'male', 'Potions', 'House of Ambition')
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'Science')
 
+    @classmethod
+    def briddle(cls):
+        return cls('Birdie Briddle', 1931, 'female', 'Foreign Magical Systems', 'Law')
 
     def __repr__(self):
         return (f"{self.__class__.__name__}({self._name}, "
@@ -88,17 +82,13 @@ class Ghost(CastleKilmereMember):
     Creates a Castle Kilmere ghost
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int, house: str = None):
+    def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int):
         super().__init__(name, birthyear, sex)
 
         self.year_of_death = year_of_death
-
-        if house is not None:
-            self.house = house
-
     @property
     def age(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return now - self.birthyear
 
     def __repr__(self):
@@ -107,7 +97,7 @@ class Ghost(CastleKilmereMember):
 
     @classmethod
     def mocking_knight(cls):
-        return cls('The Mocking Knight', 1401, 'male', '1492', 'House of Courage')
+        return cls('The Mocking Knight', 1401, 'male', '1492')
 
 
 class Pupil(CastleKilmereMember):
@@ -115,9 +105,8 @@ class Pupil(CastleKilmereMember):
     Create a Castle Kilmere Pupil
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
-        self.house = house
         self.start_year = start_year
         self.known_spells = set()
 
@@ -141,24 +130,20 @@ class Pupil(CastleKilmereMember):
         self._friends = []
 
     @classmethod
-    def cleon(cls):
-        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
+    def luke(cls):
+        return cls('Luke Bery', 2008, 'male', 2018, ('Cotton', 'owl'))
 
     @classmethod
-    def flynn(cls):
-        return cls('Flynn Gibbs', 2008, 'male', 'House of Courage', 2018, ('Twiggles', 'owl'))
-
-    @classmethod
-    def cassidy(cls):
-        return cls('Cassidy Ambergem', 2007, 'female', 'House of Courage', 2018, ('Ramses', 'cat'))
+    def lissy(cls):
+        return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
 
     @classmethod
     def adrien(cls):
-        return cls('Adrien Fulford', 2008, 'male', 'House of Ambition', 2018, ('Unnamed', 'owl') )
+        return cls('Adrien Fulford', 2008, 'male', 2018, ('Unnamed', 'owl') )
 
     @property
     def current_year(self):
-        # now = datetime.datetime.now().year
+        now = datetime.datetime.now().year
         return (now - self.start_year) + 1
 
     @property
@@ -213,17 +198,12 @@ class Pupil(CastleKilmereMember):
 
     def befriend(self, person):
         """Adds another person to your list of friends"""
-        if (person.__class__.__name__ != 'CastleKilmereMember'
-            and self.house != 'Slyterhin'
-            and person.house == 'House of Ambition'):
-            print("Are you sure you want to be friends with someone from House of Ambition?")
-
         self._friends.append(person)
         print(f"{person.name} is now your friend!")
 
     def __repr__(self):
         return (f"{self.__class__.__name__}"
-                f"({self._name}, birthyear: {self.birthyear}, house: {self.house})")
+                f"({self._name}, birthyear: {self.birthyear})")
 
     def learn_spell(self, spell):
         """
@@ -242,13 +222,17 @@ class Pupil(CastleKilmereMember):
                 print(f"{self._name} is too young to study this spell!")
 
         elif spell.__class__.__name__ in ['Hex', 'Curse']:
-            # Only House of Ambition's would study hexes and curses
-            if self.house == 'House of Ambition':
+            # Only evil pupils would study hexes and curses
+            if self.exhibits_trait('evil'):
                 print(f"{self._name} now knows spell {spell.name}")
                 self.known_spells.add(spell)
 
             else:
                 print(f"How dare you study a hex or curse?!")
+
+        else: 
+            print(f"{self._name} now knows spell {spell.name}")
+            self.known_spells.add(spell)
 
     def cast_spell(self, spell):
         """
@@ -258,9 +242,7 @@ class Pupil(CastleKilmereMember):
             print("This is dark magic - stay away from performing curses!")
 
         elif spell.__class__.__name__ == 'Hex':
-            if self.house == 'House of Ambition':
-                print(f"{self._name}: {spell.incantation}!")
-            else:
+            if not self.exhibits_trait('evil'):
                 print(f"You shouldn't cast a hex, that's mean!")
 
         elif spell in self.known_spells:
@@ -429,53 +411,62 @@ class DarkArmyMember(NamedTuple):
         print(f"{self.name}: {spell.incantation}!")
 
 if __name__ == "__main__":
-    now = 1993
 
-    wing_lev = Charm.stuporus_ratiato()
-    rictum = Charm('tickling_charm', 'Rictumsempra', 'Causes victim to buckle with laughter', min_year=5)
-    stickfast = Hex('stickfast_hex', 'Colloshoo', "Makes target's shoes stick to ground")
-    crutio = Curse('Cruciatus Curse', 'Crucio', 'Causes intense, excruciating pain on the victim', 'difficult')
+    ghost = Ghost.mocking_knight()
+    print('ghost: ', ghost)
+    print()
 
-    cleon = Pupil.cleon()
+    stuporus = Charm.stuporus_ratiato()
+    liberula = Charm('Liberula', 'Liberula', 'Allows a person to breathe under water', 'difficult', min_year=5)
+    stickfast = Hex('Stickfast hex', 'Colloshoo', "Makes target's shoes stick to ground")
+    fiera = Curse('Torture curse', 'Fiera Satanotis', 'Tortures a person, makes person suffer deeply', 'difficult')
+
+    lissy = Pupil.lissy()
+    luke = Pupil.luke()
+    lissy.print_traits()
+    lissy.add_trait('highly intelligent')
+    lissy.print_traits()
+
     adrien = Pupil.adrien()
-    cassidy = Pupil.cassidy()
-    cassidy.add_trait('highly intelligent')
+    adrien.print_traits()
+    adrien.add_trait('evil')
+    adrien.print_traits()
 
-    print("Cleon knows the following spells: ", cleon.known_spells)
-    print("Cleon is currently in year: ", cleon.current_year)
-    cleon.learn_spell(wing_lev)
+    print("Lissy knows the following spells: ", lissy.known_spells)
+    print("Lissy is currently in year: ", lissy.current_year)
+    lissy.learn_spell(stuporus)
     print('=======================================')
 
-    # Test whether Cleon can learn a spell he is too young for
-    cleon.learn_spell(rictum)
+    # Test whether lissy can learn a spell he is too young for
+    luke.learn_spell(liberula)
     # Can cassidy study the spell?
-    cassidy.learn_spell(rictum)
+    lissy.learn_spell(liberula)
     print('=======================================')
 
-    # Test whether Cleon can study a hex
-    cleon.learn_spell(stickfast)
+    # Test whether lissy can study a hex
+    lissy.learn_spell(stickfast)
     print('=======================================')
-    # Can Malfoy perform a hex?
+    # Can Adrien perform a hex?
     adrien.learn_spell(stickfast)
     print('=======================================')
 
 
-    # Test whether Cleon can study a curse
-    cleon.learn_spell(crutio)
+    # Test whether lissy can study a curse
+    lissy.learn_spell(fiera)
     print('=======================================')
-    # Can Malfoy study a curse?
-    adrien.learn_spell(crutio)
+    # Can Adrien study a curse?
+    adrien.learn_spell(fiera)
     print('=======================================')
 
-    # Test whether Cleon can cast a Charm
-    cleon.cast_spell(wing_lev)
+    # Test whether lissy can cast a Charm
+    lissy.cast_spell(stuporus)
     print('=======================================')
 
     # What about a hex?
-    cleon.cast_spell(stickfast)
+    lissy.cast_spell(stickfast)
     print('=======================================')
 
-    # What about Malfoy?
+    # What about Adrien?
     adrien.cast_spell(stickfast)
     print('=======================================')
 

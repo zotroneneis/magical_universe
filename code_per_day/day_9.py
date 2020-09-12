@@ -55,7 +55,7 @@ class CastleKilmereMember:
 
     @staticmethod
     def school_headmaster():
-        return CastleKilmereMember('Redmond Dalodore', 1939, 'male')
+        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"

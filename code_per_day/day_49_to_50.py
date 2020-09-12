@@ -12,5 +12,8 @@ if __name__ == "__main__":
         bromley = CastleKilmereMember(**config['bromley'])
         print('bromley: ', bromley)
 
-        cleon = Pupil(**config['cleon'])
-        print('cleon: ', cleon)
+        lissy = Pupil(**config['lissy'])
+        print('lissy: ', lissy)
+
+        luke = Pupil(**config['luke'])
+        print('luke: ', luke)

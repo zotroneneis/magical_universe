@@ -14,7 +14,6 @@ class CastleKilmereMember:
         with Letter(letter_name) as l:
             l.write(content)
 
-
     def __repr__(self):
         return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
@@ -23,9 +22,8 @@ class Pupil(CastleKilmereMember):
     Create a Castle Kilmere Pupil
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
-        self.house = house
         self.start_year = start_year
         self.known_spells = set()
 
@@ -39,8 +37,6 @@ class Pupil(CastleKilmereMember):
                   'Foreign Magical Systems': False,
                   'Charms': False,
                   'Defence Against Dark Magic': False,
-                  'Divination': False,
-                  'Herbology': False,
                   'History of Magic': False,
                   'Potions': False,
                   'Transfiguration': False}
@@ -48,8 +44,8 @@ class Pupil(CastleKilmereMember):
         self._friends = []
 
     @classmethod
-    def cleon(cls):
-        return cls('Cleon Bery', 2008, 'male', 'House of Courage', 2018, ('Cotton', 'owl'))
+    def lissy(cls):
+        return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
 
 
 
@@ -70,10 +66,8 @@ class Letter:
 
 
 if __name__ == "__main__":
-    cleon = Pupil.cleon()
-
-    letter_content = "Hi Hagrid! \nCan Ron, Cassidy and I stop by for a tea this afternoon? \nCleon"
-    cleon.write_letter('Hagrid', letter_content)
-
+    lissy = Pupil.lissy()
+    letter_content = "Hi Bromley! \nCan Luke and I stop by for a tea this afternoon? \nLissy"
+    lissy.write_letter('Bromley', letter_content)
     print(f"Total number of letter creates so far: {Letter.total_number_of_letters}")
 

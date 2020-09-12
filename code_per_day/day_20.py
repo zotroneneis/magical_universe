@@ -35,9 +35,8 @@ class Pupil(CastleKilmereMember):
     Create a Castle Kilmere Pupil
     """
 
-    def __init__(self, name: str, birthyear: int, sex: str, house: str, start_year: int, pet: tuple = None):
+    def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
-        self.house = house
         self.start_year = start_year
         self.known_spells = set()
 
@@ -46,12 +45,10 @@ class Pupil(CastleKilmereMember):
 
     @classmethod
     def aurora(cls):
-        return cls('Aurora Gibbs', 1981, 'female', 'House of Courage', 1992)
+        return cls('Aurora Gibbs', 2011, 'female', 2020)
 
 
 if __name__ == "__main__":
-    now = 1993
-
     aurora = Pupil.aurora()
     print(aurora.says("Be careful Quintus!"))
 

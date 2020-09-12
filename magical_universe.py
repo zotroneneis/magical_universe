@@ -49,12 +49,6 @@ class CastleKilmereMember:
 
     def exhibits_trait(self, trait):
         value = self._traits[trait]
-
-        if value:
-            print(f"Yes, {self._name} is {trait}!")
-        else:
-            print(f"No, {self._name} is not {trait}!")
-
         return value
 
     @property

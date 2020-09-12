@@ -1,7 +1,6 @@
 import pytest
 from magical_universe import Potion
 
-
 @pytest.fixture
 def flask_of_remembrance():
     return Potion(['raven eggshells', 'tincture of thyme', 'unicorn tears',

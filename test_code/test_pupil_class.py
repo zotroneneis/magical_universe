@@ -37,105 +37,96 @@ def mufindo_immolim():
     return CounterSpell.mufindo_immolim()
 
 @pytest.fixture
-def cleon():
-    return Pupil.cleon()
+def luke():
+    return Pupil.luke()
 
 @pytest.fixture
-def cassidy():
-    cassidy = Pupil.cassidy()
-    cassidy.add_trait('highly intelligent')
-    return cassidy
+def lissy():
+    lissy = Pupil.lissy()
+    lissy.add_trait('highly intelligent')
+    return lissy
 
 @pytest.fixture
 def adrien():
     return Pupil.adrien()
 
 @pytest.fixture
-def cleon_with_friends():
-    cleon = Pupil.cleon()
-    cassidy = Pupil.cassidy()
-    flynn = Pupil.flynn()
-    cleon.befriend(cassidy)
-    cleon.befriend(flynn)
-    return cleon
+def luke_with_friends():
+    luke = Pupil.luke()
+    lissy = Pupil.lissy()
+    luke.befriend(lissy)
+    return luke
 
-def test_correctness_of_attributes_(cleon):
-    assert cleon.name == "Cleon Bery"
-    assert cleon.house == 'House of Courage'
-    assert cleon.start_year == 2018
-    assert cleon.pet_name == 'Cotton'
-    assert cleon.pet_type == 'owl'
+def test_correctness_of_attributes_(luke):
+    assert luke.name == "Luke Bery"
+    assert luke.start_year == 2018
+    assert luke.pet_name == 'Cotton'
+    assert luke.pet_type == 'owl'
 
-def test_current_year_property(cleon):
-    assert cleon.current_year == (now - cleon.start_year + 1)
+def test_current_year_property(luke):
+    assert luke.current_year == (now - luke.start_year + 1)
 
-def test_owls_property(cleon):
-    assert cleon.elms == {'Broomstick Flying': False,
+def test_owls_property(luke):
+    assert luke.elms == {'Broomstick Flying': False,
                           'Art': False,
                           'Magical Theory': False,
                           'Foreign Magical Systems': False,
                           'Charms': False,
                           'Defence Against Dark Magic': False,
-                          'Divination': False,
-                          'Herbology': False,
                           'History of Magic': False,
                           'Potions': False,
                           'Transfiguration': False}
 
-def test_friends_property(cleon_with_friends):
-    assert cleon_with_friends.friends == "Cleon Bery's current friends are: ['Cassidy Ambergem', 'Flynn Gibbs']"
+def test_friends_property(luke_with_friends):
+    assert luke_with_friends.friends == "Luke Bery's current friends are: ['Lissy Spinster']"
 
-def test_cleon_befriend_cassidy(capfd, cleon, cassidy):
-    cleon.befriend(cassidy)
+def test_luke_befriend_lissy(capfd, luke, lissy):
+    luke.befriend(lissy)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Cassidy Ambergem is now your friend!'
+    assert stdout == "Lissy Spinster is now your friend!"
 
-def test_befriend_house_of_ambition_member(capfd, cleon, adrien):
-    cleon.befriend(adrien)
+def test_befriend_house_adrien(capfd, luke, adrien):
+    luke.befriend(adrien)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == "Are you sure you want to be friends with someone from House of Ambition?\nAdrien Fulford is now your friend!"
+    assert stdout == "Adrien Fulford is now your friend!"
 
-def test_delete_elms(capfd, cleon):
-    del cleon.elms
+def test_delete_elms(capfd, luke):
+    del luke.elms
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == "Caution, you are deleting this students' ELM's! You should only do that if she/he dropped out of school without passing any exam!"
     with pytest.raises(AttributeError):
-        print(cleon.elms)
+        print(luke.elms)
 
-def test_set_elms_raises_ValueError_with_wrong_input_argument(capfd, cleon):
+def test_set_elms_raises_ValueError_with_wrong_input_argument(capfd, luke):
     with pytest.raises(ValueError):
-        cleon.elms = 'Transfiguration'
+        luke.elms = 'Transfiguration'
 
-def test_set_elms_with_passed_grade(capfd, cleon):
-    cleon.elms = ("Transfiguration", "G")
-    assert cleon.elms == {'Broomstick Flying': False,
+def test_set_elms_with_passed_grade(capfd, luke):
+    luke.elms = ("Transfiguration", "G")
+    assert luke.elms == {'Broomstick Flying': False,
                           'Art': False,
                           'Magical Theory': False,
                           'Foreign Magical Systems': False,
                           'Charms': False,
                           'Defence Against Dark Magic': False,
-                          'Divination': False,
-                          'Herbology': False,
                           'History of Magic': False,
                           'Potions': False,
                           'Transfiguration': True}
 
-def test_set_elms_with_not_passed_grade(capfd, cleon):
-    cleon.elms = ("Transfiguration", "H")
+def test_set_elms_with_not_passed_grade(capfd, luke):
+    luke.elms = ("Transfiguration", "H")
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == 'The exam was not passed so no ELM was awarded!'
-    assert cleon.elms == {'Broomstick Flying': False,
+    assert luke.elms == {'Broomstick Flying': False,
                           'Art': False,
                           'Magical Theory': False,
                           'Foreign Magical Systems': False,
                           'Charms': False,
                           'Defence Against Dark Magic': False,
-                          'Divination': False,
-                          'Herbology': False,
                           'History of Magic': False,
                           'Potions': False,
                           'Transfiguration': False}
@@ -157,50 +148,51 @@ def test_staticmethod_passed_with_not_passed_grades():
 def test_staticmethod_passed_default_return_value():
     assert Pupil.passed('D') == False
 
-def test_repr_output(capfd, cleon):
-    print(cleon)
+def test_repr_output(capfd, luke):
+    print(luke)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Pupil(Cleon Bery, birthyear: 2008, house: House of Courage)'
+    assert stdout == 'Pupil(Luke Bery, birthyear: 2008)'
 
-def test_learn_spell_hex_if_not_being_in_house_of_ambition(capfd, cleon, rectaro):
-    cleon.learn_spell(rectaro)
+def test_learn_spell_hex_if_not_being_evil(capfd, luke, rectaro):
+    luke.learn_spell(rectaro)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == 'How dare you study a hex or curse?!'
 
-def test_learn_spell_hex_if_being_in_house_of_ambition(capfd, adrien, rectaro):
+def test_learn_spell_hex_if_being_evil(capfd, adrien, rectaro):
+    adrien.add_trait('evil')
     adrien.learn_spell(rectaro)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == 'Adrien Fulford now knows spell Rectaro'
     assert rectaro in adrien.known_spells
 
-def test_learn_spell_if_being_too_young(capfd, cleon, liberula):
-    cleon.learn_spell(liberula)
+def test_learn_spell_if_being_too_young(capfd, luke, liberula):
+    luke.learn_spell(liberula)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == "Cleon Bery does not have a character trait with the name 'highly intelligent'\nCleon Bery is too young to study this spell!"
+    assert stdout == "Luke Bery is too young to study this spell!"
 
-def test_learn_spell_hex_if_being_too_young_but_highly_intelligent(capfd, cassidy, liberula):
-    cassidy.learn_spell(liberula)
+def test_learn_spell_hex_if_being_too_young_but_highly_intelligent(capfd, lissy, liberula):
+    lissy.learn_spell(liberula)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == "Yes, Cassidy Ambergem is highly intelligent!\nCassidy Ambergem now knows spell Liberula"
+    assert stdout == "Lissy Spinster now knows spell Liberula"
 
-def test_learn_spell(capfd, cleon, stuporus_ratiato):
-    cleon.learn_spell(stuporus_ratiato)
+def test_learn_spell(capfd, luke, stuporus_ratiato):
+    luke.learn_spell(stuporus_ratiato)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Cleon Bery now knows spell Stuporus Ratiato'
-    assert stuporus_ratiato in cleon.known_spells
+    assert stdout == 'Luke Bery now knows spell Stuporus Ratiato'
+    assert stuporus_ratiato in luke.known_spells
 
-def test_cast_spell_curse(capfd, cleon, fiera_satanotis):
-    cleon.cast_spell(fiera_satanotis)
+def test_cast_spell_curse(capfd, luke, fiera_satanotis):
+    luke.cast_spell(fiera_satanotis)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == 'This is dark magic - stay away from performing curses!'
 
-def test_cast_known_spell(capfd, cleon, stuporus_ratiato):
-    cleon.learn_spell(stuporus_ratiato)
-    assert cleon.cast_spell(stuporus_ratiato) == 'Cleon Bery: Stuporus Ratiato!'
+def test_cast_known_spell(capfd, luke, stuporus_ratiato):
+    luke.learn_spell(stuporus_ratiato)
+    assert luke.cast_spell(stuporus_ratiato) == 'Luke Bery: Stuporus Ratiato!'

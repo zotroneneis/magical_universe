@@ -34,7 +34,7 @@ def test_add_negative_trait(bromley):
 def test_exhibit_traits(bromley_with_traits):
     assert bromley_with_traits.exhibits_trait('kind') == True
     assert bromley_with_traits.exhibits_trait('mean') == False
-    assert bromley_with_traits.exhibits_trait('smart') == None
+    assert bromley_with_traits.exhibits_trait('smart') == False
 
 def test_print_traits(capfd, bromley_with_traits):
     bromley_with_traits.print_traits()
@@ -47,7 +47,7 @@ def test_init_raises_exception_with_missing_arguments():
         bromley = CastleKilmereMember()
 
 def test_says(bromley):
-    assert bromley.says("Hi Cleon!") == "Bromley Huckabee says: Hi Cleon!"
+    assert bromley.says("Hi Lissy!") == "Bromley Huckabee says: Hi Lissy!"
 
 def test_name_property(bromley):
     assert bromley.name == 'Bromley Huckabee'

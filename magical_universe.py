@@ -278,7 +278,7 @@ class Spell(ABC):
         self.incantation = incantation
         self.effect = effect
         self.difficulty = difficulty
-        self.min_year = min_yea
+        self.min_year = min_year
 
     @abstractmethod
     def cast(self):
@@ -317,8 +317,7 @@ class Charm(Spell):
 
 class Transfiguration(Spell):
     """Creates a transfiguration - a spell that alters the form or appearance of an object"""
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -327,15 +326,14 @@ class Transfiguration(Spell):
 
     @classmethod
     def alteraror_canieo(cls) -> 'Transfiguration':
-        return cls('Alteraro Canieo', 'Alteraro Canieo', 'Turns an object into a can', 'Simple', 2)
+        return cls('The Alteraro Canieo transfiguration', 'Alteraro Canieo', 'Turns an object into a can', 'Simple', 2)
 
     def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class Jinx(Spell):
     """Creates a jinx - a spell whose effects are irritating but amusing"""
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -346,15 +344,14 @@ class Jinx(Spell):
 
     @classmethod
     def inceptotis(cls) -> 'Jinx':
-        return cls('Inceptotis', 'Inceptotis', 'Makes a person talk baby talk', 'Simple')
+        return cls('The Inceptotis jinx', 'Inceptotis', 'Makes a person talk baby talk', 'Simple')
 
     def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class Hex(Spell):
     """Creates a hex - a spell that affects an object in a negative manner"""
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Medium", min_year: int = 5):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -372,8 +369,7 @@ class Hex(Spell):
 
 class Curse(Spell):
     """Creates a curse - a spell that affects an object in a stflynngly negative manner"""
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Difficult", min_year: int = 6):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -383,7 +379,7 @@ class Curse(Spell):
 
     @classmethod
     def fiera_satanotis(cls) -> 'Curse':
-        return cls('Torture spell', 'Fiera Satanotis',
+        return cls('Torture curse', 'Fiera Satanotis',
                    'Tortures a person, makes person suffer deeply', 'Difficult')
 
     def cast(self) -> str:
@@ -391,8 +387,7 @@ class Curse(Spell):
 
 class CounterSpell(Spell):
     """Creates a counter-spell - a spell that inhibits the effect of another spell"""
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -402,15 +397,14 @@ class CounterSpell(Spell):
     @classmethod
     def mufindo_immolim(cls) -> 'CounterSpell':
         return cls('The Mufindo Immolim counter spell', 'Mufindo Immolim',
-                   'Counteracts the immobilisation spell that prevents a person from moving', 'simple')
+                   'Counteracts the immobilisation spell that prevents a person from moving')
 
     def cast(self) -> str:
         return(f"{self.incantation}!")
 
 class HealingSpell(Spell):
     """Creates a healing-spell - a spell that improves the condition of a living object"""
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -420,7 +414,7 @@ class HealingSpell(Spell):
     @classmethod
     def porim_perfite(cls) -> 'HealingSpell':
         return cls('Wound healing spell', 'Porim Perfite',
-                   'Heals all kinds of wounds, even bad ones', 'Difficult')
+                   'Heals all kinds of wounds, even bad ones', 'Difficult', 5)
 
     def cast(self) -> str:
         return(f"{self.incantation}!")

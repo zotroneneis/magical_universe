@@ -21,11 +21,11 @@ class CastleKilmereMember:
         false_traits = [trait for trait, value in self._traits.items() if not value]
 
         if true_traits:
-            print(f"{self._name} is {', '.join(true_traits)}")
+            print(f"{self.name} is {', '.join(true_traits)}")
         if false_traits:
-            print(f"{self._name} is not {', '.join(false_traits)}")
+            print(f"{self.name} is not {', '.join(false_traits)}")
         if (not true_traits and not false_traits):
-            print(f"{self._name} does not have traits yet")
+            print(f"{self.name} does not have traits yet")
 
     def exhibits_trait(self, trait: str) -> bool:
         value = self._traits[trait]

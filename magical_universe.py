@@ -8,7 +8,6 @@ from collections import defaultdict
 
 class CastleKilmereMember:
     """Creates a member of the Castle Kilmere School of Magic"""
-
     def __init__(self, name: str, birthyear: int, sex: str):
         self.name = name
         self.birthyear = birthyear
@@ -43,11 +42,11 @@ class CastleKilmereMember:
         false_traits = [trait for trait, value in self._traits.items() if not value]
 
         if true_traits:
-            print(f"{self._name} is {', '.join(true_traits)}")
+            print(f"{self.name} is {', '.join(true_traits)}")
         if false_traits:
-            print(f"{self._name} is not {', '.join(false_traits)}")
+            print(f"{self.name} is not {', '.join(false_traits)}")
         if (not true_traits and not false_traits):
-            print(f"{self._name} does not have traits yet")
+            print(f"{self.name} does not have traits yet")
 
     def exhibits_trait(self, trait: str) -> bool:
         value = self._traits[trait]
@@ -68,7 +67,6 @@ class CastleKilmereMember:
 
 class Professor(CastleKilmereMember):
     """ Creates a Castle Kilmere professor """
-
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
@@ -367,7 +365,7 @@ class Hex(Spell):
 
     @classmethod
     def rectaro(cls) -> 'Hex':
-        return cls('Rectaro', 'Rectaro', 'Exchanges a persons arms and legs', 'Difficult')
+        return cls('The Rectaro hex', 'Rectaro', 'Exchanges a persons arms and legs', 'Difficult')
 
     def cast(self) -> str:
         return(f"{self.incantation}!")
@@ -447,7 +445,6 @@ class DarkArmyMember():
 class Department:
     """ Creates a Castle Kilmere Department """
     name: str
-    traits: list
     head: Professor
     founded_in: int = 991
 

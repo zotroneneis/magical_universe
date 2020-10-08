@@ -2,12 +2,9 @@ import error
 import datetime
 
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
-
+    """ Creates a member of the Castle Kilmere School of Magic """
     def __init__(self, name: str, birthyear: int, sex: str):
-        self._name = name
+        self.name = name
         self.birthyear = birthyear
         if type(birthyear) is not int:
             raise error.InvalidBirthyearError("The birthyear is not a valid integer. " \
@@ -19,24 +16,13 @@ class CastleKilmereMember:
     def add_trait(self, trait: str, value=True):
         self._traits[trait] = value
 
-    def exhibits_trait(self, trait: str):
+    def exhibits_trait(self, trait: str) -> bool:
         try:
             value = self._traits[trait]
-        except KeyError:
-            raise error.TraitDoesNotExistError(\
-                    f"{self._name} does not possess the character trait '{trait}'. \n" \
-                    f"Use the add_trait() function to add traits")
-            return
-
-        if value:
-            print(f"Yes, {self._name} is {trait}!")
-        else:
-            print(f"No, {self._name} is not {trait}!")
-
-        return value
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
+            return value
+        except KeyError as e:
+            print(f"{self.name} does not have a character trait with the name {e}")
+            return False
 
 if __name__ == "__main__":
 

@@ -2,18 +2,16 @@ import datetime
 from typing import NamedTuple
 
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
+    """ Creates a member of the Castle Kilmere School of Magic """
 
     def __init__(self, name: str, birthyear: int, sex: str):
-        self._name = name
+        self.name = name
         self.birthyear = birthyear
         self.sex = sex
         self._traits = {}
 
-    def says(self, words):
-        return f"{self._name} says {words}"
+    def says(self, words: str) -> str:
+        return f"{self.name} says {words}"
 
     def add_trait(self, trait, value=True):
         self._traits[trait] = value
@@ -22,42 +20,37 @@ class CastleKilmereMember:
         true_traits = [trait for trait, value in self._traits.items() if value]
         false_traits = [trait for trait, value in self._traits.items() if not value]
 
-        print(f"{self._name} is {', '.join(true_traits)} "
-              f"but not {', '.join(false_traits)}")
+        if true_traits:
+            print(f"{self.name} is {', '.join(true_traits)}")
+        if false_traits:
+            print(f"{self.name} is not {', '.join(false_traits)}")
+        if (not true_traits and not false_traits):
+            print(f"{self.name} does not have traits yet")
 
-    def exhibits_trait(self, trait):
+    def exhibits_trait(self, trait: str) -> bool:
         try:
             value = self._traits[trait]
-        except KeyError:
-            print(f"{self._name} does not have a character trait with the name '{trait}'")
-            return
-
-        if value:
-            print(f"Yes, {self._name} is {trait}!")
-        else:
-            print(f"No, {self._name} is not {trait}!")
+            return value
+        except KeyError as e:
+            print(f"{self.name} does not have a character trait with the name {e}")
+            return False
 
     @property
-    def name(self):
-        return self._name
-
-    @property
-    def age(self):
+    def age(self) -> int:
         now = datetime.datetime.now().year
         return now - self.birthyear
 
-    @staticmethod
-    def school_headmaster():
-        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
+    @classmethod
+    def school_headmistress(cls) -> 'CastleKilmereMember':
+        return cls('Miranda Mirren', 1963, 'female')
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}')")
 
 
 class Professor(CastleKilmereMember):
-    """
-    Creates a Castle Kilmere professor
-    """
+    """ Creates a Castle Kilmere professor """
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
@@ -71,42 +64,34 @@ class Professor(CastleKilmereMember):
     def briddle(cls):
         return cls('Birdie Briddle', 1931, 'female', 'Foreign Magical Systems', 'Law')
 
-
-    def __repr__(self):
-        return (f"{self.__class__.__name__}({self._name}, "
-                f"birthyear: {self.birthyear}, subject: {self.subject})")
-
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}', "
+                f"subject='{self.subject}', department='{self.department}')")
 
 
 class Ghost(CastleKilmereMember):
-    """
-    Creates a Castle Kilmere ghost
-    """
-
+    """ Creates a Castle Kilmere ghost """
     def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int):
         super().__init__(name, birthyear, sex)
-
         self.year_of_death = year_of_death
 
     @property
-    def age(self):
+    def age(self) -> int:
         now = datetime.datetime.now().year
         return now - self.birthyear
 
-    def __repr__(self):
-        return (f"{self.__class__.__name__}({self._name}, "
-                f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
-
     @classmethod
     def mocking_knight(cls):
-        return cls('The Mocking Knight', 1401, 'male', '1492')
+        return cls('The Mocking Knight', 1401, 'male', 1492)
 
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}', "
+                f"year_of_death={self.year_of_death})")
 
 class Pupil(CastleKilmereMember):
-    """
-    Create a Castle Kilmere Pupil
-    """
-
+    """ Create a Castle Kilmere Pupil """
     def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
         self.start_year = start_year
@@ -115,8 +100,9 @@ class Pupil(CastleKilmereMember):
             self.pet_name, self.pet_type = pet
 
         self._elms = {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
                   'Broomstick Flying': False,
-                  'Art': False,
                   'Magical Theory': False,
                   'Foreign Magical Systems': False,
                   'Charms': False,
@@ -137,10 +123,10 @@ class Pupil(CastleKilmereMember):
 
     @classmethod
     def adrien(cls):
-        return cls('Adrien Fulford', 2008, 'male', 2018, ('Unnamed', 'owl') )
+        return cls('Adrien Fulford', 2008, 'male', 2018, ('Twiggles', 'owl') )
 
     @property
-    def current_year(self):
+    def current_year(self) -> int:
         now = datetime.datetime.now().year
         return (now - self.start_year) + 1
 
@@ -150,11 +136,10 @@ class Pupil(CastleKilmereMember):
 
     @property
     def friends(self):
-        return f"{self._name}'s current friends are: {[person.name for person in self._friends]}"
+        return f"{self.name}'s current friends are: {[person.name for person in self._friends]}"
 
     @elms.setter
     def elms(self, subject_and_grade):
-
         try:
             subject, grade = subject_and_grade
         except ValueError:
@@ -182,7 +167,7 @@ class Pupil(CastleKilmereMember):
 
         grades = {
                 'E': True,
-                'Exceptional': True,
+                'Excellent': True,
                 'G': True,
                 'Good': True,
                 'A': True,
@@ -200,41 +185,20 @@ class Pupil(CastleKilmereMember):
         self._friends.append(person)
         print(f"{person.name} is now your friend!")
 
-    def __repr__(self):
-        return (f"{self.__class__.__name__}"
-                f"({self._name}, birthyear: {self.birthyear})")
-
-
-class Charm:
-    """ Creates a charm """
-    def __init__(self, incantation:str, difficulty: str = None, effect: str = None):
-        self.incantation = incantation
-        self.difficulty = difficulty
-        self.effect = effect
-
-    def cast(self):
-        print(f"{self.incantation}!")
-
-    @classmethod
-    def stuporus_ratiato(cls):
-        return cls('Stuporus Ratiato', 'simple', 'Makes objects fly')
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.incantation}, {self.difficulty}, {self.effect})"
-
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}', "
+                f"start_year={self.start_year})")
 
 class DarkArmyMember(NamedTuple):
-    """ Creates a death eater """
+    """ Creates a member of the Dark Army """
     name: str
     birthyear: str
 
     @property
     def leader(self):
-        lord_odon = DarkArmyMember('Lord Odon', 1971)
-        return lord_odon
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, birthyear: {self.birthyear})"
+        master_odon = DarkArmyMember('Master Odon', 1971)
+        return master_odon
 
 if __name__ == "__main__":
     keres = DarkArmyMember('Keres Fulford', 1953)

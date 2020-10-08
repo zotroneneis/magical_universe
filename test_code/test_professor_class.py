@@ -11,10 +11,10 @@ def briddle():
 def test_correctness_of_attributes_(briddle):
     assert briddle.name == "Birdie Briddle"
     assert briddle.subject == "Foreign Magical Systems"
-    assert briddle.department == "Law"
+    assert briddle.department == "Department of Law"
 
 def test_repr_output(capfd, briddle):
     print(briddle)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Professor(Birdie Briddle, birthyear: 1931, subject: Foreign Magical Systems)'
+    assert stdout == "Professor(name='Birdie Briddle', birthyear=1931, sex='female', subject='Foreign Magical Systems', department='Department of Law')"

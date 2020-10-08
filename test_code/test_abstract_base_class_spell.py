@@ -106,7 +106,7 @@ def test_repr_output_hex(capfd, rectaro):
     print(rectaro)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == "Hex(name='The Rectaro hex', incantation='Rectaro', effect='Exchanges a persons arms and legs', difficulty='Difficult', min_year=5)"
+    assert stdout == "Hex(name='The Rectaro hex', incantation='Rectaro', effect='Exchanges a persons arms and legs', difficulty='Difficult', min_year=None)"
 
 def test_hex_defining_feature(rectaro):
     assert rectaro.defining_feature ==  "Medium dark magic - " \

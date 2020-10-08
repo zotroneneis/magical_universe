@@ -42,11 +42,11 @@ class CastleKilmereMember:
         false_traits = [trait for trait, value in self._traits.items() if not value]
 
         if true_traits:
-            print(f"{self.name} is {', '.join(true_traits)}")
+            print(f"{self.name} is {', '.join(true_traits)}.")
         if false_traits:
-            print(f"{self.name} is not {', '.join(false_traits)}")
+            print(f"{self.name} is not {', '.join(false_traits)}.")
         if (not true_traits and not false_traits):
-            print(f"{self.name} does not have traits yet")
+            print(f"{self.name} does not have traits yet.")
 
     def exhibits_trait(self, trait: str) -> bool:
         value = self._traits[trait]
@@ -74,24 +74,22 @@ class Professor(CastleKilmereMember):
 
     @classmethod
     def blade(cls):
-        return cls('Blade Bardock', 1988, 'male', 'Potions', 'Science')
+        return cls('Blade Bardock', 1988, 'male', 'Potions', 'Department of Science')
 
     @classmethod
     def briddle(cls):
-        return cls('Birdie Briddle', 1931, 'female', 'Foreign Magical Systems', 'Law')
+        return cls('Birdie Briddle', 1931, 'female', 'Foreign Magical Systems', 'Department of Law')
 
     @classmethod
     def radford(cls):
-        return cls('Rupert Radford', 1958, 'male', 'Illusions 101', 'Creativity and Arts')
+        return cls('Rupert Radford', 1958, 'male', 'Illusions 101', 'Department of Creativity and Arts')
 
     @classmethod
     def giddings(cls):
-        return cls('Gabriel Giddings', 1974, 'male', 'Broomstick Making', 'Engineering')
+        return cls('Gabriel Giddings', 1974, 'male', 'Broomstick Making', 'Department of Engineering')
 
     def __repr__(self) -> str:
-        return (f"{self.__class__.__name__}(name='{self.name}', "
-                f"birthyear={self.birthyear}, sex='{self.sex}', "
-                f"subject='{self.subject}', department='{self.department}')")
+        return (f"{self.__class__.__name__}(name='{self.name}', birthyear={self.birthyear}, sex='{self.sex}', subject='{self.subject}', department='{self.department}')")
 
 
 class Ghost(CastleKilmereMember):
@@ -159,15 +157,15 @@ class Pupil(CastleKilmereMember):
 
     @classmethod
     def luke(cls):
-        return cls('Luke Bery', 2008, 'male', 2018, ('Cotton', 'owl'))
+        return cls('Luke Bery', 2008, 'male', 2020, ('Cotton', 'owl'))
 
     @classmethod
     def lissy(cls):
-        return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
+        return cls('Lissy Spinster', 2008, 'female', 2020, ('Ramses', 'cat'))
 
     @classmethod
     def adrien(cls):
-        return cls('Adrien Fulford', 2008, 'male', 2018, ('Unnamed', 'owl') )
+        return cls('Adrien Fulford', 2008, 'male', 2020, ('Unnamed', 'owl') )
 
     @property
     def current_year(self) -> int:
@@ -235,11 +233,11 @@ class Pupil(CastleKilmereMember):
         """ Allows a pupil to learn a spell, given that he/she is old enough """
         if spell.min_year is not None:
             if self.current_year >= spell.min_year:
-                print(f"{self.name} now knows spell {spell.name}")
+                print(f"{self.name} now knows '{spell.name}'")
                 self.known_spells.add(spell)
 
             elif self.exhibits_trait('highly intelligent'):
-                print(f"{self.name} now knows spell {spell.name}")
+                print(f"{self.name} now knows '{spell.name}'")
                 self.known_spells.add(spell)
 
             elif self.current_year < spell.min_year:
@@ -248,7 +246,7 @@ class Pupil(CastleKilmereMember):
         elif spell.__class__.__name__ in ['Hex', 'Curse']:
             # Only evil pupils would study hexes and curses
             if self.exhibits_trait('evil'):
-                print(f"{self.name} now knows spell {spell.name}")
+                print(f"{self.name} now knows '{spell.name}'")
                 self.known_spells.add(spell)
 
             else:
@@ -351,7 +349,7 @@ class Jinx(Spell):
 
 class Hex(Spell):
     """Creates a hex - a spell that affects an object in a negative manner"""
-    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Medium", min_year: int = 5):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Medium", min_year: int = None):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -483,12 +481,19 @@ class Potion:
 if __name__ == "__main__":
     bromley = CastleKilmereMember('Bromley Huckabee', 1959, 'male')
 
-    print(bromley.says.__name__)
-    print(bromley.says.__doc__)
+    # print(bromley.says.__name__)
+    # print(bromley.says.__doc__)
 
-    bromley.add_trait('tidy-minded')
-    bromley.add_trait('kind')
+    # bromley.add_trait('tidy-minded')
+    # bromley.add_trait('kind')
 
-    bromley.exhibits_trait('kind')
-    bromley.exhibits_trait('mean')
+    # bromley.exhibits_trait('kind')
+    # bromley.exhibits_trait('mean')
+
+    # bromley.print_traits()
+
+    print(bromley == eval(repr(bromley)))
+
+    # briddle = Professor.briddle()
+    # print(briddle == eval(repr(briddle)))
 

@@ -18,7 +18,7 @@ def bromley_with_traits():
     return bromley
 
 def test_correctness_of_attributes_(bromley):
-    assert bromley._name == 'Bromley Huckabee'
+    assert bromley.name == 'Bromley Huckabee'
     assert bromley.birthyear == 1956
     assert bromley.sex == 'male'
 
@@ -40,7 +40,7 @@ def test_print_traits(capfd, bromley_with_traits):
     bromley_with_traits.print_traits()
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Bromley Huckabee is kind, wild but not mean'
+    assert stdout == 'Bromley Huckabee is kind, wild.\nBromley Huckabee is not mean.'
 
 def test_init_raises_exception_with_missing_arguments():
     with pytest.raises(TypeError):
@@ -53,11 +53,11 @@ def test_name_property(bromley):
     assert bromley.name == 'Bromley Huckabee'
 
 def test_age_property(bromley):
-    assert bromley.age == (now - bromley.birthyear) # this holds only if the current year is 2018!
+    assert bromley.age == (now - bromley.birthyear)
 
 def test_repr_output(capfd, bromley):
     print(bromley)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'CastleKilmereMember(Bromley Huckabee, birthyear: 1956)'
+    assert stdout == "CastleKilmereMember(name='Bromley Huckabee', birthyear=1956, sex='male')"
 

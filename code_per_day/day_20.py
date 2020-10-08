@@ -3,12 +3,10 @@ from typing import NamedTuple
 from abc import ABCMeta, abstractmethod
 
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
+    """ Creates a member of the Castle Kilmere School of Magic """
 
     def __init__(self, name: str, birthyear: int, sex: str):
-        self._name = name
+        self.name = name
         self.birthyear = birthyear
         self.sex = sex
         self._traits = {}
@@ -23,18 +21,16 @@ class CastleKilmereMember:
         return wrapper
 
     @whisper
-    def says(self, words):
-        return f"{self._name} says: {words}"
+    def says(self, words: str) -> str:
+        return f"{self.name} says: {words}"
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}')")
 
 
 class Pupil(CastleKilmereMember):
-    """
-    Create a Castle Kilmere Pupil
-    """
-
+    """ Create a Castle Kilmere Pupil """
     def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
         self.start_year = start_year
@@ -43,12 +39,23 @@ class Pupil(CastleKilmereMember):
         if pet is not None:
             self.pet_name, self.pet_type = pet
 
-    @classmethod
-    def aurora(cls):
-        return cls('Aurora Gibbs', 2011, 'female', 2020)
+        self._elms = {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
+                  'Broomstick Flying': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
+    @classmethod
+    def lissy(cls):
+        return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
 
 if __name__ == "__main__":
-    aurora = Pupil.aurora()
-    print(aurora.says("Be careful Quintus!"))
+    lissy = Pupil.lissy()
+    print(lissy.says("Be careful Luke!"))
 

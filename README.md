@@ -14,6 +14,10 @@ The code runs in **Python 3.6**, the [code on data classes](https://github.com/z
 
 Start date: 07/23/2018   
 
+## Keynote at PyCon Estonia 
+
+I gave a keynote talk about this project titled "Finding Magic in Python" at PyCon Estonia 2020. So if you are up for some magic and want to see an introduction to some of the topics (like Namedtuples or Abstract Base Classes) check out the [recording on YouTube](https://www.youtube.com/watch?v=Kf92pycivt4).
+
 ## Running pytest
 
 In case you get ```ImportError: no module named magical_universe``` when running pytest from within the test_code directory, take a look at [this post](https://stackoverflow.com/questions/10253826/path-issue-with-pytest-importerror-no-module-named-yadayadayada) and try running pytest from the root directory (which is the home directory in my case) using ```python -m pytest magical_universe/test_code/```.

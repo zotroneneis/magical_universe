@@ -2,13 +2,13 @@
 
 ![](IMG_6623.jpg)
 
-As outlined in [my blog post](http://www.alpopkes.com/posts/2018/07/blog-post-1), I decided to take on a new habit using a technique I found on the ['get disciplined' subreddit](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/).
+As outlined in [my blog post](https://alpopkes.com/posts/python/magical_universe/day_1_start/), I decided to take on a new habit using a technique I found on the ['get disciplined' subreddit](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/).
 
 As one of my new habits I chose: "Code for 15 minutes every day". As part of the habit I've started creating a series of **blog posts** on important and awesome **Python features**, including object oriented programming, properties, function annotations, duck typing, etc.
 
-Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating my own magical universe around the topics. A short introduction into my magical universe - **The Tales of Castle Kilmere** can be found [here](http://alpopkes.com/posts/2018/07/the_tales_of_castle_kilmere/). So if you like magic and want to improve your Python knowledge and skills, get right into it!
+Since I was bored by the usual tutorial examples, I looked for a topic that would make it fun to study and implement the concepts. And since I absolutely love Harry Potter, I started creating my own magical universe around the topics. A short introduction into my magical universe - **The Tales of Castle Kilmere** can be found [here](https://alpopkes.com/posts/python/magical_universe/day_1_magical_universe/). So if you like magic and want to improve your Python knowledge and skills, get right into it!
 
-A logbook of what I worked on each day can be found on my [website](http://www.alpopkes.com/year-archive/).
+A logbook of what I worked on each day can be found on my [website](https://alpopkes.com/posts/python/magical_universe/).
 
 The code runs in **Python 3.6**, the [code on data classes](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_16_to_18.py) requires Python 3.7 (or you pip install data classes for Python 3.6).
 

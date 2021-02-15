@@ -1,6 +1,6 @@
 # Awesome Python Features Explained Using the World of Magic
 
-![](IMG_6623.jpg)
+<img src="castle_kilmere.png" width="70%">
 
 As outlined in [my blog post](https://alpopkes.com/posts/python/magical_universe/day_1_start/), I decided to take on a new habit using a technique I found on the ['get disciplined' subreddit](https://www.reddit.com/r/getdisciplined/comments/1x99m6/im_a_piece_of_shit_no_more_games_no_more_lies_no/cf9dz72/).
 
@@ -13,6 +13,10 @@ A logbook of what I worked on each day can be found on my [website](https://alpo
 The code runs in **Python 3.6**, the [code on data classes](https://github.com/zotroneneis/magical_universe/blob/master/code_per_day/day_16_to_18.py) requires Python 3.7 (or you pip install data classes for Python 3.6).
 
 Start date: 07/23/2018   
+
+## Keynote at PyCon Estonia 
+
+I gave a keynote talk about this project titled "Finding Magic in Python" at PyCon Estonia 2020. So if you are up for some magic and want to see an introduction to some of the topics (like Namedtuples or Abstract Base Classes) check out the [recording on YouTube](https://www.youtube.com/watch?v=Kf92pycivt4).
 
 ## Running pytest
 

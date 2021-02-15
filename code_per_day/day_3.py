@@ -8,26 +8,21 @@ Link to blog post with explanations: http://www.alpopkes.com/posts/2018/07/codin
 """
 
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
+    """ Creates a member of the Castle Kilmere School of Magic """
     def __init__(self, name:str, birthyear:int, sex:str):
-        self._name = name
+        self.name = name
         self.birthyear = birthyear
         self.sex = sex
 
     def says(self, words):
-        return f"{self._name} says {words}"
+        return f"{self.name} says {words}"
 
-    @staticmethod
-    def school_headmaster():
-        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
+    @classmethod
+    def school_headmistress(cls) -> 'CastleKilmereMember':
+        return cls('Miranda Mirren', 1963, 'female')
 
 class Pupil(CastleKilmereMember):
-    """
-    Create a Castle Kilmere Pupil
-    """
-
+    """ Create a Castle Kilmere Pupil """
     def __init__(self, name, birthyear, sex, start_year, pet=None):
         super().__init__(name, birthyear, sex)
         self.start_year = start_year
@@ -36,8 +31,9 @@ class Pupil(CastleKilmereMember):
             self.pet_name, self.pet_type = pet
 
         self._elms = {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
                   'Broomstick Flying': False,
-                  'Art': False,
                   'Magical Theory': False,
                   'Foreign Magical Systems': False,
                   'Charms': False,
@@ -59,9 +55,7 @@ class Pupil(CastleKilmereMember):
         return cls('Adrien Fulford', 2008, 'male', 2018, ('Unnamed', 'owl') )
 
 class Professor(CastleKilmereMember):
-    """
-    Creates a Castle Kilmere professor
-    """
+    """ Creates a Castle Kilmere professor """
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
@@ -77,9 +71,7 @@ class Professor(CastleKilmereMember):
 
 
 class Ghost(CastleKilmereMember):
-    """
-    Creates a Castle Kilmere ghost
-    """
+    """ Creates a Castle Kilmere ghost """
     def __init__(self, name: str, birthyear: int, sex: str, year_of_death: int):
         super().__init__(name, birthyear, sex)
         self.year_of_death = year_of_death

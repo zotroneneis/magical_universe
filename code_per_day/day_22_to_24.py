@@ -1,10 +1,7 @@
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
-
+    """ Creates a member of the Castle Kilmere School of Magic """
     def __init__(self, name: str, birthyear: int, sex: str):
-        self._name = name
+        self.name = name
         self.birthyear = birthyear
         self.sex = sex
         self._traits = {}
@@ -14,14 +11,9 @@ class CastleKilmereMember:
         with Letter(letter_name) as l:
             l.write(content)
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
 
 class Pupil(CastleKilmereMember):
-    """
-    Create a Castle Kilmere Pupil
-    """
-
+    """ Create a Castle Kilmere Pupil """
     def __init__(self, name: str, birthyear: int, sex: str, start_year: int, pet: tuple = None):
         super().__init__(name, birthyear, sex)
         self.start_year = start_year
@@ -31,8 +23,9 @@ class Pupil(CastleKilmereMember):
             self.pet_name, self.pet_type = pet
 
         self._elms = {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
                   'Broomstick Flying': False,
-                  'Art': False,
                   'Magical Theory': False,
                   'Foreign Magical Systems': False,
                   'Charms': False,
@@ -48,16 +41,15 @@ class Pupil(CastleKilmereMember):
         return cls('Lissy Spinster', 2008, 'female', 2018, ('Ramses', 'cat'))
 
 
-
 class Letter:
     total_number_of_letters = 0
 
     def __init__(self, letter_name):
         self.letter_name = letter_name
-        self.__class__.total_number_of_letters += 1
 
     def __enter__(self):
         self.letter = open(self.letter_name, 'w')
+        self.__class__.total_number_of_letters += 1
         return self.letter
 
     def __exit__(self, exc_type, exc_value, traceback):

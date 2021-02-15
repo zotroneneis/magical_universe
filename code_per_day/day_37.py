@@ -1,11 +1,11 @@
 import datetime
 from typing import NamedTuple
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
-class Spell(metaclass=ABCMeta):
+class Spell(ABC):
     """Creates a spell"""
-    def __init__(self, name: str, incantation: str, effect: str, difficulty: str, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Simple", min_year: int = 1):
         self.name = name
         self.incantation = incantation
         self.effect = effect
@@ -22,8 +22,8 @@ class Spell(metaclass=ABCMeta):
         pass
 
     def __repr__(self):
-        return (f"{self.__class__.__name__}({self.name}, "
-               f"incantation: '{self.incantation}', effect: {self.effect})")
+        return f"{self.__class__.__name__}(name='{self.name}', incantation='{self.incantation}', effect='{self.effect}', difficulty='{self.difficulty}', min_year={self.min_year})"
+
 
 class Charm(Spell):
     """
@@ -31,8 +31,7 @@ class Charm(Spell):
     a spell that alters the inherent qualities of an object
     """
     def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int = None):
-
+                 difficulty: str = "Simple", min_year: int = 1):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -44,21 +43,20 @@ class Charm(Spell):
         return(f"{self.incantation}!")
 
     @classmethod
-    def stuporus_ratiato(cls):
-        return cls('Stuporus Ratiato', 'Stuporus Ratiato', 'Makes objects fly', 'simple', 1)
+    def stuporus_ratiato(cls) -> 'Charm':
+        return cls('The Stuporus Ratiato charm', 'Stuporus Ratiato', 'Makes objects fly')
 
     @classmethod
-    def liberula(cls):
-        return cls('Liberula', 'Liberula', 'Allows a person to breath under water', 'difficult', 5)
+    def liberula(cls) -> 'Charm':
+        return cls('The Liberula charm', 'Liberula', 'Allows a person to breath under water', 'Difficult', 5)
+
 
 class Transfiguration(Spell):
     """
     Creates a transfiguration -
     a spell that alters the form or appearance of an object
     """
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int = None):
-
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str, min_year: int):
         super().__init__(name, incantation, effect, difficulty, min_year)
 
     @property
@@ -67,7 +65,7 @@ class Transfiguration(Spell):
 
     @classmethod
     def alteraror_canieo(cls):
-        return cls('Alteraro Canieo', 'Alteraro Canieo', 'Turns an object into a can', 'simple', 2)
+        return cls('The Alteraro Canieo transfiguration', 'Alteraro Canieo', 'Turns an object into a can', 'Simple', 2)
 
     def cast(self):
         return(f"{self.incantation}!")
@@ -90,7 +88,7 @@ class Jinx(Spell):
 
     @classmethod
     def inceptotis(cls):
-        return cls('Inceptotis', 'Inceptotis', 'Makes a person talk baby talk', 'simple')
+        return cls('The Inceptotis jinx', 'Inceptotis', 'Makes a person talk baby talk', 'simple')
 
     def cast(self):
         return(f"{self.incantation}!")
@@ -101,7 +99,7 @@ class Hex(Spell):
     a spell that affects an object in a negative manner
     """
     def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int = None):
+                 difficulty: str, min_year: int = 5):
 
         super().__init__(name, incantation, effect, difficulty, min_year)
 
@@ -113,18 +111,18 @@ class Hex(Spell):
 
     @classmethod
     def rectaro(cls):
-        return cls('Rectaro', 'Rectaro', 'Exchanges a persons arms and legs', 'difficult')
+        return cls('The Rectaro hex', 'Rectaro', 'Exchanges a persons arms and legs', 'difficult')
 
     def cast(self):
         return(f"{self.incantation}!")
+
 
 class Curse(Spell):
     """
     Creates a curse -
     a spell that affects an object in a stflynngly negative manner
     """
-    def __init__(self, name: str, incantation: str, effect: str,
-                 difficulty: str, min_year: int = None):
+    def __init__(self, name: str, incantation: str, effect: str, difficulty: str = "Difficult", min_year: int = 6):
 
         super().__init__(name, incantation, effect, difficulty, min_year)
 

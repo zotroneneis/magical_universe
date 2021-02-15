@@ -3,18 +3,15 @@ from typing import NamedTuple
 from dataclasses import dataclass
 
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
-
-    def __init__(self, name:str, birthyear:int, sex:str):
-        self._name = name
+    """ Creates a member of the Castle Kilmere School of Magic """
+    def __init__(self, name: str, birthyear: int, sex: str):
+        self.name = name
         self.birthyear = birthyear
         self.sex = sex
         self._traits = {}
 
-    def says(self, words):
-        return f"{self._name} says {words}"
+    def says(self, words: str) -> str:
+        return f"{self.name} says {words}"
 
     def add_trait(self, trait, value=True):
         self._traits[trait] = value
@@ -24,42 +21,31 @@ class CastleKilmereMember:
         false_traits = [trait for trait, value in self._traits.items() if not value]
 
         if true_traits:
-            print(f"{self._name} is {', '.join(true_traits)}")
+            print(f"{self.name} is {', '.join(true_traits)}")
         if false_traits:
-            print(f"{self._name} is not {', '.join(false_traits)}")
+            print(f"{self.name} is not {', '.join(false_traits)}")
         if (not true_traits and not false_traits):
-            print(f"{self._name} does not have traits yet")
+            print(f"{self.name} does not have traits yet")
 
-    def exhibits_trait(self, trait):
-        try:
-            value = self._traits[trait]
-        except KeyError:
-            return False
+    def exhibits_trait(self, trait: str) -> bool:
+        value = self._traits[trait]
         return value
-
-        return value
-
-    @property
-    def name(self):
-        return self._name
 
     @property
     def age(self):
         now = datetime.datetime.now().year
         return now - self.birthyear
 
-    @staticmethod
-    def school_headmaster():
-        return CastleKilmereMember('Miranda Mirren', 1963, 'female')
+    @classmethod
+    def school_headmistress(cls) -> 'CastleKilmereMember':
+        return cls('Miranda Mirren', 1963, 'female')
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self._name}, birthyear: {self.birthyear})"
-
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}')")
 
 class Professor(CastleKilmereMember):
-    """
-    Creates a Castle Kilmere professor
-    """
+    """ Creates a Castle Kilmere professor """
     def __init__(self, name: str, birthyear: int, sex: str, subject: str, department: str = None):
         super().__init__(name, birthyear, sex)
         self.subject = subject
@@ -75,32 +61,29 @@ class Professor(CastleKilmereMember):
 
     @classmethod
     def radford(cls):
-        return cls('Rupert Radford', 1900, 'male', 'Illusions 101')
+        return cls('Rupert Radford', 1958, 'male', 'Illusions 101', 'Creativity and Arts')
 
-    def __repr__(self):
-        return (f"{self.__class__.__name__}({self._name}, "
-                f"birthyear: {self.birthyear}, subject: {self.subject})")
-
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}', "
+                f"subject='{self.subject}', department='{self.department}')")
 
 
 class Ghost(CastleKilmereMember):
-    """
-    Creates a Castle Kilmere ghost
-    """
-
+    """ Creates a Castle Kilmere ghost """
     def __init__(self, name:str, birthyear:int, sex:str, year_of_death:int):
         super().__init__(name, birthyear, sex)
-
         self.year_of_death = year_of_death
 
     @property
-    def age(self):
+    def age(self) -> int:
         now = datetime.datetime.now().year
         return now - self.birthyear
 
-    def __repr__(self):
-        return (f"{self.__class__.__name__}({self._name}, "
-                f"birthyear: {self.birthyear}, year of death: {self.year_of_death})")
+    def __repr__(self) -> str:
+        return (f"{self.__class__.__name__}(name='{self.name}', "
+                f"birthyear={self.birthyear}, sex='{self.sex}', "
+                f"year_of_death={self.year_of_death})")
 
     @classmethod
     def mocking_knight(cls):
@@ -124,6 +107,7 @@ class Department:
     """ Creates a Castle Kilmere Department """
     name: str
     head: Professor
+    ghost: Ghost
     founded_in: int = 991
 
     def current_age(self):

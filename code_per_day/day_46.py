@@ -1,12 +1,9 @@
 import functools
 
 class CastleKilmereMember:
-    """
-    Creates a member of the Castle Kilmere School of Magic
-    """
-
+    """ Creates a member of the Castle Kilmere School of Magic """
     def __init__(self, name: str, birthyear: int, sex: str):
-        self._name = name
+        self.name = name
         self.birthyear = birthyear
         self.sex = sex
         self._traits = {}
@@ -25,7 +22,7 @@ class CastleKilmereMember:
     @whisper
     def says(self, words):
         '''Allows a Castle Kilmere Member to talk'''
-        return f"{self._name} says: {words}"
+        return f"{self.name} says: {words}"
 
 
 if __name__ == "__main__":

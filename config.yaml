@@ -1,7 +1,7 @@
 bromley:
     name: 'Bromley Huckabee'
     birthyear: 1959
-    sex: male
+    sex: 'male'
 
 luke:
     name: 'Luke Bery'

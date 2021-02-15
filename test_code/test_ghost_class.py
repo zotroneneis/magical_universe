@@ -19,4 +19,4 @@ def test_repr_output(capfd, mocking_knight):
     print(mocking_knight)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Ghost(The Mocking Knight, birthyear: 1401, year of death: 1492)'
+    assert stdout == "Ghost(name='The Mocking Knight', birthyear=1401, sex='male', year_of_death=1492)"

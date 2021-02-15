@@ -59,23 +59,25 @@ def luke_with_friends():
 
 def test_correctness_of_attributes_(luke):
     assert luke.name == "Luke Bery"
-    assert luke.start_year == 2018
+    assert luke.start_year == 2020
     assert luke.pet_name == 'Cotton'
     assert luke.pet_type == 'owl'
 
 def test_current_year_property(luke):
     assert luke.current_year == (now - luke.start_year + 1)
 
-def test_owls_property(luke):
-    assert luke.elms == {'Broomstick Flying': False,
-                          'Art': False,
-                          'Magical Theory': False,
-                          'Foreign Magical Systems': False,
-                          'Charms': False,
-                          'Defence Against Dark Magic': False,
-                          'History of Magic': False,
-                          'Potions': False,
-                          'Transfiguration': False}
+def test_elms_property(luke):
+    assert luke._elms == {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
+                  'Broomstick Flying': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
 def test_friends_property(luke_with_friends):
     assert luke_with_friends.friends == "Luke Bery's current friends are: ['Lissy Spinster']"
@@ -106,34 +108,38 @@ def test_set_elms_raises_ValueError_with_wrong_input_argument(capfd, luke):
 
 def test_set_elms_with_passed_grade(capfd, luke):
     luke.elms = ("Transfiguration", "G")
-    assert luke.elms == {'Broomstick Flying': False,
-                          'Art': False,
-                          'Magical Theory': False,
-                          'Foreign Magical Systems': False,
-                          'Charms': False,
-                          'Defence Against Dark Magic': False,
-                          'History of Magic': False,
-                          'Potions': False,
-                          'Transfiguration': True}
+    assert luke._elms == {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
+                  'Broomstick Flying': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': True}
 
 def test_set_elms_with_not_passed_grade(capfd, luke):
     luke.elms = ("Transfiguration", "H")
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == 'The exam was not passed so no ELM was awarded!'
-    assert luke.elms == {'Broomstick Flying': False,
-                          'Art': False,
-                          'Magical Theory': False,
-                          'Foreign Magical Systems': False,
-                          'Charms': False,
-                          'Defence Against Dark Magic': False,
-                          'History of Magic': False,
-                          'Potions': False,
-                          'Transfiguration': False}
+    assert luke._elms == {
+                  'Critical Thinking': False,
+                  'Self-Defense Against Fresh Fruit': False,
+                  'Broomstick Flying': False,
+                  'Magical Theory': False,
+                  'Foreign Magical Systems': False,
+                  'Charms': False,
+                  'Defence Against Dark Magic': False,
+                  'History of Magic': False,
+                  'Potions': False,
+                  'Transfiguration': False}
 
 def test_staticmethod_passed_with_passed_grades():
     assert Pupil.passed('E') == True
-    assert Pupil.passed('Exceptional') == True
+    assert Pupil.passed('Excellent') == True
     assert Pupil.passed('G') == True
     assert Pupil.passed('Good') == True
     assert Pupil.passed('A') == True
@@ -152,7 +158,7 @@ def test_repr_output(capfd, luke):
     print(luke)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Pupil(Luke Bery, birthyear: 2008)'
+    assert stdout == "Pupil(name='Luke Bery', birthyear=2008, sex='male', start_year=2020)"
 
 def test_learn_spell_hex_if_not_being_evil(capfd, luke, rectaro):
     luke.learn_spell(rectaro)
@@ -160,31 +166,23 @@ def test_learn_spell_hex_if_not_being_evil(capfd, luke, rectaro):
     stdout = stdout.strip()
     assert stdout == 'How dare you study a hex or curse?!'
 
-def test_learn_spell_hex_if_being_evil(capfd, adrien, rectaro):
-    adrien.add_trait('evil')
-    adrien.learn_spell(rectaro)
-    stdout, err = capfd.readouterr()
-    stdout = stdout.strip()
-    assert stdout == 'Adrien Fulford now knows spell Rectaro'
-    assert rectaro in adrien.known_spells
-
-def test_learn_spell_if_being_too_young(capfd, luke, liberula):
+def test_learn_spell_charm_if_being_too_young(capfd, luke, liberula):
     luke.learn_spell(liberula)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
     assert stdout == "Luke Bery is too young to study this spell!"
 
-def test_learn_spell_hex_if_being_too_young_but_highly_intelligent(capfd, lissy, liberula):
+def test_learn_spell_charm_if_being_too_young_but_highly_intelligent(capfd, lissy, liberula):
     lissy.learn_spell(liberula)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == "Lissy Spinster now knows spell Liberula"
+    assert stdout == "Lissy Spinster now knows 'The Liberula charm'"
 
 def test_learn_spell(capfd, luke, stuporus_ratiato):
     luke.learn_spell(stuporus_ratiato)
     stdout, err = capfd.readouterr()
     stdout = stdout.strip()
-    assert stdout == 'Luke Bery now knows spell Stuporus Ratiato'
+    assert stdout == "Luke Bery now knows 'The Stuporus Ratiato charm'"
     assert stuporus_ratiato in luke.known_spells
 
 def test_cast_spell_curse(capfd, luke, fiera_satanotis):

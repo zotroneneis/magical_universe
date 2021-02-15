@@ -7,9 +7,9 @@ def keres_fulford():
     return keres_fulford
 
 @pytest.fixture
-def lord_odon():
-    lord_odon = DarkArmyMember('Lord Odon', 1971)
-    return lord_odon
+def master_odon():
+    master_odon = DarkArmyMember('Master Odon', 1971)
+    return master_odon
 
 @pytest.fixture
 def stuporus_ratiato():
@@ -19,8 +19,8 @@ def test_correctness_of_attributes(keres_fulford):
     assert keres_fulford.name == "Keres Fulford"
     assert keres_fulford.birthyear == 1953
 
-def test_leader_property(keres_fulford, lord_odon):
-    assert keres_fulford.leader == lord_odon
+def test_leader_property(keres_fulford, master_odon):
+    assert keres_fulford.leader == master_odon
 
 def test_repr_output(capfd, keres_fulford):
     print(keres_fulford)

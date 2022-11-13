@@ -14,9 +14,11 @@ The code runs in **Python 3.6**, the [code on data classes](https://github.com/z
 
 Start date: 07/23/2018   
 
-## Keynote at PyCon Estonia 
+## Keynote at PyCon Estonia and EuroPython
 
 I gave a keynote talk about this project titled "Finding Magic in Python" at PyCon Estonia 2020. So if you are up for some magic and want to see an introduction to some of the topics (like Namedtuples or Abstract Base Classes) check out the [recording on YouTube](https://www.youtube.com/watch?v=Kf92pycivt4).
+
+I held another talk at EuroPython, check out [the recording here](https://www.youtube.com/watch?v=J4e4YCZ-jiQ).
 
 ## Running pytest
 
